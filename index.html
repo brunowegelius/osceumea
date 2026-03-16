@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OSCE Studieportal — Umeå Universitet</title>
   <style>
+    /* ── RESET ───────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ── TOKENS ──────────────────────────────────────────── */
     :root {
-      --bg: #f7f8fa;
+      --bg: #f2f1ed;
       --surface: #ffffff;
-      --border: #e8eaed;
-      --text: #111318;
-      --muted: #6b7280;
-      --accent: #2563eb;
-      --accent-light: #eff6ff;
-      --accent-hover: #1d4ed8;
-      --lime: #e7fe55;
-      --lime-text: #2a3200;
-      --success: #16a34a;
-      --success-light: #f0fdf4;
-      --radius: 14px;
-      --radius-sm: 8px;
-      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 8px rgba(0,0,0,.04);
-      --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+      --border: #d8d6ce;
+      --text: #111110;
+      --muted: #7a7870;
+      --accent: #111110;
+      --accent-fg: #f2f1ed;
+      --lime: #c8f53c;
+      --lime-bg: #111110;
+      --lime-text: #1a2800;
+      --blue: #2454e8;
+      --blue-bg: #edf2ff;
+      --amber: #92400e;
+      --amber-bg: #fef3c7;
+      --green: #16a34a;
+      --green-bg: #f0fdf4;
+      --orange: #c2410c;
+      --danger: #dc2626;
+      --r: 12px;
+      --r-sm: 8px;
+      --t: 0.25s ease;
+    }
+    [data-theme="dark"] {
+      --bg: #111110;
+      --surface: #1d1c19;
+      --border: #2d2b27;
+      --text: #f2f1ed;
+      --muted: #9a9890;
+      --accent: #f2f1ed;
+      --accent-fg: #111110;
+      --blue-bg: #1a1f38;
+      --amber-bg: #2a1e00;
+      --green-bg: #0a1e0a;
     }
 
+    /* ── BASE ────────────────────────────────────────────── */
+    html { color-scheme: light dark; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       background: var(--bg);
@@ -33,375 +54,188 @@
       min-height: 100vh;
       font-size: 15px;
       line-height: 1.5;
+      transition: background var(--t), color var(--t);
     }
 
     /* ── NAV ─────────────────────────────────────────────── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 0 24px;
       height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 0 20px;
+      display: flex; align-items: center; gap: 6px;
+      transition: background var(--t), border-color var(--t);
     }
     .nav-logo {
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: -.3px;
-      color: var(--text);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-weight: 800; font-size: 14px; letter-spacing: -.3px;
+      color: var(--text); text-decoration: none;
+      display: flex; align-items: center; gap: 8px; flex-shrink: 0;
     }
-    .nav-logo span {
-      width: 28px; height: 28px;
-      background: var(--accent);
-      border-radius: 7px;
+    .nav-logo-mark {
+      width: 30px; height: 30px; border-radius: 7px;
+      background: var(--text); color: var(--accent-fg);
       display: grid; place-items: center;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0;
+      font-size: 13px; font-weight: 900; letter-spacing: 0; flex-shrink: 0;
     }
-    .nav-links { display: flex; gap: 4px; }
-    .nav-link {
-      padding: 6px 12px;
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--muted);
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      background: none;
-      transition: color .15s, background .15s;
+    .nav-spacer { flex: 1; }
+    .nav-tabs { display: flex; gap: 2px; }
+    .nav-tab {
+      padding: 6px 11px; border-radius: var(--r-sm);
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      cursor: pointer; border: none; background: none;
+      transition: color .12s, background .12s; white-space: nowrap;
     }
-    .nav-link:hover, .nav-link.active {
-      color: var(--text);
-      background: var(--bg);
+    .nav-tab:hover { color: var(--text); background: var(--bg); }
+    .nav-tab.active { color: var(--text); font-weight: 700; background: var(--bg); }
+    .nav-actions { display: flex; gap: 4px; align-items: center; }
+    .nav-icon-btn {
+      width: 34px; height: 34px; border-radius: var(--r-sm);
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--muted); cursor: pointer; display: grid; place-items: center;
+      font-size: 15px; line-height: 1;
+      transition: color .12s, border-color .12s, background .12s;
     }
+    .nav-icon-btn:hover { color: var(--text); border-color: var(--muted); background: var(--bg); }
+    @media (max-width: 580px) { .nav-tabs { display: none; } }
 
     /* ── LAYOUT ──────────────────────────────────────────── */
     #app { min-height: calc(100vh - 56px); }
     .page { display: none; }
     .page.active { display: block; }
-
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 40px 24px;
-    }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
 
     /* ── TYPOGRAPHY ──────────────────────────────────────── */
-    h1 { font-size: 28px; font-weight: 700; letter-spacing: -.5px; line-height: 1.2; }
-    h2 { font-size: 20px; font-weight: 600; letter-spacing: -.3px; }
-    h3 { font-size: 16px; font-weight: 600; }
+    h1 { font-size: 30px; font-weight: 800; letter-spacing: -.7px; line-height: 1.15; }
+    h2 { font-size: 19px; font-weight: 700; letter-spacing: -.4px; }
+    .label {
+      font-size: 11px; font-weight: 700; letter-spacing: .7px;
+      text-transform: uppercase; color: var(--muted);
+    }
 
-    /* ── HOME PAGE ───────────────────────────────────────── */
-    .home-header {
-      margin-bottom: 36px;
+    /* ── BUTTONS ─────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 15px; border-radius: var(--r-sm);
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      border: 1px solid transparent; white-space: nowrap; text-decoration: none;
+      transition: all .12s;
     }
-    .home-header p {
-      color: var(--muted);
-      margin-top: 6px;
-      font-size: 15px;
-    }
-    .osce-cards {
+    .btn-dark { background: var(--text); color: var(--accent-fg); border-color: var(--text); }
+    .btn-dark:hover { opacity: .82; }
+    .btn-outline { background: var(--surface); color: var(--text); border-color: var(--border); }
+    .btn-outline:hover { border-color: var(--muted); background: var(--bg); }
+    .btn-lime { background: var(--lime); color: var(--lime-text); border-color: var(--lime); }
+    .btn-lime:hover { filter: brightness(.93); }
+    .btn-sm { padding: 5px 11px; font-size: 12px; }
+
+    /* ── HOME ────────────────────────────────────────────── */
+    .home-header { margin-bottom: 36px; }
+    .home-header p { color: var(--muted); margin-top: 5px; font-size: 14px; }
+    .osce-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px; margin-bottom: 20px;
     }
     .osce-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      transition: box-shadow .15s, border-color .15s, transform .15s;
-      display: block;
-      box-shadow: var(--shadow);
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--r); padding: 22px;
+      cursor: pointer; text-decoration: none; color: inherit; display: block;
+      transition: border-color .12s;
     }
-    .osce-card:hover {
-      box-shadow: var(--shadow-md);
-      border-color: #d0d5dd;
-      transform: translateY(-1px);
+    .osce-card:hover { border-color: var(--muted); }
+    .osce-card-top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px;
     }
-    .osce-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-    .osce-badge {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 20px;
-      background: var(--accent-light);
-      color: var(--accent);
-    }
-    .osce-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 2px; }
-    .osce-card .sub { color: var(--muted); font-size: 13px; margin-bottom: 16px; }
-    .progress-bar {
-      height: 6px;
-      background: var(--bg);
-      border-radius: 99px;
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      border-radius: 99px;
-      transition: width .4s ease;
-    }
-    .progress-label {
-      font-size: 12px;
-      color: var(--muted);
-      font-variant-numeric: tabular-nums;
-    }
+    .osce-card-top .label { color: var(--muted); }
+    .osce-title { font-size: 22px; font-weight: 800; letter-spacing: -.5px; margin-bottom: 2px; }
+    .osce-sub { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
+    .prog-bar { height: 4px; background: var(--border); border-radius: 99px; overflow: hidden; margin-bottom: 7px; }
+    .prog-fill { height: 100%; background: var(--lime); border-radius: 99px; transition: width .4s; }
+    .prog-label { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .home-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
 
-    .tags-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      color: var(--text);
-      transition: background .15s, border-color .15s;
-      box-shadow: var(--shadow);
-    }
-    .tags-btn:hover { background: var(--bg); border-color: #d0d5dd; }
-
-    /* ── LIST PAGE ───────────────────────────────────────── */
-    .list-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
+    /* ── LIST ────────────────────────────────────────────── */
+    .list-header { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; flex-wrap: wrap; }
     .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      color: var(--muted);
-      transition: color .15s, border-color .15s;
-      box-shadow: var(--shadow);
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 12px; background: var(--surface);
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      font-size: 13px; font-weight: 500; cursor: pointer; color: var(--muted);
+      text-decoration: none; transition: color .12s, border-color .12s;
     }
-    .back-btn:hover { color: var(--text); border-color: #d0d5dd; }
-
-    .filter-bar {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
+    .back-btn:hover { color: var(--text); border-color: var(--muted); }
+    .filter-row { display: flex; align-items: center; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
     .filter-chip {
-      padding: 6px 14px;
-      border-radius: 99px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      color: var(--muted);
-      transition: all .15s;
+      padding: 5px 14px; border-radius: 99px;
+      border: 1.5px solid var(--border); background: var(--surface);
+      font-size: 13px; font-weight: 500; cursor: pointer; color: var(--muted);
+      transition: all .12s;
     }
-    .filter-chip:hover { color: var(--text); border-color: #d0d5dd; }
-    .filter-chip.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
+    .filter-chip:hover { color: var(--text); border-color: var(--muted); }
+    .filter-chip.active { background: var(--text); border-color: var(--text); color: var(--accent-fg); }
+    .filter-spacer { flex: 1; }
 
-    .exam-grid {
-      display: grid;
-      gap: 10px;
-    }
+    /* ── EXAM CARDS ──────────────────────────────────────── */
+    .exam-grid { display: grid; gap: 7px; }
     .exam-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      cursor: pointer;
-      transition: box-shadow .15s, border-color .15s;
-      box-shadow: var(--shadow);
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--r); padding: 15px 18px;
+      display: flex; align-items: center; gap: 14px;
+      transition: border-color .12s;
     }
-    .exam-card:hover { box-shadow: var(--shadow-md); border-color: #d0d5dd; }
-    .exam-card.done { border-left: 3px solid var(--success); }
-    .exam-card-info { flex: 1; min-width: 0; }
-    .exam-title { font-weight: 600; font-size: 15px; }
-    .exam-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 4px;
-      flex-wrap: wrap;
-    }
+    .exam-card:hover { border-color: var(--muted); }
+    .exam-card.done { border-left: 3px solid var(--lime); }
+    .exam-card-body { flex: 1; min-width: 0; cursor: pointer; }
+    .exam-semester { font-size: 16px; font-weight: 700; letter-spacing: -.3px; }
+    .exam-meta { display: flex; align-items: center; gap: 6px; margin-top: 3px; flex-wrap: wrap; }
     .type-badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 20px;
-      letter-spacing: .2px;
+      font-size: 11px; font-weight: 700; padding: 2px 8px;
+      border-radius: 99px; letter-spacing: .1px;
     }
-    .type-badge.ord { background: #eff6ff; color: #2563eb; }
-    .type-badge.om { background: #fef3c7; color: #92400e; }
-    .file-count {
-      font-size: 12px;
-      color: var(--muted);
+    .type-badge.ord { background: var(--blue-bg); color: var(--blue); }
+    .type-badge.om { background: var(--amber-bg); color: var(--amber); }
+    .file-count { font-size: 12px; color: var(--muted); }
+    .tags-row { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; }
+    .tag-pill {
+      font-size: 11px; padding: 1px 7px; background: var(--bg);
+      border-radius: 99px; color: var(--muted); border: 1px solid var(--border);
     }
-    .tags-list {
-      display: flex;
-      gap: 4px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-    }
-    .tag-chip {
-      font-size: 11px;
-      padding: 2px 7px;
-      background: var(--bg);
-      border-radius: 20px;
-      color: var(--muted);
-      border: 1px solid var(--border);
-    }
-    .done-check {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .check-input {
-      width: 18px; height: 18px;
-      accent-color: var(--success);
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .check-label {
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-      cursor: pointer;
-      user-select: none;
-    }
+    .done-toggle { flex-shrink: 0; display: flex; align-items: center; gap: 6px; }
+    .check-input { width: 16px; height: 16px; accent-color: var(--green); cursor: pointer; }
+    .check-label { font-size: 12px; color: var(--muted); white-space: nowrap; cursor: pointer; user-select: none; }
 
     /* ── EXAM VIEW ───────────────────────────────────────── */
-    .exam-view-header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+    .exam-bar {
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 11px 20px; display: flex; align-items: center; gap: 12px;
+      flex-wrap: wrap; transition: background var(--t), border-color var(--t);
     }
-    .exam-view-title { font-weight: 700; font-size: 16px; flex: 1; }
-    .exam-view-actions { display: flex; gap: 8px; align-items: center; }
-
-    .btn {
-      padding: 8px 16px;
-      border-radius: var(--radius-sm);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1px solid transparent;
-      transition: all .15s;
-      white-space: nowrap;
+    .exam-bar-title { font-weight: 700; font-size: 14px; flex: 1; min-width: 0; }
+    .exam-bar-actions { display: flex; gap: 6px; }
+    .circle-bar {
+      background: var(--bg); border-bottom: 1px solid var(--border);
+      padding: 8px 20px; display: flex; align-items: center; gap: 10px;
     }
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-    .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
-    .btn-primary.done-state {
-      background: var(--success);
-      border-color: var(--success);
-    }
-    .btn-secondary {
-      background: var(--surface);
-      color: var(--text);
-      border-color: var(--border);
-    }
-    .btn-secondary:hover { border-color: #d0d5dd; background: var(--bg); }
-
-    .circle-select-bar {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .circle-select-bar label { font-size: 13px; font-weight: 500; color: var(--muted); }
     .circle-select {
-      padding: 6px 10px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 13px;
-      background: var(--bg);
-      cursor: pointer;
+      padding: 5px 10px; border: 1.5px solid var(--border);
+      border-radius: var(--r-sm); font-size: 13px;
+      background: var(--surface); color: var(--text); cursor: pointer;
     }
-
-    .pdf-container {
-      height: calc(100vh - 56px - 55px);
-      display: flex;
-      overflow: hidden;
-    }
-    .pdf-container.has-circles { height: calc(100vh - 56px - 55px - 46px); }
+    .pdf-container { height: calc(100vh - 56px - 48px); display: flex; overflow: hidden; }
+    .pdf-container.has-circles { height: calc(100vh - 56px - 48px - 40px); }
     .pdf-pane {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      border-right: 1px solid var(--border);
-      min-width: 0;
+      flex: 1; display: flex; flex-direction: column;
+      border-right: 1px solid var(--border); min-width: 0;
     }
     .pdf-pane:last-child { border-right: none; }
     .pdf-pane-label {
-      padding: 8px 16px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .6px;
-      color: var(--muted);
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
+      padding: 6px 14px; font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .8px; color: var(--muted);
+      background: var(--bg); border-bottom: 1px solid var(--border); flex-shrink: 0;
     }
-    .pdf-pane iframe {
-      flex: 1;
-      width: 100%;
-      border: none;
-    }
-
+    .pdf-pane iframe { flex: 1; width: 100%; border: none; background: var(--bg); }
     @media (max-width: 640px) {
       .pdf-container { flex-direction: column; height: auto; }
       .pdf-pane { height: 60vh; }
@@ -409,66 +243,193 @@
     }
 
     /* ── TAGS PAGE ───────────────────────────────────────── */
-    .tags-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 20px 0 32px;
-    }
+    .tags-cloud { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0 28px; }
     .tag-btn {
-      padding: 8px 16px;
-      border-radius: 99px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      color: var(--text);
-      transition: all .15s;
-      box-shadow: var(--shadow);
+      padding: 7px 15px; border-radius: 99px;
+      border: 1.5px solid var(--border); background: var(--surface);
+      font-size: 13px; font-weight: 500; cursor: pointer; color: var(--text);
+      transition: all .12s;
     }
-    .tag-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .tag-btn.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
+    .tag-btn:hover { border-color: var(--muted); }
+    .tag-btn.active { background: var(--text); border-color: var(--text); color: var(--accent-fg); }
+    .divider { height: 1px; background: var(--border); margin: 22px 0; }
 
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--muted);
-    }
+    /* ── EMPTY STATE ─────────────────────────────────────── */
+    .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
     .empty-state p { margin-top: 8px; font-size: 14px; }
 
-    /* ── MISC ────────────────────────────────────────────── */
-    .divider { height: 1px; background: var(--border); margin: 24px 0; }
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .7px;
-      color: var(--muted);
-      margin-bottom: 12px;
+    /* ── SEARCH OVERLAY ──────────────────────────────────── */
+    .search-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: var(--surface);
+      display: none; flex-direction: column;
+      transition: background var(--t);
     }
+    .search-overlay.open { display: flex; }
+    .search-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 20px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+    }
+    .search-input-wrap {
+      flex: 1; display: flex; align-items: center; gap: 9px;
+      background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: var(--r-sm); padding: 8px 13px;
+    }
+    .search-input-wrap:focus-within { border-color: var(--muted); }
+    .search-input-wrap svg { flex-shrink: 0; color: var(--muted); }
+    #search-input {
+      flex: 1; border: none; background: transparent;
+      font-size: 15px; color: var(--text); outline: none;
+    }
+    #search-input::placeholder { color: var(--muted); }
+    .search-body {
+      flex: 1; overflow-y: auto; padding: 16px 20px;
+      max-width: 800px; width: 100%; margin: 0 auto;
+    }
+    .search-hint { text-align: center; padding: 48px 20px; color: var(--muted); font-size: 14px; }
+    .search-hint code {
+      display: block; margin-top: 12px; padding: 8px 12px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--r-sm); font-family: monospace; font-size: 13px;
+      color: var(--text);
+    }
+    .result-card {
+      border: 1.5px solid var(--border); border-radius: var(--r);
+      padding: 14px 16px; margin-bottom: 8px; background: var(--bg);
+      transition: border-color .12s;
+    }
+    .result-card:hover { border-color: var(--muted); }
+    .result-header { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; flex-wrap: wrap; }
+    .result-station { font-weight: 700; font-size: 14px; }
+    .result-exam { font-size: 12px; color: var(--muted); }
+    .result-excerpt {
+      font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 10px;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .result-excerpt mark { background: var(--lime); color: var(--lime-text); border-radius: 2px; padding: 0 2px; }
+    .result-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    /* ── PDF MODAL ───────────────────────────────────────── */
+    .pdf-modal {
+      position: fixed; inset: 0; z-index: 300;
+      display: none; flex-direction: column;
+      background: var(--surface);
+    }
+    .pdf-modal.open { display: flex; }
+    .pdf-modal-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 20px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+    }
+    .pdf-modal-title { flex: 1; font-weight: 600; font-size: 14px; }
+    #pdf-modal-frame { flex: 1; border: none; background: var(--bg); }
+
+    /* ── TIMER ───────────────────────────────────────────── */
+    .timer-widget { position: fixed; bottom: 24px; right: 24px; z-index: 150; }
+    .timer-fab {
+      width: 50px; height: 50px; border-radius: 50%;
+      background: var(--text); border: 2px solid var(--text);
+      color: var(--accent-fg); cursor: pointer; display: grid; place-items: center;
+      font-size: 20px; transition: transform .15s, background .2s, border-color .2s;
+    }
+    .timer-fab:hover { transform: scale(1.06); }
+    .timer-fab.running { background: var(--timer-color, var(--blue)); border-color: var(--timer-color, var(--blue)); }
+    .timer-panel {
+      display: none; background: var(--surface);
+      border: 1.5px solid var(--border); border-radius: var(--r);
+      width: 272px; overflow: hidden; margin-bottom: 10px;
+      transition: background var(--t), border-color var(--t);
+    }
+    .timer-panel.open { display: block; }
+    .timer-panel-top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 15px 10px; border-bottom: 1px solid var(--border);
+    }
+    .timer-phase-name { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); }
+    .timer-x { background: none; border: none; color: var(--muted); font-size: 19px; cursor: pointer; line-height: 1; padding: 0; }
+    .timer-x:hover { color: var(--text); }
+    .timer-ring-wrap {
+      display: flex; justify-content: center; padding: 20px 0 14px;
+      position: relative;
+    }
+    .timer-ring-container { position: relative; width: 136px; height: 136px; }
+    .timer-ring-container svg { position: absolute; top: 0; left: 0; }
+    .timer-time {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -56%);
+      font-size: 27px; font-weight: 800; letter-spacing: -.5px;
+      color: var(--text); font-variant-numeric: tabular-nums;
+    }
+    .timer-phase-sub {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, 52%);
+      font-size: 10px; color: var(--muted); font-weight: 600;
+      white-space: nowrap; text-transform: uppercase; letter-spacing: .4px;
+    }
+    .timer-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; padding: 0 14px 14px; }
+    .tbtn {
+      padding: 7px 0; border-radius: var(--r-sm); border: 1.5px solid var(--border);
+      background: var(--surface); color: var(--text); font-size: 12px; font-weight: 600;
+      cursor: pointer; text-align: center; transition: all .12s;
+    }
+    .tbtn:hover { border-color: var(--muted); background: var(--bg); }
+    .tbtn:disabled { opacity: .3; cursor: not-allowed; }
+    .tbtn-start { background: var(--text); color: var(--accent-fg); border-color: var(--text); grid-column: 1 / -1; }
+    .tbtn-start:hover { opacity: .83; }
+    .tbtn-start:disabled { opacity: .3; }
   </style>
 </head>
 <body>
 
+<!-- ── NAV ──────────────────────────────────────────────── -->
 <nav>
-  <a class="nav-logo" href="#/" onclick="navigate('/')">
-    <span>O</span>
+  <a class="nav-logo" onclick="navigate('/')">
+    <div class="nav-logo-mark">O</div>
     OSCE Studieportal
   </a>
-  <div class="nav-links">
-    <button class="nav-link" onclick="navigate('/osce/1')">OSCE I</button>
-    <button class="nav-link" onclick="navigate('/osce/2')">OSCE II</button>
-    <button class="nav-link" onclick="navigate('/osce/3')">OSCE III</button>
-    <button class="nav-link" onclick="navigate('/tags')">Ämnen</button>
+  <div class="nav-tabs">
+    <button class="nav-tab" onclick="navigate('/osce/1')">OSCE I</button>
+    <button class="nav-tab" onclick="navigate('/osce/2')">OSCE II</button>
+    <button class="nav-tab" onclick="navigate('/osce/3')">OSCE III</button>
+    <button class="nav-tab" onclick="navigate('/tags')">Ämnen</button>
+  </div>
+  <div class="nav-spacer"></div>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" onclick="openSearch()" title="Sök">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <button class="nav-icon-btn" id="darkmode-btn" onclick="toggleDarkMode()" title="Växla tema">🌙</button>
   </div>
 </nav>
 
+<!-- ── SEARCH OVERLAY ────────────────────────────────────── -->
+<div class="search-overlay" id="search-overlay">
+  <div class="search-header">
+    <div class="search-input-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="search-input" type="text" placeholder="Sök station, diagnos, åtgärd…" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Escape')closeSearch()">
+    </div>
+    <button class="btn btn-outline" onclick="closeSearch()">Stäng</button>
+  </div>
+  <div class="search-body" id="search-body">
+    <div class="search-hint">Laddar sökindex…</div>
+  </div>
+</div>
+
+<!-- ── PDF MODAL ─────────────────────────────────────────── -->
+<div class="pdf-modal" id="pdf-modal">
+  <div class="pdf-modal-header">
+    <button class="back-btn" onclick="closePDFModal()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Stäng
+    </button>
+    <div class="pdf-modal-title" id="pdf-modal-title"></div>
+  </div>
+  <iframe id="pdf-modal-frame" src="" title="PDF"></iframe>
+</div>
+
+<!-- ── APP ───────────────────────────────────────────────── -->
 <div id="app">
+
   <!-- HOME -->
   <div class="page" id="page-home">
     <div class="container">
@@ -476,14 +437,18 @@
         <h1>OSCE Studieportal</h1>
         <p>Umeå Universitet — Läkarprogrammet</p>
       </div>
-
-      <div class="section-label">Examinationsnivåer</div>
-      <div class="osce-cards" id="osce-cards"></div>
-
-      <button class="tags-btn" onclick="navigate('/tags')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-        Filtrera på ämne
-      </button>
+      <div class="label" style="margin-bottom:12px">Examinationsnivåer</div>
+      <div class="osce-grid" id="osce-cards"></div>
+      <div class="home-actions">
+        <button class="btn btn-dark" onclick="randomExam(null)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="8.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg>
+          Slumpa station
+        </button>
+        <button class="btn btn-outline" onclick="navigate('/tags')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Filtrera på ämne
+        </button>
+      </div>
     </div>
   </div>
 
@@ -491,37 +456,40 @@
   <div class="page" id="page-list">
     <div class="container">
       <div class="list-header">
-        <a class="back-btn" onclick="navigate('/')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        <button class="back-btn" onclick="navigate('/')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
           Tillbaka
-        </a>
+        </button>
         <h2 id="list-title"></h2>
       </div>
-
-      <div class="filter-bar" id="filter-bar">
+      <div class="filter-row" id="filter-row">
         <button class="filter-chip active" data-filter="all" onclick="setFilter('all')">Alla</button>
         <button class="filter-chip" data-filter="ord" onclick="setFilter('ord')">Ordinarie</button>
         <button class="filter-chip" data-filter="om" onclick="setFilter('om')">Omexamination</button>
+        <div class="filter-spacer"></div>
+        <button class="btn btn-dark btn-sm" id="list-random-btn" onclick="randomExam(currentLevel)">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="8.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg>
+          Slumpa
+        </button>
       </div>
-
       <div class="exam-grid" id="exam-list"></div>
     </div>
   </div>
 
   <!-- EXAM VIEW -->
   <div class="page" id="page-exam">
-    <div class="exam-view-header">
-      <a class="back-btn" id="exam-back-btn" onclick="history.back()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    <div class="exam-bar">
+      <button class="back-btn" id="exam-back-btn" onclick="navigate('/')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
         Tillbaka
-      </a>
-      <div class="exam-view-title" id="exam-view-title"></div>
-      <div class="exam-view-actions">
-        <button class="btn btn-primary" id="mark-done-btn" onclick="toggleDone()">Markera som klar</button>
+      </button>
+      <div class="exam-bar-title" id="exam-bar-title"></div>
+      <div class="exam-bar-actions">
+        <button class="btn" id="mark-done-btn" onclick="toggleDone()">Markera som klar</button>
       </div>
     </div>
-    <div class="circle-select-bar" id="circle-bar" style="display:none;">
-      <label for="circle-select">Cirkel:</label>
+    <div class="circle-bar" id="circle-bar" style="display:none">
+      <span class="label">Cirkel</span>
       <select class="circle-select" id="circle-select" onchange="renderCircle(this.value)"></select>
     </div>
     <div class="pdf-container" id="pdf-container"></div>
@@ -531,18 +499,50 @@
   <div class="page" id="page-tags">
     <div class="container">
       <div class="list-header">
-        <a class="back-btn" onclick="navigate('/')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        <button class="back-btn" onclick="navigate('/')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
           Tillbaka
-        </a>
+        </button>
         <h2>Filtrera på ämne</h2>
       </div>
-
       <div class="tags-cloud" id="tags-cloud"></div>
       <div class="divider"></div>
       <div class="exam-grid" id="tags-exam-list"></div>
     </div>
   </div>
+
+</div>
+
+<!-- ── TIMER ──────────────────────────────────────────────── -->
+<div class="timer-widget" id="timer-widget">
+  <div class="timer-panel" id="timer-panel">
+    <div class="timer-panel-top">
+      <div class="timer-phase-name" id="timer-phase-name">Läs dörrinformation</div>
+      <button class="timer-x" onclick="toggleTimerPanel()">×</button>
+    </div>
+    <div class="timer-ring-wrap">
+      <div class="timer-ring-container">
+        <svg viewBox="0 0 100 100" width="136" height="136">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="var(--border)" stroke-width="5"/>
+          <circle id="timer-ring" cx="50" cy="50" r="44" fill="none"
+            stroke="#2454e8" stroke-width="5" stroke-linecap="round"
+            stroke-dasharray="276.46" stroke-dashoffset="0"
+            transform="rotate(-90 50 50)"/>
+        </svg>
+        <div class="timer-time" id="timer-time">2:00</div>
+        <div class="timer-phase-sub" id="timer-phase-sub">Läsfas</div>
+      </div>
+    </div>
+    <div class="timer-controls">
+      <button class="tbtn tbtn-start" id="tbtn-start" onclick="timerStart()">Start</button>
+      <button class="tbtn" id="tbtn-pause" onclick="timerPause()" disabled>Pausa</button>
+      <button class="tbtn" onclick="timerReset()">Återställ</button>
+      <button class="tbtn" onclick="timerJumpStation()">→ Station</button>
+    </div>
+  </div>
+  <button class="timer-fab" id="timer-fab" onclick="toggleTimerPanel()" title="Timer">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+  </button>
 </div>
 
 <script>
@@ -555,6 +555,7 @@ let selectedTag = null;
 
 // ── INIT ──────────────────────────────────────────────────
 async function init() {
+  initDarkMode();
   try {
     const res = await fetch('exams.json');
     const data = await res.json();
@@ -563,23 +564,18 @@ async function init() {
     console.error('Failed to load exams.json', e);
     allExams = [];
   }
-  renderHome();
   route();
   window.addEventListener('hashchange', route);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeSearch(); closePDFModal(); } });
 }
 
 // ── ROUTING ───────────────────────────────────────────────
-function navigate(path) {
-  window.location.hash = path;
-}
+function navigate(path) { window.location.hash = path; }
 
 function route() {
   const hash = window.location.hash.replace('#', '') || '/';
-  const pages = document.querySelectorAll('.page');
-  pages.forEach(p => p.classList.remove('active'));
-
-  // Update nav active state
-  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
 
   if (hash === '/' || hash === '') {
     document.getElementById('page-home').classList.add('active');
@@ -590,17 +586,18 @@ function route() {
     currentFilter = 'all';
     document.getElementById('page-list').classList.add('active');
     renderList(level);
-    // highlight nav
-    const navBtns = document.querySelectorAll('.nav-link');
-    navBtns.forEach(b => { if (b.textContent.includes('OSCE ' + ['I','II','III'][level-1])) b.classList.add('active'); });
+    const labels = ['OSCE I', 'OSCE II', 'OSCE III'];
+    document.querySelectorAll('.nav-tab').forEach(t => {
+      if (t.textContent === labels[level - 1]) t.classList.add('active');
+    });
   } else if (hash.startsWith('/exam/')) {
     const id = hash.replace('/exam/', '');
-    currentExam = allExams.find(e => e.id === id);
+    currentExam = allExams.find(e => e.id === id) || null;
     document.getElementById('page-exam').classList.add('active');
     renderExamView(currentExam);
   } else if (hash === '/tags') {
     document.getElementById('page-tags').classList.add('active');
-    document.querySelectorAll('.nav-link').forEach(l => { if (l.textContent === 'Ämnen') l.classList.add('active'); });
+    document.querySelectorAll('.nav-tab').forEach(t => { if (t.textContent === 'Ämnen') t.classList.add('active'); });
     renderTagsPage();
   }
 }
@@ -611,27 +608,25 @@ function setDone(id, val) { localStorage.setItem('osce_done_' + id, val ? 'true'
 
 // ── HOME ──────────────────────────────────────────────────
 function renderHome() {
-  const container = document.getElementById('osce-cards');
-  const levels = [
-    { level: 1, title: 'OSCE I', sub: 'Termin 6 — Läkarprogrammet' },
-    { level: 2, title: 'OSCE II', sub: 'Termin 8 — Läkarprogrammet' },
-    { level: 3, title: 'OSCE III', sub: 'Termin 11 — Läkarprogrammet' },
+  const lvls = [
+    { level: 1, title: 'OSCE I', sub: 'Termin 6' },
+    { level: 2, title: 'OSCE II', sub: 'Termin 8' },
+    { level: 3, title: 'OSCE III', sub: 'Termin 11' },
   ];
-  container.innerHTML = levels.map(l => {
+  document.getElementById('osce-cards').innerHTML = lvls.map(l => {
     const exams = allExams.filter(e => e.level === l.level);
     const done = exams.filter(e => isDone(e.id)).length;
     const pct = exams.length ? Math.round((done / exams.length) * 100) : 0;
-    return `
-      <a class="osce-card" onclick="navigate('/osce/${l.level}')">
-        <div class="osce-card-header">
-          <div class="osce-badge">T${[6,8,11][l.level-1]}</div>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-        <h3>${l.title}</h3>
-        <div class="sub">${l.sub}</div>
-        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-        <div class="progress-label">${done} av ${exams.length} klara</div>
-      </a>`;
+    return `<a class="osce-card" onclick="navigate('/osce/${l.level}')">
+      <div class="osce-card-top">
+        <span class="label">T${[6,8,11][l.level-1]}</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="osce-title">${l.title}</div>
+      <div class="osce-sub">${l.sub} — Läkarprogrammet</div>
+      <div class="prog-bar"><div class="prog-fill" style="width:${pct}%"></div></div>
+      <div class="prog-label">${done} av ${exams.length} klara</div>
+    </a>`;
   }).join('');
 }
 
@@ -639,23 +634,17 @@ function renderHome() {
 function renderList(level) {
   const titles = { 1: 'OSCE I (T6)', 2: 'OSCE II (T8)', 3: 'OSCE III (T11)' };
   document.getElementById('list-title').textContent = titles[level];
-
-  // reset filter chips
   document.querySelectorAll('.filter-chip').forEach(c => {
     c.classList.toggle('active', c.dataset.filter === currentFilter);
   });
-
   const exams = allExams
     .filter(e => e.level === level)
     .filter(e => currentFilter === 'all' || e.type === currentFilter)
     .sort((a, b) => b.semesterSort.localeCompare(a.semesterSort));
-
   const container = document.getElementById('exam-list');
-  if (!exams.length) {
-    container.innerHTML = '<div class="empty-state"><b>Inga examinationer hittades.</b></div>';
-    return;
-  }
-  container.innerHTML = exams.map(e => examCardHTML(e)).join('');
+  container.innerHTML = exams.length
+    ? exams.map(examCardHTML).join('')
+    : '<div class="empty-state"><b>Inga examinationer hittades.</b></div>';
 }
 
 function setFilter(filter) {
@@ -668,30 +657,24 @@ function setFilter(filter) {
 
 function examCardHTML(e) {
   const done = isDone(e.id);
-  const fileCount = Object.keys(e.files).length;
-  const tags = e.tags && e.tags.length ? `<div class="tags-list">${e.tags.map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>` : '';
-  return `
-    <div class="exam-card${done ? ' done' : ''}" id="card-${e.id}">
-      <div class="exam-card-info" onclick="navigate('/exam/${e.id}')">
-        <div class="exam-title">${e.semester}</div>
-        <div class="exam-meta">
-          <span class="type-badge ${e.type}">${e.typeLabel}</span>
-          <span class="file-count">${fileCount} ${fileCount === 1 ? 'fil' : 'filer'}</span>
-        </div>
-        ${tags}
-      </div>
-      <div class="done-check">
-        <input
-          type="checkbox"
-          class="check-input"
-          id="chk-${e.id}"
-          ${done ? 'checked' : ''}
-          onchange="toggleCardDone('${e.id}', this.checked)"
-          onclick="event.stopPropagation()"
-        >
-        <label class="check-label" for="chk-${e.id}" onclick="event.stopPropagation()">Klar</label>
-      </div>
-    </div>`;
+  const fc = Object.keys(e.files).length;
+  const tags = e.tags && e.tags.length
+    ? `<div class="tags-row">${e.tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}</div>`
+    : '';
+  return `<div class="exam-card${done ? ' done' : ''}" id="card-${e.id}">
+    <div class="exam-card-body" onclick="navigate('/exam/${e.id}')">
+      <div class="exam-semester">${e.semester}</div>
+      <div class="exam-meta">
+        <span class="type-badge ${e.type}">${e.typeLabel}</span>
+        <span class="file-count">${fc} ${fc === 1 ? 'fil' : 'filer'}</span>
+      </div>${tags}
+    </div>
+    <div class="done-toggle">
+      <input type="checkbox" class="check-input" id="chk-${e.id}" ${done ? 'checked' : ''}
+        onchange="toggleCardDone('${e.id}',this.checked)" onclick="event.stopPropagation()">
+      <label class="check-label" for="chk-${e.id}" onclick="event.stopPropagation()">Klar</label>
+    </div>
+  </div>`;
 }
 
 function toggleCardDone(id, val) {
@@ -703,31 +686,23 @@ function toggleCardDone(id, val) {
 // ── EXAM VIEW ─────────────────────────────────────────────
 function renderExamView(exam) {
   if (!exam) { navigate('/'); return; }
-
   const label = `${exam.levelLabel} — ${exam.semester} ${exam.typeLabel}`;
-  document.getElementById('exam-view-title').textContent = label;
+  document.getElementById('exam-bar-title').textContent = label;
   document.title = label + ' — OSCE Studieportal';
-
-  // Back button target
   document.getElementById('exam-back-btn').setAttribute('onclick', `navigate('/osce/${exam.level}')`);
-
   updateMarkDoneBtn(exam.id);
 
   const files = exam.files;
   const keys = Object.keys(files);
-
-  // Detect circles
   const circles = detectCircles(keys);
-  const hasCircles = circles.length > 0;
-
   const circleBar = document.getElementById('circle-bar');
   const pdfContainer = document.getElementById('pdf-container');
 
-  if (hasCircles) {
+  if (circles.length > 0) {
     circleBar.style.display = 'flex';
     pdfContainer.classList.add('has-circles');
-    const select = document.getElementById('circle-select');
-    select.innerHTML = circles.map(c => `<option value="${c}">${c.toUpperCase()}</option>`).join('');
+    const sel = document.getElementById('circle-select');
+    sel.innerHTML = circles.map(c => `<option value="${c}">${c.toUpperCase()}</option>`).join('');
     renderCircle(circles[0]);
   } else {
     circleBar.style.display = 'none';
@@ -737,86 +712,48 @@ function renderExamView(exam) {
 }
 
 function detectCircles(keys) {
-  const circleSet = new Set();
-  keys.forEach(k => {
-    // e.g. "bed_cirkel-1", "dorr_cirkel-a", "kombi_6min"
-    const m = k.match(/cirkel-([a-z0-9]+)$/i);
-    if (m) circleSet.add(m[1]);
-  });
-  return Array.from(circleSet).sort();
+  const s = new Set();
+  keys.forEach(k => { const m = k.match(/cirkel-([a-z0-9]+)$/i); if (m) s.add(m[1]); });
+  return [...s].sort();
 }
 
 function renderCircle(cirkelId) {
   if (!currentExam) return;
-  const files = currentExam.files;
-  const pdfContainer = document.getElementById('pdf-container');
-
-  // Find files for this circle
-  const cirkelFiles = {};
-  Object.entries(files).forEach(([k, v]) => {
-    if (k === 'dorr' || k === `dorr_cirkel-${cirkelId}`) cirkelFiles.dorr = v;
-    if (k === `bed_cirkel-${cirkelId}`) cirkelFiles.bed = v;
-    if (k === 'kombi') cirkelFiles.kombi = v;
+  const f = currentExam.files;
+  const cf = {};
+  Object.entries(f).forEach(([k, v]) => {
+    if (k === 'dorr' || k === `dorr_cirkel-${cirkelId}`) cf.dorr = v;
+    if (k === `bed_cirkel-${cirkelId}`) cf.bed = v;
+    if (k === 'kombi') cf.kombi = v;
   });
-
-  const keys = Object.keys(cirkelFiles);
-  renderPDFPanes(cirkelFiles, keys, pdfContainer);
+  renderPDFPanes(cf, Object.keys(cf), document.getElementById('pdf-container'));
 }
 
 function renderPDFPanes(files, keys, container) {
-  if (keys.includes('kombi') || (keys.length === 1 && keys[0].startsWith('kombi'))) {
-    // Single file or kombi variants
-    const kombiKey = keys.find(k => k === 'kombi') || keys.find(k => k.startsWith('kombi'));
-    let panes = `<div class="pdf-pane">
-      <div class="pdf-pane-label">Dörrinstruktioner &amp; Bedömningsunderlag</div>
-      <iframe src="${files[kombiKey]}" title="Kombinerat dokument"></iframe>
-    </div>`;
-    // If there's also a 6min variant
-    if (keys.includes('kombi_6min')) {
-      panes = `<div class="pdf-pane">
-        <div class="pdf-pane-label">Alla stationer</div>
-        <iframe src="${files['kombi']}" title="Kombinerat dokument"></iframe>
-      </div>
-      <div class="pdf-pane">
-        <div class="pdf-pane-label">6-minutersstationer</div>
-        <iframe src="${files['kombi_6min']}" title="6-minutersstationer"></iframe>
-      </div>`;
-    }
-    container.innerHTML = panes;
-  } else if (keys.includes('dorr') || keys.some(k => k.startsWith('dorr'))) {
-    const dorrKey = keys.find(k => k === 'dorr' || k.startsWith('dorr'));
-    const bedKey = keys.find(k => k === 'bed' || k.startsWith('bed'));
-    let panes = '';
-    if (dorrKey) {
-      panes += `<div class="pdf-pane">
-        <div class="pdf-pane-label">Dörrinformation</div>
-        <iframe src="${files[dorrKey]}" title="Dörrinformation"></iframe>
-      </div>`;
-    }
-    if (bedKey) {
-      panes += `<div class="pdf-pane">
-        <div class="pdf-pane-label">Bedömningsunderlag</div>
-        <iframe src="${files[bedKey]}" title="Bedömningsunderlag"></iframe>
-      </div>`;
-    }
-    container.innerHTML = panes;
-  } else if (keys.length === 1) {
-    // Only one file (e.g. only bed)
-    const k = keys[0];
+  if (keys.includes('kombi')) {
     container.innerHTML = `<div class="pdf-pane">
-      <div class="pdf-pane-label">Bedömningsunderlag</div>
-      <iframe src="${files[k]}" title="Dokument"></iframe>
+      <div class="pdf-pane-label">Dörrinstruktioner &amp; Bedömningsunderlag</div>
+      <iframe src="${files.kombi}" title="Kombinerat dokument"></iframe>
     </div>`;
+  } else if (keys.includes('dorr') || keys.some(k => k.startsWith('dorr'))) {
+    const dk = keys.find(k => k === 'dorr' || k.startsWith('dorr'));
+    const bk = keys.find(k => k === 'bed' || k.startsWith('bed'));
+    let html = '';
+    if (dk) html += `<div class="pdf-pane"><div class="pdf-pane-label">Dörrinformation</div><iframe src="${files[dk]}" title="Dörrinformation"></iframe></div>`;
+    if (bk) html += `<div class="pdf-pane"><div class="pdf-pane-label">Bedömningsunderlag</div><iframe src="${files[bk]}" title="Bedömningsunderlag"></iframe></div>`;
+    container.innerHTML = html;
+  } else if (keys.length === 1) {
+    container.innerHTML = `<div class="pdf-pane"><div class="pdf-pane-label">Bedömningsunderlag</div><iframe src="${files[keys[0]]}" title="Dokument"></iframe></div>`;
   } else {
-    container.innerHTML = '<div style="padding:40px;color:#6b7280;">Inga filer hittades.</div>';
+    container.innerHTML = '<div style="padding:40px;color:var(--muted)">Inga filer.</div>';
   }
 }
 
 function updateMarkDoneBtn(id) {
   const btn = document.getElementById('mark-done-btn');
   const done = isDone(id);
-  btn.textContent = done ? 'Klar!' : 'Markera som klar';
-  btn.classList.toggle('done-state', done);
+  btn.textContent = done ? '✓ Klar' : 'Markera som klar';
+  btn.className = done ? 'btn btn-lime' : 'btn btn-outline';
 }
 
 function toggleDone() {
@@ -826,21 +763,18 @@ function toggleDone() {
   updateMarkDoneBtn(currentExam.id);
 }
 
-// ── TAGS PAGE ─────────────────────────────────────────────
+// ── TAGS ──────────────────────────────────────────────────
 function renderTagsPage() {
   const allTags = [...new Set(allExams.flatMap(e => e.tags || []))].sort();
   const cloud = document.getElementById('tags-cloud');
-
   if (!allTags.length) {
     cloud.innerHTML = '<p style="color:var(--muted);font-size:14px;">Inga ämnestaggar har lagts till ännu.</p>';
     document.getElementById('tags-exam-list').innerHTML = '';
     return;
   }
-
   cloud.innerHTML = allTags.map(t =>
     `<button class="tag-btn${selectedTag === t ? ' active' : ''}" onclick="selectTag('${t}')">${t}</button>`
   ).join('');
-
   renderTagsExams();
 }
 
@@ -852,17 +786,273 @@ function selectTag(tag) {
 function renderTagsExams() {
   const container = document.getElementById('tags-exam-list');
   if (!selectedTag) { container.innerHTML = ''; return; }
-
-  const exams = allExams
-    .filter(e => e.tags && e.tags.includes(selectedTag))
+  const exams = allExams.filter(e => e.tags && e.tags.includes(selectedTag))
     .sort((a, b) => b.semesterSort.localeCompare(a.semesterSort));
-
   if (!exams.length) {
     container.innerHTML = '<div class="empty-state"><b>Inga examinationer med detta ämne.</b></div>';
     return;
   }
-  container.innerHTML = `<div class="section-label">Examinationer med "${selectedTag}"</div>` +
-    exams.map(e => examCardHTML(e)).join('');
+  container.innerHTML = `<div class="label" style="margin-bottom:10px">Examinationer med "${selectedTag}"</div>` +
+    exams.map(examCardHTML).join('');
+}
+
+// ── RANDOM ────────────────────────────────────────────────
+function randomExam(levelFilter) {
+  let pool = allExams;
+  if (levelFilter) pool = pool.filter(e => e.level === levelFilter);
+  const notDone = pool.filter(e => !isDone(e.id));
+  const src = notDone.length > 0 ? notDone : pool;
+  if (!src.length) return;
+  navigate('/exam/' + src[Math.floor(Math.random() * src.length)].id);
+}
+
+// ── SEARCH ────────────────────────────────────────────────
+let searchData = null;
+let searchStatus = 'idle';
+
+function openSearch() {
+  document.getElementById('search-overlay').classList.add('open');
+  document.getElementById('search-input').focus();
+  if (searchStatus === 'idle') loadSearchIndex();
+}
+
+function closeSearch() {
+  document.getElementById('search-overlay').classList.remove('open');
+}
+
+async function loadSearchIndex() {
+  searchStatus = 'loading';
+  document.getElementById('search-body').innerHTML = '<div class="search-hint">Laddar sökindex…</div>';
+  try {
+    const res = await fetch('search-index.json');
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    searchData = data.stations;
+    searchStatus = 'loaded';
+    const q = document.getElementById('search-input').value;
+    if (q.trim()) doSearch(q);
+    else showSearchIdle();
+  } catch {
+    searchStatus = 'error';
+    document.getElementById('search-body').innerHTML = `<div class="search-hint">
+      <b>Sökindex saknas</b><br>Kör scriptet för att bygga det:
+      <code>python build-search-index.py</code>
+    </div>`;
+  }
+}
+
+function showSearchIdle() {
+  document.getElementById('search-body').innerHTML =
+    '<div class="search-hint">Sök på t.ex. "auskultation", "bukpalpation" eller "fraktur".</div>';
+}
+
+function onSearchInput(val) {
+  if (searchStatus === 'loaded') doSearch(val);
+  else if (searchStatus === 'error') return;
+}
+
+function escapeRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+function doSearch(q) {
+  const body = document.getElementById('search-body');
+  if (!q.trim()) { showSearchIdle(); return; }
+  const terms = q.toLowerCase().trim().split(/\s+/).filter(Boolean);
+  const results = (searchData || [])
+    .filter(s => terms.every(t => (s.searchableText || '').toLowerCase().includes(t)))
+    .slice(0, 30);
+  if (!results.length) {
+    body.innerHTML = '<div class="search-hint">Inga stationer matchar sökningen.</div>';
+    return;
+  }
+  body.innerHTML = results.map(s => {
+    const lvl = ['I','II','III'][s.level - 1];
+    const typeLabel = s.type === 'ord' ? 'Ordinarie' : 'Omexamination';
+    const stLabel = s.stationNumber > 0 ? `Station ${s.stationNumber}` : 'Dokument';
+    const excerpt = highlight(getExcerpt(s.searchableText || '', q), q);
+    const cirkelStr = s.cirkel ? ` · ${s.cirkel}` : '';
+    const dBtn = s.dorrFile
+      ? `<button class="btn btn-outline btn-sm" onclick="openPDFModal('${s.dorrFile}','Dörrinfo — ${stLabel}')">Visa dörrinfo</button>`
+      : '';
+    const bBtn = (!s.isKombi && s.bedFile)
+      ? `<button class="btn btn-outline btn-sm" onclick="openPDFModal('${s.bedFile}','Bedömning — ${stLabel}')">Visa bedömning</button>`
+      : '';
+    return `<div class="result-card">
+      <div class="result-header">
+        <span class="result-station">${stLabel}</span>
+        <span class="type-badge ${s.type}">${typeLabel}</span>
+        <span class="result-exam">OSCE ${lvl} ${s.semester}${cirkelStr}</span>
+      </div>
+      <div class="result-excerpt">${excerpt}</div>
+      <div class="result-actions">${dBtn}${bBtn}
+        <button class="btn btn-outline btn-sm" onclick="closeSearch();navigate('/exam/${s.examId}')">Öppna examination</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function getExcerpt(text, query, len = 180) {
+  const term = query.trim().split(/\s+/)[0].toLowerCase();
+  const idx = text.toLowerCase().indexOf(term);
+  if (idx < 0) return (text.slice(0, len) + (text.length > len ? '…' : '')).replace(/\s+/g, ' ');
+  const start = Math.max(0, idx - 60);
+  const end = Math.min(text.length, start + len + 60);
+  let out = text.slice(start, end).replace(/\s+/g, ' ');
+  if (start > 0) out = '…' + out;
+  if (end < text.length) out += '…';
+  return out;
+}
+
+function highlight(text, query) {
+  query.trim().split(/\s+/).filter(Boolean).forEach(term => {
+    text = text.replace(new RegExp(`(${escapeRe(term)})`, 'gi'), '<mark>$1</mark>');
+  });
+  return text;
+}
+
+function openPDFModal(src, title) {
+  document.getElementById('pdf-modal-title').textContent = title;
+  document.getElementById('pdf-modal-frame').src = src;
+  document.getElementById('pdf-modal').classList.add('open');
+}
+
+function closePDFModal() {
+  document.getElementById('pdf-modal').classList.remove('open');
+  document.getElementById('pdf-modal-frame').src = '';
+}
+
+// ── DARK MODE ─────────────────────────────────────────────
+function initDarkMode() {
+  const stored = localStorage.getItem('osce_darkmode');
+  const theme = stored ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  updateDarkModeBtn(theme);
+}
+
+function toggleDarkMode() {
+  const cur = document.documentElement.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('osce_darkmode', next);
+  updateDarkModeBtn(next);
+}
+
+function updateDarkModeBtn(theme) {
+  const btn = document.getElementById('darkmode-btn');
+  if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+
+// ── TIMER ─────────────────────────────────────────────────
+const CIRC = 276.46;
+const PHASES = {
+  read:    { label: 'Läs dörrinformation', sub: 'Läsfas',  secs: 120, color: '#2454e8' },
+  station: { label: 'Station pågår',       sub: 'Station', secs: 360, color: '#16a34a' },
+};
+
+let timer = { phase: 'read', remaining: 120, total: 120, running: false, interval: null };
+let timerOpen = false;
+let audioCtx = null;
+
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+function playBeeps(notes) {
+  try {
+    const ctx = getAudioCtx();
+    notes.forEach(([freq, delayMs, dur = 0.15, vol = 0.28]) => {
+      setTimeout(() => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.type = 'sine'; osc.frequency.value = freq;
+        gain.gain.setValueAtTime(vol, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+        osc.start(ctx.currentTime); osc.stop(ctx.currentTime + dur + 0.05);
+      }, delayMs);
+    });
+  } catch {}
+}
+
+function timerTick() {
+  timer.remaining--;
+  const r = timer.remaining;
+  if (timer.phase === 'station') {
+    if (r === 60) playBeeps([[660, 0], [660, 250]]);
+    if (r === 30) playBeeps([[880, 0], [880, 200], [880, 400]]);
+  }
+  if (r <= 0) {
+    clearInterval(timer.interval); timer.running = false;
+    if (timer.phase === 'read') {
+      playBeeps([[880, 0, 0.1], [1100, 160, 0.1], [1320, 320, 0.2]]);
+      setTimeout(() => {
+        timer = { phase: 'station', remaining: PHASES.station.secs, total: PHASES.station.secs, running: false, interval: null };
+        updateTimerUI();
+      }, 700);
+    } else {
+      playBeeps([[880, 0, 0.3], [660, 420, 0.3], [440, 840, 0.5]]);
+    }
+  }
+  updateTimerUI();
+}
+
+function timerStart() {
+  if (timer.running || timer.remaining <= 0) return;
+  timer.running = true;
+  timer.interval = setInterval(timerTick, 1000);
+  updateTimerUI();
+}
+function timerPause() {
+  timer.running = false; clearInterval(timer.interval); updateTimerUI();
+}
+function timerReset() {
+  clearInterval(timer.interval);
+  timer = { phase: 'read', remaining: PHASES.read.secs, total: PHASES.read.secs, running: false, interval: null };
+  updateTimerUI();
+}
+function timerJumpStation() {
+  clearInterval(timer.interval);
+  timer = { phase: 'station', remaining: PHASES.station.secs, total: PHASES.station.secs, running: false, interval: null };
+  updateTimerUI();
+}
+
+function updateTimerUI() {
+  const { phase, remaining, total, running } = timer;
+  const cfg = PHASES[phase];
+  let color = cfg.color;
+  if (phase === 'station' && remaining <= 60) color = '#c2410c';
+  if (phase === 'station' && remaining <= 30) color = '#dc2626';
+
+  const mins = Math.floor(remaining / 60);
+  const secs = remaining % 60;
+  const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
+  const offset = CIRC * (1 - remaining / total);
+
+  const ring = document.getElementById('timer-ring');
+  const timeEl = document.getElementById('timer-time');
+  const sub = document.getElementById('timer-phase-sub');
+  const phaseName = document.getElementById('timer-phase-name');
+
+  if (ring) { ring.setAttribute('stroke-dashoffset', offset); ring.setAttribute('stroke', color); }
+  if (timeEl) { timeEl.textContent = timeStr; timeEl.style.color = remaining <= 30 ? color : ''; }
+  if (sub) sub.textContent = cfg.sub;
+  if (phaseName) phaseName.textContent = cfg.label;
+
+  const fab = document.getElementById('timer-fab');
+  if (fab) {
+    fab.classList.toggle('running', running);
+    fab.style.setProperty('--timer-color', running ? color : 'var(--text)');
+  }
+  const sBtn = document.getElementById('tbtn-start');
+  const pBtn = document.getElementById('tbtn-pause');
+  if (sBtn) sBtn.disabled = running || remaining <= 0;
+  if (pBtn) pBtn.disabled = !running;
+}
+
+function toggleTimerPanel() {
+  timerOpen = !timerOpen;
+  document.getElementById('timer-panel').classList.toggle('open', timerOpen);
+  if (timerOpen) updateTimerUI();
 }
 
 // ── START ─────────────────────────────────────────────────

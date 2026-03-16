@@ -463,8 +463,7 @@
       "semester": "VT25",
       "semesterSort": "2025-1",
       "files": {
-        "kombi": "exams/osce3/osce3_ord_vt25_kombi.pdf",
-        "kombi_6min": "exams/osce3/osce3_ord_vt25_kombi_6min.pdf"
+        "kombi": "exams/osce3/osce3_ord_vt25_kombi.pdf"
       },
       "tags": []
     },
@@ -477,8 +476,7 @@
       "semester": "HT24",
       "semesterSort": "2024-2",
       "files": {
-        "kombi": "exams/osce3/osce3_ord_ht24_kombi.pdf",
-        "kombi_6min": "exams/osce3/osce3_ord_ht24_kombi_6min.pdf"
+        "kombi": "exams/osce3/osce3_ord_ht24_kombi.pdf"
       },
       "tags": []
     },
@@ -491,8 +489,7 @@
       "semester": "VT24",
       "semesterSort": "2024-1",
       "files": {
-        "kombi": "exams/osce3/osce3_ord_vt24_kombi.pdf",
-        "kombi_6min": "exams/osce3/osce3_ord_vt24_kombi_6min.pdf"
+        "kombi": "exams/osce3/osce3_ord_vt24_kombi.pdf"
       },
       "tags": []
     },
@@ -611,6 +608,45 @@
       "semesterSort": "2022-1",
       "files": {
         "kombi": "exams/osce3/osce3_om_vt22_kombi.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_om_vt25",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT25",
+      "semesterSort": "2025-1",
+      "files": {
+        "kombi": "exams/osce3/osce3_ord_vt25_kombi_6min.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_om_ht24",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "HT24",
+      "semesterSort": "2024-2",
+      "files": {
+        "kombi": "exams/osce3/osce3_ord_ht24_kombi_6min.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_om_vt24",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT24",
+      "semesterSort": "2024-1",
+      "files": {
+        "kombi": "exams/osce3/osce3_ord_vt24_kombi_6min.pdf"
       },
       "tags": []
     }

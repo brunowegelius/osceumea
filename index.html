@@ -432,6 +432,73 @@
     .tbtn-start { background: var(--text); color: var(--accent-fg); grid-column: 1 / -1; }
     .tbtn-start:hover { opacity: .82; background: var(--text); }
     .tbtn-start:disabled { opacity: .3; }
+
+    /* ── MOBILE ──────────────────────────────────────────────── */
+    @media (max-width: 720px) {
+      .container { padding: 40px 20px; }
+
+      .home-header { flex-direction: column; align-items: flex-start; margin-bottom: 36px; gap: 20px; }
+      .home-actions { width: 100%; }
+
+      .osce-card { min-height: 200px; padding: 22px 20px 18px; }
+      .osce-title { font-size: 38px; margin: 16px 0 4px; }
+      .osce-sub { margin-bottom: 16px; }
+    }
+
+    @media (max-width: 580px) {
+      nav { padding: 0 20px; height: 56px; }
+      #app { min-height: calc(100vh - 56px); }
+      .container { padding: 28px 16px; }
+
+      h2 { font-size: 22px; }
+
+      /* Home — OSCE cards as horizontal scroll strip */
+      .osce-grid {
+        grid-template-columns: repeat(3, 80vw);
+        overflow-x: auto; scroll-snap-type: x mandatory;
+        gap: 12px; padding-bottom: 8px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .osce-grid::-webkit-scrollbar { display: none; }
+      .osce-card {
+        scroll-snap-align: start;
+        min-height: 200px; padding: 20px 18px 16px;
+      }
+      .osce-title { font-size: 36px; margin: 14px 0 4px; }
+
+      /* Filter row — horizontal scroll */
+      .filter-row {
+        flex-wrap: nowrap; overflow-x: auto;
+        scrollbar-width: none; padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .filter-row::-webkit-scrollbar { display: none; }
+      .filter-spacer { display: none; }
+      .filter-row .btn { flex-shrink: 0; margin-left: auto; }
+
+      /* List header */
+      .list-header { margin-bottom: 20px; gap: 8px; }
+
+      /* Exam bar */
+      .exam-bar { padding: 10px 16px; gap: 8px; }
+      .exam-bar-title { font-size: 13px; }
+      .circle-bar { padding: 8px 16px; }
+
+      /* Search */
+      .search-header { padding: 12px 16px; }
+      .search-body { padding: 16px; }
+
+      /* PDF modal */
+      .pdf-modal-header { padding: 12px 16px; }
+
+      /* Timer panel — full width at bottom */
+      .timer-widget { bottom: 16px; right: 16px; }
+      .timer-panel { width: min(280px, calc(100vw - 32px)); }
+
+      /* Tags */
+      .tags-cloud { gap: 6px; }
+    }
   </style>
 </head>
 <body>

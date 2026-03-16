@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSCE Studieportal — Umeå Universitet</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --border: #e8eaed;
+      --text: #111318;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --accent-hover: #1d4ed8;
+      --lime: #e7fe55;
+      --lime-text: #2a3200;
+      --success: #16a34a;
+      --success-light: #f0fdf4;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 8px rgba(0,0,0,.04);
+      --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -.3px;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-logo span {
+      width: 28px; height: 28px;
+      background: var(--accent);
+      border-radius: 7px;
+      display: grid; place-items: center;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .nav-links { display: flex; gap: 4px; }
+    .nav-link {
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      background: none;
+      transition: color .15s, background .15s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── LAYOUT ──────────────────────────────────────────── */
+    #app { min-height: calc(100vh - 56px); }
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* ── TYPOGRAPHY ──────────────────────────────────────── */
+    h1 { font-size: 28px; font-weight: 700; letter-spacing: -.5px; line-height: 1.2; }
+    h2 { font-size: 20px; font-weight: 600; letter-spacing: -.3px; }
+    h3 { font-size: 16px; font-weight: 600; }
+
+    /* ── HOME PAGE ───────────────────────────────────────── */
+    .home-header {
+      margin-bottom: 36px;
+    }
+    .home-header p {
+      color: var(--muted);
+      margin-top: 6px;
+      font-size: 15px;
+    }
+    .osce-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .osce-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .15s, border-color .15s, transform .15s;
+      display: block;
+      box-shadow: var(--shadow);
+    }
+    .osce-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #d0d5dd;
+      transform: translateY(-1px);
+    }
+    .osce-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .osce-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 20px;
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+    .osce-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 2px; }
+    .osce-card .sub { color: var(--muted); font-size: 13px; margin-bottom: 16px; }
+    .progress-bar {
+      height: 6px;
+      background: var(--bg);
+      border-radius: 99px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 99px;
+      transition: width .4s ease;
+    }
+    .progress-label {
+      font-size: 12px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .tags-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--text);
+      transition: background .15s, border-color .15s;
+      box-shadow: var(--shadow);
+    }
+    .tags-btn:hover { background: var(--bg); border-color: #d0d5dd; }
+
+    /* ── LIST PAGE ───────────────────────────────────────── */
+    .list-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--muted);
+      transition: color .15s, border-color .15s;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+    }
+    .back-btn:hover { color: var(--text); border-color: #d0d5dd; }
+
+    .filter-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .filter-chip {
+      padding: 6px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all .15s;
+    }
+    .filter-chip:hover { color: var(--text); border-color: #d0d5dd; }
+    .filter-chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .exam-grid {
+      display: grid;
+      gap: 10px;
+    }
+    .exam-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: box-shadow .15s, border-color .15s;
+      box-shadow: var(--shadow);
+    }
+    .exam-card:hover { box-shadow: var(--shadow-md); border-color: #d0d5dd; }
+    .exam-card.done { border-left: 3px solid var(--success); }
+    .exam-card-info { flex: 1; min-width: 0; }
+    .exam-title { font-weight: 600; font-size: 15px; }
+    .exam-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+    .type-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 20px;
+      letter-spacing: .2px;
+    }
+    .type-badge.ord { background: #eff6ff; color: #2563eb; }
+    .type-badge.om { background: #fef3c7; color: #92400e; }
+    .file-count {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .tags-list {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .tag-chip {
+      font-size: 11px;
+      padding: 2px 7px;
+      background: var(--bg);
+      border-radius: 20px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .done-check {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .check-input {
+      width: 18px; height: 18px;
+      accent-color: var(--success);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .check-label {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* ── EXAM VIEW ───────────────────────────────────────── */
+    .exam-view-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .exam-view-title { font-weight: 700; font-size: 16px; flex: 1; }
+    .exam-view-actions { display: flex; gap: 8px; align-items: center; }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+    .btn-primary.done-state {
+      background: var(--success);
+      border-color: var(--success);
+    }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover { border-color: #d0d5dd; background: var(--bg); }
+
+    .circle-select-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .circle-select-bar label { font-size: 13px; font-weight: 500; color: var(--muted); }
+    .circle-select {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      background: var(--bg);
+      cursor: pointer;
+    }
+
+    .pdf-container {
+      height: calc(100vh - 56px - 55px);
+      display: flex;
+      overflow: hidden;
+    }
+    .pdf-container.has-circles { height: calc(100vh - 56px - 55px - 46px); }
+    .pdf-pane {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      min-width: 0;
+    }
+    .pdf-pane:last-child { border-right: none; }
+    .pdf-pane-label {
+      padding: 8px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: var(--muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .pdf-pane iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+    }
+
+    @media (max-width: 640px) {
+      .pdf-container { flex-direction: column; height: auto; }
+      .pdf-pane { height: 60vh; }
+      .pdf-pane:last-child { border-right: none; border-top: 1px solid var(--border); }
+    }
+
+    /* ── TAGS PAGE ───────────────────────────────────────── */
+    .tags-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 20px 0 32px;
+    }
+    .tag-btn {
+      padding: 8px 16px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--text);
+      transition: all .15s;
+      box-shadow: var(--shadow);
+    }
+    .tag-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .tag-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+    .empty-state p { margin-top: 8px; font-size: 14px; }
+
+    /* ── MISC ────────────────────────────────────────────── */
+    .divider { height: 1px; background: var(--border); margin: 24px 0; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#/" onclick="navigate('/')">
+    <span>O</span>
+    OSCE Studieportal
+  </a>
+  <div class="nav-links">
+    <button class="nav-link" onclick="navigate('/osce/1')">OSCE I</button>
+    <button class="nav-link" onclick="navigate('/osce/2')">OSCE II</button>
+    <button class="nav-link" onclick="navigate('/osce/3')">OSCE III</button>
+    <button class="nav-link" onclick="navigate('/tags')">Ämnen</button>
+  </div>
+</nav>
+
+<div id="app">
+  <!-- HOME -->
+  <div class="page" id="page-home">
+    <div class="container">
+      <div class="home-header">
+        <h1>OSCE Studieportal</h1>
+        <p>Umeå Universitet — Läkarprogrammet</p>
+      </div>
+
+      <div class="section-label">Examinationsnivåer</div>
+      <div class="osce-cards" id="osce-cards"></div>
+
+      <button class="tags-btn" onclick="navigate('/tags')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        Filtrera på ämne
+      </button>
+    </div>
+  </div>
+
+  <!-- LIST -->
+  <div class="page" id="page-list">
+    <div class="container">
+      <div class="list-header">
+        <a class="back-btn" onclick="navigate('/')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          Tillbaka
+        </a>
+        <h2 id="list-title"></h2>
+      </div>
+
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-chip active" data-filter="all" onclick="setFilter('all')">Alla</button>
+        <button class="filter-chip" data-filter="ord" onclick="setFilter('ord')">Ordinarie</button>
+        <button class="filter-chip" data-filter="om" onclick="setFilter('om')">Omexamination</button>
+      </div>
+
+      <div class="exam-grid" id="exam-list"></div>
+    </div>
+  </div>
+
+  <!-- EXAM VIEW -->
+  <div class="page" id="page-exam">
+    <div class="exam-view-header">
+      <a class="back-btn" id="exam-back-btn" onclick="history.back()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        Tillbaka
+      </a>
+      <div class="exam-view-title" id="exam-view-title"></div>
+      <div class="exam-view-actions">
+        <button class="btn btn-primary" id="mark-done-btn" onclick="toggleDone()">Markera som klar</button>
+      </div>
+    </div>
+    <div class="circle-select-bar" id="circle-bar" style="display:none;">
+      <label for="circle-select">Cirkel:</label>
+      <select class="circle-select" id="circle-select" onchange="renderCircle(this.value)"></select>
+    </div>
+    <div class="pdf-container" id="pdf-container"></div>
+  </div>
+
+  <!-- TAGS -->
+  <div class="page" id="page-tags">
+    <div class="container">
+      <div class="list-header">
+        <a class="back-btn" onclick="navigate('/')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          Tillbaka
+        </a>
+        <h2>Filtrera på ämne</h2>
+      </div>
+
+      <div class="tags-cloud" id="tags-cloud"></div>
+      <div class="divider"></div>
+      <div class="exam-grid" id="tags-exam-list"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── STATE ─────────────────────────────────────────────────
+let allExams = [];
+let currentFilter = 'all';
+let currentLevel = 1;
+let currentExam = null;
+let selectedTag = null;
+
+// ── INIT ──────────────────────────────────────────────────
+async function init() {
+  try {
+    const res = await fetch('exams.json');
+    const data = await res.json();
+    allExams = data.exams;
+  } catch (e) {
+    console.error('Failed to load exams.json', e);
+    allExams = [];
+  }
+  renderHome();
+  route();
+  window.addEventListener('hashchange', route);
+}
+
+// ── ROUTING ───────────────────────────────────────────────
+function navigate(path) {
+  window.location.hash = path;
+}
+
+function route() {
+  const hash = window.location.hash.replace('#', '') || '/';
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(p => p.classList.remove('active'));
+
+  // Update nav active state
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+
+  if (hash === '/' || hash === '') {
+    document.getElementById('page-home').classList.add('active');
+    renderHome();
+  } else if (hash.startsWith('/osce/')) {
+    const level = parseInt(hash.split('/')[2]);
+    currentLevel = level;
+    currentFilter = 'all';
+    document.getElementById('page-list').classList.add('active');
+    renderList(level);
+    // highlight nav
+    const navBtns = document.querySelectorAll('.nav-link');
+    navBtns.forEach(b => { if (b.textContent.includes('OSCE ' + ['I','II','III'][level-1])) b.classList.add('active'); });
+  } else if (hash.startsWith('/exam/')) {
+    const id = hash.replace('/exam/', '');
+    currentExam = allExams.find(e => e.id === id);
+    document.getElementById('page-exam').classList.add('active');
+    renderExamView(currentExam);
+  } else if (hash === '/tags') {
+    document.getElementById('page-tags').classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(l => { if (l.textContent === 'Ämnen') l.classList.add('active'); });
+    renderTagsPage();
+  }
+}
+
+// ── LOCALSTORAGE ──────────────────────────────────────────
+function isDone(id) { return localStorage.getItem('osce_done_' + id) === 'true'; }
+function setDone(id, val) { localStorage.setItem('osce_done_' + id, val ? 'true' : 'false'); }
+
+// ── HOME ──────────────────────────────────────────────────
+function renderHome() {
+  const container = document.getElementById('osce-cards');
+  const levels = [
+    { level: 1, title: 'OSCE I', sub: 'Termin 6 — Läkarprogrammet' },
+    { level: 2, title: 'OSCE II', sub: 'Termin 8 — Läkarprogrammet' },
+    { level: 3, title: 'OSCE III', sub: 'Termin 11 — Läkarprogrammet' },
+  ];
+  container.innerHTML = levels.map(l => {
+    const exams = allExams.filter(e => e.level === l.level);
+    const done = exams.filter(e => isDone(e.id)).length;
+    const pct = exams.length ? Math.round((done / exams.length) * 100) : 0;
+    return `
+      <a class="osce-card" onclick="navigate('/osce/${l.level}')">
+        <div class="osce-card-header">
+          <div class="osce-badge">T${[6,8,11][l.level-1]}</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <h3>${l.title}</h3>
+        <div class="sub">${l.sub}</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+        <div class="progress-label">${done} av ${exams.length} klara</div>
+      </a>`;
+  }).join('');
+}
+
+// ── LIST ──────────────────────────────────────────────────
+function renderList(level) {
+  const titles = { 1: 'OSCE I (T6)', 2: 'OSCE II (T8)', 3: 'OSCE III (T11)' };
+  document.getElementById('list-title').textContent = titles[level];
+
+  // reset filter chips
+  document.querySelectorAll('.filter-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.filter === currentFilter);
+  });
+
+  const exams = allExams
+    .filter(e => e.level === level)
+    .filter(e => currentFilter === 'all' || e.type === currentFilter)
+    .sort((a, b) => b.semesterSort.localeCompare(a.semesterSort));
+
+  const container = document.getElementById('exam-list');
+  if (!exams.length) {
+    container.innerHTML = '<div class="empty-state"><b>Inga examinationer hittades.</b></div>';
+    return;
+  }
+  container.innerHTML = exams.map(e => examCardHTML(e)).join('');
+}
+
+function setFilter(filter) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.filter === filter);
+  });
+  renderList(currentLevel);
+}
+
+function examCardHTML(e) {
+  const done = isDone(e.id);
+  const fileCount = Object.keys(e.files).length;
+  const tags = e.tags && e.tags.length ? `<div class="tags-list">${e.tags.map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>` : '';
+  return `
+    <div class="exam-card${done ? ' done' : ''}" id="card-${e.id}">
+      <div class="exam-card-info" onclick="navigate('/exam/${e.id}')">
+        <div class="exam-title">${e.semester}</div>
+        <div class="exam-meta">
+          <span class="type-badge ${e.type}">${e.typeLabel}</span>
+          <span class="file-count">${fileCount} ${fileCount === 1 ? 'fil' : 'filer'}</span>
+        </div>
+        ${tags}
+      </div>
+      <div class="done-check">
+        <input
+          type="checkbox"
+          class="check-input"
+          id="chk-${e.id}"
+          ${done ? 'checked' : ''}
+          onchange="toggleCardDone('${e.id}', this.checked)"
+          onclick="event.stopPropagation()"
+        >
+        <label class="check-label" for="chk-${e.id}" onclick="event.stopPropagation()">Klar</label>
+      </div>
+    </div>`;
+}
+
+function toggleCardDone(id, val) {
+  setDone(id, val);
+  const card = document.getElementById('card-' + id);
+  if (card) card.classList.toggle('done', val);
+}
+
+// ── EXAM VIEW ─────────────────────────────────────────────
+function renderExamView(exam) {
+  if (!exam) { navigate('/'); return; }
+
+  const label = `${exam.levelLabel} — ${exam.semester} ${exam.typeLabel}`;
+  document.getElementById('exam-view-title').textContent = label;
+  document.title = label + ' — OSCE Studieportal';
+
+  // Back button target
+  document.getElementById('exam-back-btn').setAttribute('onclick', `navigate('/osce/${exam.level}')`);
+
+  updateMarkDoneBtn(exam.id);
+
+  const files = exam.files;
+  const keys = Object.keys(files);
+
+  // Detect circles
+  const circles = detectCircles(keys);
+  const hasCircles = circles.length > 0;
+
+  const circleBar = document.getElementById('circle-bar');
+  const pdfContainer = document.getElementById('pdf-container');
+
+  if (hasCircles) {
+    circleBar.style.display = 'flex';
+    pdfContainer.classList.add('has-circles');
+    const select = document.getElementById('circle-select');
+    select.innerHTML = circles.map(c => `<option value="${c}">${c.toUpperCase()}</option>`).join('');
+    renderCircle(circles[0]);
+  } else {
+    circleBar.style.display = 'none';
+    pdfContainer.classList.remove('has-circles');
+    renderPDFPanes(files, keys, pdfContainer);
+  }
+}
+
+function detectCircles(keys) {
+  const circleSet = new Set();
+  keys.forEach(k => {
+    // e.g. "bed_cirkel-1", "dorr_cirkel-a", "kombi_6min"
+    const m = k.match(/cirkel-([a-z0-9]+)$/i);
+    if (m) circleSet.add(m[1]);
+  });
+  return Array.from(circleSet).sort();
+}
+
+function renderCircle(cirkelId) {
+  if (!currentExam) return;
+  const files = currentExam.files;
+  const pdfContainer = document.getElementById('pdf-container');
+
+  // Find files for this circle
+  const cirkelFiles = {};
+  Object.entries(files).forEach(([k, v]) => {
+    if (k === 'dorr' || k === `dorr_cirkel-${cirkelId}`) cirkelFiles.dorr = v;
+    if (k === `bed_cirkel-${cirkelId}`) cirkelFiles.bed = v;
+    if (k === 'kombi') cirkelFiles.kombi = v;
+  });
+
+  const keys = Object.keys(cirkelFiles);
+  renderPDFPanes(cirkelFiles, keys, pdfContainer);
+}
+
+function renderPDFPanes(files, keys, container) {
+  if (keys.includes('kombi') || (keys.length === 1 && keys[0].startsWith('kombi'))) {
+    // Single file or kombi variants
+    const kombiKey = keys.find(k => k === 'kombi') || keys.find(k => k.startsWith('kombi'));
+    let panes = `<div class="pdf-pane">
+      <div class="pdf-pane-label">Dörrinstruktioner &amp; Bedömningsunderlag</div>
+      <iframe src="${files[kombiKey]}" title="Kombinerat dokument"></iframe>
+    </div>`;
+    // If there's also a 6min variant
+    if (keys.includes('kombi_6min')) {
+      panes = `<div class="pdf-pane">
+        <div class="pdf-pane-label">Alla stationer</div>
+        <iframe src="${files['kombi']}" title="Kombinerat dokument"></iframe>
+      </div>
+      <div class="pdf-pane">
+        <div class="pdf-pane-label">6-minutersstationer</div>
+        <iframe src="${files['kombi_6min']}" title="6-minutersstationer"></iframe>
+      </div>`;
+    }
+    container.innerHTML = panes;
+  } else if (keys.includes('dorr') || keys.some(k => k.startsWith('dorr'))) {
+    const dorrKey = keys.find(k => k === 'dorr' || k.startsWith('dorr'));
+    const bedKey = keys.find(k => k === 'bed' || k.startsWith('bed'));
+    let panes = '';
+    if (dorrKey) {
+      panes += `<div class="pdf-pane">
+        <div class="pdf-pane-label">Dörrinformation</div>
+        <iframe src="${files[dorrKey]}" title="Dörrinformation"></iframe>
+      </div>`;
+    }
+    if (bedKey) {
+      panes += `<div class="pdf-pane">
+        <div class="pdf-pane-label">Bedömningsunderlag</div>
+        <iframe src="${files[bedKey]}" title="Bedömningsunderlag"></iframe>
+      </div>`;
+    }
+    container.innerHTML = panes;
+  } else if (keys.length === 1) {
+    // Only one file (e.g. only bed)
+    const k = keys[0];
+    container.innerHTML = `<div class="pdf-pane">
+      <div class="pdf-pane-label">Bedömningsunderlag</div>
+      <iframe src="${files[k]}" title="Dokument"></iframe>
+    </div>`;
+  } else {
+    container.innerHTML = '<div style="padding:40px;color:#6b7280;">Inga filer hittades.</div>';
+  }
+}
+
+function updateMarkDoneBtn(id) {
+  const btn = document.getElementById('mark-done-btn');
+  const done = isDone(id);
+  btn.textContent = done ? 'Klar!' : 'Markera som klar';
+  btn.classList.toggle('done-state', done);
+}
+
+function toggleDone() {
+  if (!currentExam) return;
+  const newVal = !isDone(currentExam.id);
+  setDone(currentExam.id, newVal);
+  updateMarkDoneBtn(currentExam.id);
+}
+
+// ── TAGS PAGE ─────────────────────────────────────────────
+function renderTagsPage() {
+  const allTags = [...new Set(allExams.flatMap(e => e.tags || []))].sort();
+  const cloud = document.getElementById('tags-cloud');
+
+  if (!allTags.length) {
+    cloud.innerHTML = '<p style="color:var(--muted);font-size:14px;">Inga ämnestaggar har lagts till ännu.</p>';
+    document.getElementById('tags-exam-list').innerHTML = '';
+    return;
+  }
+
+  cloud.innerHTML = allTags.map(t =>
+    `<button class="tag-btn${selectedTag === t ? ' active' : ''}" onclick="selectTag('${t}')">${t}</button>`
+  ).join('');
+
+  renderTagsExams();
+}
+
+function selectTag(tag) {
+  selectedTag = selectedTag === tag ? null : tag;
+  renderTagsPage();
+}
+
+function renderTagsExams() {
+  const container = document.getElementById('tags-exam-list');
+  if (!selectedTag) { container.innerHTML = ''; return; }
+
+  const exams = allExams
+    .filter(e => e.tags && e.tags.includes(selectedTag))
+    .sort((a, b) => b.semesterSort.localeCompare(a.semesterSort));
+
+  if (!exams.length) {
+    container.innerHTML = '<div class="empty-state"><b>Inga examinationer med detta ämne.</b></div>';
+    return;
+  }
+  container.innerHTML = `<div class="section-label">Examinationer med "${selectedTag}"</div>` +
+    exams.map(e => examCardHTML(e)).join('');
+}
+
+// ── START ─────────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>

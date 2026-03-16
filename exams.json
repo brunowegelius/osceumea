@@ -1,0 +1,618 @@
+{
+  "exams": [
+    {
+      "id": "osce1_ord_ht25",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT25",
+      "semesterSort": "2025-2",
+      "files": {
+        "dorr": "exams/osce1/osce1_ord_ht25_dorr.pdf",
+        "bed": "exams/osce1/osce1_ord_ht25_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_ord_vt25",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT25",
+      "semesterSort": "2025-1",
+      "files": {
+        "dorr": "exams/osce1/osce1_ord_vt25_dorr.pdf",
+        "bed": "exams/osce1/osce1_ord_vt25_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_ord_ht24",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT24",
+      "semesterSort": "2024-2",
+      "files": {
+        "dorr": "exams/osce1/osce1_ord_ht24_dorr.pdf",
+        "bed": "exams/osce1/osce1_ord_ht24_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_ord_vt24",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT24",
+      "semesterSort": "2024-1",
+      "files": {
+        "dorr": "exams/osce1/osce1_ord_vt24_dorr.pdf",
+        "bed": "exams/osce1/osce1_ord_vt24_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_ord_ht23",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT23",
+      "semesterSort": "2023-2",
+      "files": {
+        "dorr": "exams/osce1/osce1_ord_ht23_dorr.pdf",
+        "bed": "exams/osce1/osce1_ord_ht23_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_ord_vt23",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT23",
+      "semesterSort": "2023-1",
+      "files": {
+        "dorr": "exams/osce1/osce1_ord_vt23_dorr.pdf",
+        "bed": "exams/osce1/osce1_ord_vt23_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_ord_ht22",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT22",
+      "semesterSort": "2022-2",
+      "files": {
+        "dorr": "exams/osce1/osce1_ord_ht22_dorr.pdf",
+        "bed": "exams/osce1/osce1_ord_ht22_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_ord_vt22",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT22",
+      "semesterSort": "2022-1",
+      "files": {
+        "dorr": "exams/osce1/osce1_ord_vt22_dorr.pdf",
+        "bed": "exams/osce1/osce1_ord_vt22_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_om_vt25",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT25",
+      "semesterSort": "2025-1",
+      "files": {
+        "dorr": "exams/osce1/osce1_om_vt25_dorr.pdf",
+        "bed": "exams/osce1/osce1_om_vt25_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_om_ht24",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "HT24",
+      "semesterSort": "2024-2",
+      "files": {
+        "dorr": "exams/osce1/osce1_om_ht24_dorr.pdf",
+        "bed": "exams/osce1/osce1_om_ht24_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_om_vt24",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT24",
+      "semesterSort": "2024-1",
+      "files": {
+        "dorr": "exams/osce1/osce1_om_vt24_dorr.pdf",
+        "bed_cirkel-1": "exams/osce1/osce1_om_vt24_bed_cirkel-1.pdf",
+        "bed_cirkel-2": "exams/osce1/osce1_om_vt24_bed_cirkel-2.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_om_ht23",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "HT23",
+      "semesterSort": "2023-2",
+      "files": {
+        "dorr": "exams/osce1/osce1_om_ht23_dorr.pdf",
+        "bed": "exams/osce1/osce1_om_ht23_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_om_vt23",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT23",
+      "semesterSort": "2023-1",
+      "files": {
+        "dorr": "exams/osce1/osce1_om_vt23_dorr.pdf",
+        "bed_cirkel-1": "exams/osce1/osce1_om_vt23_bed_cirkel-1.pdf",
+        "bed_cirkel-2": "exams/osce1/osce1_om_vt23_bed_cirkel-2.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_om_ht22",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "HT22",
+      "semesterSort": "2022-2",
+      "files": {
+        "dorr": "exams/osce1/osce1_om_ht22_dorr.pdf",
+        "bed": "exams/osce1/osce1_om_ht22_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce1_om_vt22",
+      "level": 1,
+      "levelLabel": "OSCE I (T6)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT22",
+      "semesterSort": "2022-1",
+      "files": {
+        "dorr": "exams/osce1/osce1_om_vt22_dorr.pdf",
+        "bed": "exams/osce1/osce1_om_vt22_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_ord_ht25",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT25",
+      "semesterSort": "2025-2",
+      "files": {
+        "dorr": "exams/osce2/osce2_ord_ht25_dorr.pdf",
+        "bed": "exams/osce2/osce2_ord_ht25_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_ord_vt25",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT25",
+      "semesterSort": "2025-1",
+      "files": {
+        "dorr": "exams/osce2/osce2_ord_vt25_dorr.pdf",
+        "bed": "exams/osce2/osce2_ord_vt25_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_ord_ht24",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT24",
+      "semesterSort": "2024-2",
+      "files": {
+        "dorr": "exams/osce2/osce2_ord_ht24_dorr.pdf",
+        "bed": "exams/osce2/osce2_ord_ht24_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_ord_vt24",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT24",
+      "semesterSort": "2024-1",
+      "files": {
+        "dorr": "exams/osce2/osce2_ord_vt24_dorr.pdf",
+        "bed": "exams/osce2/osce2_ord_vt24_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_ord_ht23",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT23",
+      "semesterSort": "2023-2",
+      "files": {
+        "dorr": "exams/osce2/osce2_ord_ht23_dorr.pdf",
+        "bed": "exams/osce2/osce2_ord_ht23_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_ord_vt23",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT23",
+      "semesterSort": "2023-1",
+      "files": {
+        "dorr": "exams/osce2/osce2_ord_vt23_dorr.pdf",
+        "bed": "exams/osce2/osce2_ord_vt23_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_ord_ht22",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT22",
+      "semesterSort": "2022-2",
+      "files": {
+        "dorr": "exams/osce2/osce2_ord_ht22_dorr.pdf",
+        "bed": "exams/osce2/osce2_ord_ht22_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_ord_vt22",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT22",
+      "semesterSort": "2022-1",
+      "files": {
+        "dorr": "exams/osce2/osce2_ord_vt22_dorr.pdf",
+        "bed": "exams/osce2/osce2_ord_vt22_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_om_ht25",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "HT25",
+      "semesterSort": "2025-2",
+      "files": {
+        "dorr": "exams/osce2/osce2_om_ht25_dorr.pdf",
+        "bed": "exams/osce2/osce2_om_ht25_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_om_vt25",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT25",
+      "semesterSort": "2025-1",
+      "files": {
+        "bed": "exams/osce2/osce2_om_vt25_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_om_ht24",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "HT24",
+      "semesterSort": "2024-2",
+      "files": {
+        "dorr_cirkel-a": "exams/osce2/osce2_om_ht24_dorr_cirkel-a.pdf",
+        "dorr_cirkel-b": "exams/osce2/osce2_om_ht24_dorr_cirkel-b.pdf",
+        "bed_cirkel-a": "exams/osce2/osce2_om_ht24_bed_cirkel-a.pdf",
+        "bed_cirkel-b": "exams/osce2/osce2_om_ht24_bed_cirkel-b.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_om_vt24",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT24",
+      "semesterSort": "2024-1",
+      "files": {
+        "dorr": "exams/osce2/osce2_om_vt24_dorr.pdf",
+        "bed_cirkel-a": "exams/osce2/osce2_om_vt24_bed_cirkel-a.pdf",
+        "bed_cirkel-b": "exams/osce2/osce2_om_vt24_bed_cirkel-b.pdf",
+        "bed_cirkel-c": "exams/osce2/osce2_om_vt24_bed_cirkel-c.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_om_ht23",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "HT23",
+      "semesterSort": "2023-2",
+      "files": {
+        "dorr": "exams/osce2/osce2_om_ht23_dorr.pdf",
+        "bed": "exams/osce2/osce2_om_ht23_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_om_vt23",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT23",
+      "semesterSort": "2023-1",
+      "files": {
+        "dorr": "exams/osce2/osce2_om_vt23_dorr.pdf",
+        "bed": "exams/osce2/osce2_om_vt23_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_om_ht22",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "HT22",
+      "semesterSort": "2022-2",
+      "files": {
+        "dorr": "exams/osce2/osce2_om_ht22_dorr.pdf",
+        "bed_cirkel-a": "exams/osce2/osce2_om_ht22_bed_cirkel-a.pdf",
+        "bed_cirkel-b": "exams/osce2/osce2_om_ht22_bed_cirkel-b.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce2_om_vt22",
+      "level": 2,
+      "levelLabel": "OSCE II (T8)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT22",
+      "semesterSort": "2022-1",
+      "files": {
+        "dorr": "exams/osce2/osce2_om_vt22_dorr.pdf",
+        "bed_cirkel-a": "exams/osce2/osce2_om_vt22_bed_cirkel-a.pdf",
+        "bed_cirkel-b": "exams/osce2/osce2_om_vt22_bed_cirkel-b.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_ord_ht25",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT25",
+      "semesterSort": "2025-2",
+      "files": {
+        "kombi": "exams/osce3/osce3_ord_ht25_kombi.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_ord_vt25",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT25",
+      "semesterSort": "2025-1",
+      "files": {
+        "kombi": "exams/osce3/osce3_ord_vt25_kombi.pdf",
+        "kombi_6min": "exams/osce3/osce3_ord_vt25_kombi_6min.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_ord_ht24",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT24",
+      "semesterSort": "2024-2",
+      "files": {
+        "kombi": "exams/osce3/osce3_ord_ht24_kombi.pdf",
+        "kombi_6min": "exams/osce3/osce3_ord_ht24_kombi_6min.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_ord_vt24",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT24",
+      "semesterSort": "2024-1",
+      "files": {
+        "kombi": "exams/osce3/osce3_ord_vt24_kombi.pdf",
+        "kombi_6min": "exams/osce3/osce3_ord_vt24_kombi_6min.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_ord_ht23",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT23",
+      "semesterSort": "2023-2",
+      "files": {
+        "kombi": "exams/osce3/osce3_ord_ht23_kombi.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_ord_vt23",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT23",
+      "semesterSort": "2023-1",
+      "files": {
+        "kombi": "exams/osce3/osce3_ord_vt23_kombi.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_ord_ht22",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "HT22",
+      "semesterSort": "2022-2",
+      "files": {
+        "kombi": "exams/osce3/osce3_ord_ht22_kombi.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_ord_vt22",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT22",
+      "semesterSort": "2022-1",
+      "files": {
+        "dorr": "exams/osce3/osce3_ord_vt22_dorr.pdf",
+        "bed": "exams/osce3/osce3_ord_vt22_bed.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_om_ht25",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "HT25",
+      "semesterSort": "2025-2",
+      "files": {
+        "kombi": "exams/osce3/osce3_om_ht25_kombi.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_om_ht23",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "HT23",
+      "semesterSort": "2023-2",
+      "files": {
+        "kombi": "exams/osce3/osce3_om_ht23_kombi.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_om_vt23",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT23",
+      "semesterSort": "2023-1",
+      "files": {
+        "kombi": "exams/osce3/osce3_om_vt23_kombi.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_om_ht22",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "HT22",
+      "semesterSort": "2022-2",
+      "files": {
+        "kombi": "exams/osce3/osce3_om_ht22_kombi.pdf"
+      },
+      "tags": []
+    },
+    {
+      "id": "osce3_om_vt22",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "om",
+      "typeLabel": "Omexamination",
+      "semester": "VT22",
+      "semesterSort": "2022-1",
+      "files": {
+        "kombi": "exams/osce3/osce3_om_vt22_kombi.pdf"
+      },
+      "tags": []
+    }
+  ]
+}

@@ -924,9 +924,13 @@ function mobilePDFBtn(label, src) {
   return `<a class="mobile-pdf-btn" href="${src}" target="_blank" rel="noopener">${EXTERNAL_ICON} ${label}</a>`;
 }
 
+// iPadOS 13+ reports as MacIntel but has maxTouchPoints > 1
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
 function renderPDFPanes(files, keys, container) {
   bedBlurred = false;
-  const mobile = window.innerWidth <= 640;
+  const mobile = isIOS || window.innerWidth <= 640;
 
   const dk = keys.find(k => k === 'dorr' || k.startsWith('dorr'));
   const bk = keys.find(k => k === 'bed'  || k.startsWith('bed'));

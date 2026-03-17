@@ -313,29 +313,6 @@
     .pane-blur-btn:hover { color: var(--text); }
     .pdf-scroll-wrap.blurred { filter: blur(14px) brightness(.7); pointer-events: none; user-select: none; }
 
-    /* ── PDF SEARCH BAR ──────────────────────────────────────── */
-    .pdf-search-bar {
-      display: none; align-items: center; gap: 10px;
-      padding: 8px 24px; background: var(--surface-2); flex-shrink: 0;
-    }
-    .pdf-search-bar.open { display: flex; }
-    .pdf-search-bar svg { flex-shrink: 0; color: var(--muted); }
-    #pdf-search-input {
-      flex: 1; border: none; background: var(--surface);
-      border-radius: var(--r-full); padding: 7px 14px;
-      font-size: 14px; color: var(--text); outline: none; min-width: 0;
-    }
-    #pdf-search-input::placeholder { color: var(--muted); }
-    .pdf-search-hint { font-size: 11px; color: var(--muted); white-space: nowrap; }
-    .pdf-search-clear {
-      background: none; border: none; color: var(--muted); font-size: 20px;
-      cursor: pointer; line-height: 1; padding: 0; flex-shrink: 0;
-    }
-    .pdf-search-clear:hover { color: var(--text); }
-    @media (max-width: 580px) {
-      .pdf-search-bar { padding: 8px 16px; }
-      .pdf-search-hint { display: none; }
-    }
     /* Scrollable PDF wrapper — enables touch-scroll on iOS */
     .pdf-scroll-wrap { flex: 1; min-height: 0; overflow: auto; -webkit-overflow-scrolling: touch; }
     .pdf-scroll-wrap iframe { width: 100%; height: 100%; border: none; display: block; background: var(--surface-2); }
@@ -682,20 +659,10 @@
       </button>
       <div class="exam-bar-title" id="exam-bar-title"></div>
       <div class="exam-bar-actions">
-        <button class="nav-icon-btn" id="pdf-search-btn" onclick="togglePDFSearch()" title="Sök i PDF">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        </button>
         <button class="btn" id="mark-done-btn" onclick="toggleDone()">Markera som klar</button>
       </div>
     </div>
-    <div class="pdf-search-bar" id="pdf-search-bar">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input id="pdf-search-input" type="text" placeholder="Sök i PDF…"
-        onkeydown="if(event.key==='Enter')searchInPDF(this.value);if(event.key==='Escape')closePDFSearch()">
-      <button class="btn btn-dark btn-sm" onclick="searchInPDF(document.getElementById('pdf-search-input').value)">Öppna med sökning</button>
-      <span class="pdf-search-hint">Öppnar i nytt fönster — tryck ⌘F / Ctrl+F om sökning inte aktiveras</span>
-      <button class="pdf-search-clear" onclick="closePDFSearch()" title="Stäng">×</button>
-    </div>
+
     <div class="circle-bar" id="circle-bar" style="display:none">
       <span class="circle-bar-label">Cirkel</span>
       <select class="circle-select" id="circle-select" onchange="renderCircle(this.value)"></select>
@@ -898,10 +865,6 @@ function toggleCardDone(id, val) {
 // ── EXAM VIEW ─────────────────────────────────────────────
 function renderExamView(exam) {
   if (!exam) { navigate('/'); return; }
-  // Reset PDF search bar state on each exam load
-  pdfSearchOpen = false;
-  document.getElementById('pdf-search-bar').classList.remove('open');
-  document.getElementById('pdf-search-input').value = '';
   const label = `${exam.levelLabel} — ${exam.semester} ${exam.typeLabel}`;
   document.getElementById('exam-bar-title').textContent = label;
   document.title = label + ' — OSCE Studieportal';
@@ -1012,46 +975,6 @@ function toggleBedBlur(id) {
   if (btn) btn.innerHTML = bedBlurred ? EYE_ON : EYE_OFF;
 }
 
-// ── PDF SEARCH ─────────────────────────────────────────────
-let pdfSearchOpen = false;
-
-function togglePDFSearch() {
-  pdfSearchOpen = !pdfSearchOpen;
-  document.getElementById('pdf-search-bar').classList.toggle('open', pdfSearchOpen);
-  if (pdfSearchOpen) {
-    document.getElementById('pdf-search-input').focus();
-  } else {
-    closePDFSearch();
-  }
-}
-
-function closePDFSearch() {
-  pdfSearchOpen = false;
-  document.getElementById('pdf-search-bar').classList.remove('open');
-  document.getElementById('pdf-search-input').value = '';
-}
-
-function searchInPDF(q) {
-  q = (q || '').trim();
-  if (!q) return;
-  // Open each PDF in a new tab with #search= fragment.
-  // Chrome/Firefox: activates find bar with term pre-filled.
-  // Safari: opens the PDF in a native tab — user can then press ⌘F.
-  const seen = new Set();
-  document.querySelectorAll('#pdf-container iframe[data-src]').forEach(iframe => {
-    const base = iframe.getAttribute('data-src');
-    if (base && !seen.has(base)) {
-      seen.add(base);
-      window.open(base + '#search=' + encodeURIComponent(q), '_blank');
-    }
-  });
-  // Mobile tab view stores src directly on the iframe element
-  const tabFrame = document.getElementById('pdf-tab-frame');
-  if (tabFrame) {
-    const base = tabFrame.getAttribute('data-src') || tabFrame.src.split('#')[0];
-    if (base && !seen.has(base)) window.open(base + '#search=' + encodeURIComponent(q), '_blank');
-  }
-}
 
 function updateMarkDoneBtn(id) {
   const btn  = document.getElementById('mark-done-btn');

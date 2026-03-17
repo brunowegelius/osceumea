@@ -321,6 +321,16 @@
     }
     .pdf-tab-open:hover { color: var(--text); background: var(--surface-2); }
 
+    /* ── DISCLAIMER ─────────────────────────────────────────── */
+    .disclaimer-card {
+      margin-top: 16px;
+      background: var(--surface); border-radius: var(--r);
+      padding: 18px 24px;
+    }
+    .disclaimer-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .disclaimer-card a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+    .disclaimer-card a:hover { color: var(--text); }
+
     /* ── TAGS PAGE ───────────────────────────────────────────── */
     .tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 32px; }
     .tag-btn {
@@ -595,6 +605,9 @@
       </div>
       <div class="pill-label">Examinationsnivåer</div>
       <div class="osce-grid" id="osce-cards"></div>
+      <div class="disclaimer-card">
+        <p>Hittar du fel eller utdaterat material? Rapportera till <a href="mailto:wegeliusbruno@gmail.com">wegeliusbruno@gmail.com</a>. Administratören ansvarar inte för eventuellt inaktuella rekommendationer i OSCE-materialet.</p>
+      </div>
     </div>
   </div>
 

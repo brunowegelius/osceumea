@@ -317,25 +317,21 @@
     .pdf-scroll-wrap { flex: 1; min-height: 0; overflow: auto; -webkit-overflow-scrolling: touch; }
     .pdf-scroll-wrap iframe { width: 100%; height: 100%; border: none; display: block; background: var(--surface-2); }
 
-    /* PDF tab bar — used on mobile when both dorr + bed exist */
-    .pdf-tabs-bar {
-      display: flex; align-items: center; gap: 8px;
-      padding: 10px 16px; background: var(--surface-2); flex-shrink: 0;
+    /* Mobile PDF open buttons — replaces iframes on small screens */
+    .mobile-pdf-open {
+      display: flex; flex-direction: column; gap: 14px;
+      padding: 32px 24px; align-items: stretch;
     }
-    .pdf-tab-btn {
-      padding: 7px 16px; border-radius: var(--r-full);
-      font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
-      cursor: pointer; border: none; background: var(--surface); color: var(--muted);
-      transition: all .12s; flex-shrink: 0;
+    .mobile-pdf-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 18px 24px; border-radius: var(--r-full);
+      background: var(--text); color: var(--accent-fg);
+      font-family: 'Monigue', system-ui, sans-serif;
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      transition: opacity .15s; -webkit-tap-highlight-color: transparent;
     }
-    .pdf-tab-btn.active { background: var(--text); color: var(--accent-fg); }
-    .pdf-tab-open {
-      margin-left: auto; width: 34px; height: 34px; border-radius: var(--r-full);
-      display: grid; place-items: center; font-size: 15px; text-decoration: none;
-      background: var(--surface); color: var(--muted); flex-shrink: 0;
-      transition: color .12s, background .12s;
-    }
-    .pdf-tab-open:hover { color: var(--text); background: var(--surface-2); }
+    .mobile-pdf-btn:active { opacity: .75; }
+    .mobile-pdf-btn svg { flex-shrink: 0; }
 
     /* ── DISCLAIMER ─────────────────────────────────────────── */
     .disclaimer-card {
@@ -922,49 +918,45 @@ function pdfPane(label, src, title, blurId) {
   </div>`;
 }
 
+const EXTERNAL_ICON = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+
+function mobilePDFBtn(label, src) {
+  return `<a class="mobile-pdf-btn" href="${src}" target="_blank" rel="noopener">${EXTERNAL_ICON} ${label}</a>`;
+}
+
 function renderPDFPanes(files, keys, container) {
   bedBlurred = false;
   const mobile = window.innerWidth <= 640;
 
+  const dk = keys.find(k => k === 'dorr' || k.startsWith('dorr'));
+  const bk = keys.find(k => k === 'bed'  || k.startsWith('bed'));
+
+  if (mobile) {
+    let btns = '';
+    if (keys.includes('kombi')) {
+      btns = mobilePDFBtn('Öppna PDF', files.kombi);
+    } else {
+      if (dk) btns += mobilePDFBtn('Dörrinformation', files[dk]);
+      if (bk) btns += mobilePDFBtn('Bedömningsunderlag', files[bk]);
+      if (!dk && !bk && keys.length === 1) btns = mobilePDFBtn('Öppna PDF', files[keys[0]]);
+    }
+    container.innerHTML = `<div class="mobile-pdf-open">${btns}</div>`;
+    return;
+  }
+
+  // Desktop
   if (keys.includes('kombi')) {
     container.innerHTML = pdfPane('Dörrinstruktioner &amp; Bedömningsunderlag', files.kombi, 'Kombinerat dokument');
-
-  } else if (keys.includes('dorr') || keys.some(k => k.startsWith('dorr'))) {
-    const dk = keys.find(k => k === 'dorr' || k.startsWith('dorr'));
-    const bk = keys.find(k => k === 'bed'  || k.startsWith('bed'));
-
-    if (mobile && dk && bk) {
-      container.innerHTML = `
-        <div class="pdf-tabs-bar">
-          <button class="pdf-tab-btn active" onclick="switchPDFTab(this,'${files[dk]}')">Dörrinfo</button>
-          <button class="pdf-tab-btn"        onclick="switchPDFTab(this,'${files[bk]}')">Bedömning</button>
-          <a class="pdf-tab-open" id="pdf-tab-open-link" href="${files[dk]}" target="_blank" title="Öppna i nytt fönster">↗</a>
-        </div>
-        <div class="pdf-scroll-wrap" id="wrap-single">
-          <iframe id="pdf-tab-frame" src="${files[dk]}" data-src="${files[dk]}" title="PDF"></iframe>
-        </div>`;
-    } else {
-      let html = '';
-      if (dk) html += pdfPane('Dörrinformation', files[dk], 'Dörrinformation');
-      if (bk) html += pdfPane('Bedömningsunderlag', files[bk], 'Bedömningsunderlag', 'bed');
-      container.innerHTML = html;
-    }
-
+  } else if (dk || bk) {
+    let html = '';
+    if (dk) html += pdfPane('Dörrinformation', files[dk], 'Dörrinformation');
+    if (bk) html += pdfPane('Bedömningsunderlag', files[bk], 'Bedömningsunderlag', 'bed');
+    container.innerHTML = html;
   } else if (keys.length === 1) {
     container.innerHTML = pdfPane('Bedömningsunderlag', files[keys[0]], 'Dokument');
   } else {
     container.innerHTML = '<div style="padding:40px;color:var(--muted)">Inga filer.</div>';
   }
-}
-
-function switchPDFTab(btn, src) {
-  btn.closest('.pdf-tabs-bar').querySelectorAll('.pdf-tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const frame = document.getElementById('pdf-tab-frame');
-  frame.src = src;
-  frame.setAttribute('data-src', src);
-  const link = document.getElementById('pdf-tab-open-link');
-  if (link) link.href = src;
 }
 
 function toggleBedBlur(id) {

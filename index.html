@@ -299,11 +299,16 @@
       display: flex; align-items: center; gap: 8px; min-height: 32px;
     }
     .pane-label-text { flex: 1; }
-    .pane-blur-btn {
+    .pane-icon-btn {
       background: none; border: none; cursor: pointer;
       color: var(--muted); padding: 3px; border-radius: 4px;
       display: grid; place-items: center; transition: color .12s;
-      flex-shrink: 0;
+      flex-shrink: 0; text-decoration: none; font-size: 13px; line-height: 1;
+    }
+    .pane-icon-btn:hover { color: var(--text); }
+    .pane-blur-btn { /* alias */ background: none; border: none; cursor: pointer;
+      color: var(--muted); padding: 3px; border-radius: 4px;
+      display: grid; place-items: center; transition: color .12s; flex-shrink: 0;
     }
     .pane-blur-btn:hover { color: var(--text); }
     .pdf-scroll-wrap.blurred { filter: blur(14px) brightness(.7); pointer-events: none; user-select: none; }
@@ -686,9 +691,9 @@
     <div class="pdf-search-bar" id="pdf-search-bar">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input id="pdf-search-input" type="text" placeholder="Sök i PDF…"
-        oninput="searchInPDF(this.value)"
-        onkeydown="if(event.key==='Escape')closePDFSearch()">
-      <span class="pdf-search-hint">Fungerar i Chrome &amp; Firefox</span>
+        onkeydown="if(event.key==='Enter')searchInPDF(this.value);if(event.key==='Escape')closePDFSearch()">
+      <button class="btn btn-dark btn-sm" onclick="searchInPDF(document.getElementById('pdf-search-input').value)">Öppna med sökning</button>
+      <span class="pdf-search-hint">Öppnar i nytt fönster — tryck ⌘F / Ctrl+F om sökning inte aktiveras</span>
       <button class="pdf-search-clear" onclick="closePDFSearch()" title="Stäng">×</button>
     </div>
     <div class="circle-bar" id="circle-bar" style="display:none">
@@ -944,12 +949,13 @@ const EYE_ON  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" str
 let bedBlurred = false;
 
 function pdfPane(label, src, title, blurId) {
+  const openBtn = `<a class="pane-icon-btn" href="${src}" target="_blank" title="Öppna i nytt fönster">↗</a>`;
   const blurBtn = blurId
     ? `<button class="pane-blur-btn" id="blur-btn-${blurId}" onclick="toggleBedBlur('${blurId}')" title="Dölj/visa">${EYE_OFF}</button>`
     : '';
   return `<div class="pdf-pane">
-    <div class="pdf-pane-label"><span class="pane-label-text">${label}</span>${blurBtn}</div>
-    <div class="pdf-scroll-wrap" id="wrap-${blurId || 'single'}"><iframe src="${src}" title="${title}"></iframe></div>
+    <div class="pdf-pane-label"><span class="pane-label-text">${label}</span>${openBtn}${blurBtn}</div>
+    <div class="pdf-scroll-wrap" id="wrap-${blurId || 'single'}"><iframe src="${src}" data-src="${src}" title="${title}"></iframe></div>
   </div>`;
 }
 
@@ -972,7 +978,7 @@ function renderPDFPanes(files, keys, container) {
           <a class="pdf-tab-open" id="pdf-tab-open-link" href="${files[dk]}" target="_blank" title="Öppna i nytt fönster">↗</a>
         </div>
         <div class="pdf-scroll-wrap" id="wrap-single">
-          <iframe id="pdf-tab-frame" src="${files[dk]}" title="PDF"></iframe>
+          <iframe id="pdf-tab-frame" src="${files[dk]}" data-src="${files[dk]}" title="PDF"></iframe>
         </div>`;
     } else {
       let html = '';
@@ -992,8 +998,8 @@ function switchPDFTab(btn, src) {
   btn.closest('.pdf-tabs-bar').querySelectorAll('.pdf-tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   const frame = document.getElementById('pdf-tab-frame');
-  const q = document.getElementById('pdf-search-input')?.value.trim();
-  frame.src = src + (q ? '#search=' + encodeURIComponent(q) : '');
+  frame.src = src;
+  frame.setAttribute('data-src', src);
   const link = document.getElementById('pdf-tab-open-link');
   if (link) link.href = src;
 }
@@ -1023,18 +1029,28 @@ function closePDFSearch() {
   pdfSearchOpen = false;
   document.getElementById('pdf-search-bar').classList.remove('open');
   document.getElementById('pdf-search-input').value = '';
-  // Reset iframes to srcless hash
-  document.querySelectorAll('#pdf-container iframe').forEach(iframe => {
-    iframe.src = iframe.src.split('#')[0];
-  });
 }
 
 function searchInPDF(q) {
   q = (q || '').trim();
-  document.querySelectorAll('#pdf-container iframe').forEach(iframe => {
-    const base = iframe.src.split('#')[0];
-    if (base) iframe.src = q ? base + '#search=' + encodeURIComponent(q) : base;
+  if (!q) return;
+  // Open each PDF in a new tab with #search= fragment.
+  // Chrome/Firefox: activates find bar with term pre-filled.
+  // Safari: opens the PDF in a native tab — user can then press ⌘F.
+  const seen = new Set();
+  document.querySelectorAll('#pdf-container iframe[data-src]').forEach(iframe => {
+    const base = iframe.getAttribute('data-src');
+    if (base && !seen.has(base)) {
+      seen.add(base);
+      window.open(base + '#search=' + encodeURIComponent(q), '_blank');
+    }
   });
+  // Mobile tab view stores src directly on the iframe element
+  const tabFrame = document.getElementById('pdf-tab-frame');
+  if (tabFrame) {
+    const base = tabFrame.getAttribute('data-src') || tabFrame.src.split('#')[0];
+    if (base && !seen.has(base)) window.open(base + '#search=' + encodeURIComponent(q), '_blank');
+  }
 }
 
 function updateMarkDoneBtn(id) {

@@ -293,9 +293,43 @@
     .pdf-pane { flex: 1; display: flex; flex-direction: column; min-width: 0; }
     .pdf-pane + .pdf-pane { border-left: 1px solid var(--surface-2); }
     .pdf-pane-label {
-      padding: 8px 16px; font-size: 9px; font-weight: 800;
+      padding: 6px 16px; font-size: 9px; font-weight: 800;
       text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
       background: var(--surface-2); flex-shrink: 0;
+      display: flex; align-items: center; gap: 8px; min-height: 32px;
+    }
+    .pane-label-text { flex: 1; }
+    .pane-blur-btn {
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); padding: 3px; border-radius: 4px;
+      display: grid; place-items: center; transition: color .12s;
+      flex-shrink: 0;
+    }
+    .pane-blur-btn:hover { color: var(--text); }
+    .pdf-scroll-wrap.blurred { filter: blur(14px) brightness(.7); pointer-events: none; user-select: none; }
+
+    /* ── PDF SEARCH BAR ──────────────────────────────────────── */
+    .pdf-search-bar {
+      display: none; align-items: center; gap: 10px;
+      padding: 8px 24px; background: var(--surface-2); flex-shrink: 0;
+    }
+    .pdf-search-bar.open { display: flex; }
+    .pdf-search-bar svg { flex-shrink: 0; color: var(--muted); }
+    #pdf-search-input {
+      flex: 1; border: none; background: var(--surface);
+      border-radius: var(--r-full); padding: 7px 14px;
+      font-size: 14px; color: var(--text); outline: none; min-width: 0;
+    }
+    #pdf-search-input::placeholder { color: var(--muted); }
+    .pdf-search-hint { font-size: 11px; color: var(--muted); white-space: nowrap; }
+    .pdf-search-clear {
+      background: none; border: none; color: var(--muted); font-size: 20px;
+      cursor: pointer; line-height: 1; padding: 0; flex-shrink: 0;
+    }
+    .pdf-search-clear:hover { color: var(--text); }
+    @media (max-width: 580px) {
+      .pdf-search-bar { padding: 8px 16px; }
+      .pdf-search-hint { display: none; }
     }
     /* Scrollable PDF wrapper — enables touch-scroll on iOS */
     .pdf-scroll-wrap { flex: 1; min-height: 0; overflow: auto; -webkit-overflow-scrolling: touch; }
@@ -643,8 +677,19 @@
       </button>
       <div class="exam-bar-title" id="exam-bar-title"></div>
       <div class="exam-bar-actions">
+        <button class="nav-icon-btn" id="pdf-search-btn" onclick="togglePDFSearch()" title="Sök i PDF">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
         <button class="btn" id="mark-done-btn" onclick="toggleDone()">Markera som klar</button>
       </div>
+    </div>
+    <div class="pdf-search-bar" id="pdf-search-bar">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="pdf-search-input" type="text" placeholder="Sök i PDF…"
+        oninput="searchInPDF(this.value)"
+        onkeydown="if(event.key==='Escape')closePDFSearch()">
+      <span class="pdf-search-hint">Fungerar i Chrome &amp; Firefox</span>
+      <button class="pdf-search-clear" onclick="closePDFSearch()" title="Stäng">×</button>
     </div>
     <div class="circle-bar" id="circle-bar" style="display:none">
       <span class="circle-bar-label">Cirkel</span>
@@ -848,6 +893,10 @@ function toggleCardDone(id, val) {
 // ── EXAM VIEW ─────────────────────────────────────────────
 function renderExamView(exam) {
   if (!exam) { navigate('/'); return; }
+  // Reset PDF search bar state on each exam load
+  pdfSearchOpen = false;
+  document.getElementById('pdf-search-bar').classList.remove('open');
+  document.getElementById('pdf-search-input').value = '';
   const label = `${exam.levelLabel} — ${exam.semester} ${exam.typeLabel}`;
   document.getElementById('exam-bar-title').textContent = label;
   document.title = label + ' — OSCE Studieportal';
@@ -890,14 +939,22 @@ function renderCircle(cirkelId) {
   renderPDFPanes(cf, Object.keys(cf), document.getElementById('pdf-container'));
 }
 
-function pdfPane(label, src, title) {
+const EYE_OFF = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+const EYE_ON  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+let bedBlurred = false;
+
+function pdfPane(label, src, title, blurId) {
+  const blurBtn = blurId
+    ? `<button class="pane-blur-btn" id="blur-btn-${blurId}" onclick="toggleBedBlur('${blurId}')" title="Dölj/visa">${EYE_OFF}</button>`
+    : '';
   return `<div class="pdf-pane">
-    <div class="pdf-pane-label">${label}</div>
-    <div class="pdf-scroll-wrap"><iframe src="${src}" title="${title}"></iframe></div>
+    <div class="pdf-pane-label"><span class="pane-label-text">${label}</span>${blurBtn}</div>
+    <div class="pdf-scroll-wrap" id="wrap-${blurId || 'single'}"><iframe src="${src}" title="${title}"></iframe></div>
   </div>`;
 }
 
 function renderPDFPanes(files, keys, container) {
+  bedBlurred = false;
   const mobile = window.innerWidth <= 640;
 
   if (keys.includes('kombi')) {
@@ -908,20 +965,19 @@ function renderPDFPanes(files, keys, container) {
     const bk = keys.find(k => k === 'bed'  || k.startsWith('bed'));
 
     if (mobile && dk && bk) {
-      // Tab switcher: one PDF at a time, with open-in-new-tab link
       container.innerHTML = `
         <div class="pdf-tabs-bar">
           <button class="pdf-tab-btn active" onclick="switchPDFTab(this,'${files[dk]}')">Dörrinfo</button>
           <button class="pdf-tab-btn"        onclick="switchPDFTab(this,'${files[bk]}')">Bedömning</button>
           <a class="pdf-tab-open" id="pdf-tab-open-link" href="${files[dk]}" target="_blank" title="Öppna i nytt fönster">↗</a>
         </div>
-        <div class="pdf-scroll-wrap">
+        <div class="pdf-scroll-wrap" id="wrap-single">
           <iframe id="pdf-tab-frame" src="${files[dk]}" title="PDF"></iframe>
         </div>`;
     } else {
       let html = '';
       if (dk) html += pdfPane('Dörrinformation', files[dk], 'Dörrinformation');
-      if (bk) html += pdfPane('Bedömningsunderlag', files[bk], 'Bedömningsunderlag');
+      if (bk) html += pdfPane('Bedömningsunderlag', files[bk], 'Bedömningsunderlag', 'bed');
       container.innerHTML = html;
     }
 
@@ -935,9 +991,50 @@ function renderPDFPanes(files, keys, container) {
 function switchPDFTab(btn, src) {
   btn.closest('.pdf-tabs-bar').querySelectorAll('.pdf-tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('pdf-tab-frame').src = src;
+  const frame = document.getElementById('pdf-tab-frame');
+  const q = document.getElementById('pdf-search-input')?.value.trim();
+  frame.src = src + (q ? '#search=' + encodeURIComponent(q) : '');
   const link = document.getElementById('pdf-tab-open-link');
   if (link) link.href = src;
+}
+
+function toggleBedBlur(id) {
+  bedBlurred = !bedBlurred;
+  const wrap = document.getElementById('wrap-' + id);
+  if (wrap) wrap.classList.toggle('blurred', bedBlurred);
+  const btn = document.getElementById('blur-btn-' + id);
+  if (btn) btn.innerHTML = bedBlurred ? EYE_ON : EYE_OFF;
+}
+
+// ── PDF SEARCH ─────────────────────────────────────────────
+let pdfSearchOpen = false;
+
+function togglePDFSearch() {
+  pdfSearchOpen = !pdfSearchOpen;
+  document.getElementById('pdf-search-bar').classList.toggle('open', pdfSearchOpen);
+  if (pdfSearchOpen) {
+    document.getElementById('pdf-search-input').focus();
+  } else {
+    closePDFSearch();
+  }
+}
+
+function closePDFSearch() {
+  pdfSearchOpen = false;
+  document.getElementById('pdf-search-bar').classList.remove('open');
+  document.getElementById('pdf-search-input').value = '';
+  // Reset iframes to srcless hash
+  document.querySelectorAll('#pdf-container iframe').forEach(iframe => {
+    iframe.src = iframe.src.split('#')[0];
+  });
+}
+
+function searchInPDF(q) {
+  q = (q || '').trim();
+  document.querySelectorAll('#pdf-container iframe').forEach(iframe => {
+    const base = iframe.src.split('#')[0];
+    if (base) iframe.src = q ? base + '#search=' + encodeURIComponent(q) : base;
+  });
 }
 
 function updateMarkDoneBtn(id) {

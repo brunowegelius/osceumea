@@ -393,30 +393,17 @@
     .result-card {
       border-radius: var(--r-sm); padding: 18px 20px;
       margin-bottom: 8px; background: var(--surface); transition: background .12s;
+      cursor: pointer;
     }
     .result-card:hover { background: var(--surface-2); }
-    .result-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
-    .result-station { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; }
-    .result-exam { font-size: 12px; color: var(--muted); }
+    .result-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+    .result-exam-title { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; }
+    .result-page { font-size: 12px; color: var(--muted); }
     .result-excerpt {
-      font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 10px;
+      font-size: 13px; color: var(--muted); line-height: 1.6;
       display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
     }
     .result-excerpt mark { background: var(--yellow); color: var(--yellow-t); border-radius: 3px; padding: 0 2px; }
-    .result-actions { display: flex; gap: 6px; flex-wrap: wrap; }
-
-    /* ── PDF MODAL ───────────────────────────────────────────── */
-    .pdf-modal {
-      position: fixed; inset: 0; z-index: 300;
-      display: none; flex-direction: column; background: var(--surface);
-    }
-    .pdf-modal.open { display: flex; }
-    .pdf-modal-header {
-      display: flex; align-items: center; gap: 12px;
-      padding: 14px 32px; background: var(--surface-2); flex-shrink: 0;
-    }
-    .pdf-modal-title { flex: 1; font-weight: 700; font-size: 14px; letter-spacing: -0.01em; }
-    #pdf-modal-frame { flex: 1; border: none; background: var(--surface-2); }
 
     /* ── TIMER ───────────────────────────────────────────────── */
     .timer-widget { position: fixed; bottom: 28px; right: 28px; z-index: 150; }
@@ -532,9 +519,6 @@
       .search-header { padding: 12px 16px; }
       .search-body { padding: 16px; }
 
-      /* PDF modal */
-      .pdf-modal-header { padding: 12px 16px; }
-
       /* Timer panel — full width at bottom */
       .timer-widget { bottom: 16px; right: 16px; }
       .timer-panel { width: min(280px, calc(100vw - 32px)); }
@@ -583,17 +567,6 @@
   </div>
 </div>
 
-<!-- ── PDF MODAL ─────────────────────────────────────────── -->
-<div class="pdf-modal" id="pdf-modal">
-  <div class="pdf-modal-header">
-    <button class="back-btn" onclick="closePDFModal()">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-      Stäng
-    </button>
-    <div class="pdf-modal-title" id="pdf-modal-title"></div>
-  </div>
-  <iframe id="pdf-modal-frame" src="" title="PDF"></iframe>
-</div>
 
 <!-- ── APP ───────────────────────────────────────────────── -->
 <div id="app">
@@ -738,7 +711,7 @@ async function init() {
   route();
   window.addEventListener('hashchange', route);
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeSearch(); closePDFModal(); }
+    if (e.key === 'Escape') { closeSearch(); }
   });
 }
 
@@ -944,6 +917,12 @@ function renderPDFPanes(files, keys, container) {
       if (bk) btns += mobilePDFBtn('Bedömningsunderlag', files[bk]);
       if (!dk && !bk && keys.length === 1) btns = mobilePDFBtn('Öppna PDF', files[keys[0]]);
     }
+    // If search jump pending on mobile, open the target PDF directly in new tab at the right page
+    if (pendingPDFJump) {
+      const j = pendingPDFJump;
+      pendingPDFJump = null;
+      window.open(j.file + '#page=' + j.page, '_blank');
+    }
     container.innerHTML = `<div class="mobile-pdf-open">${btns}</div>`;
     return;
   }
@@ -960,6 +939,18 @@ function renderPDFPanes(files, keys, container) {
     container.innerHTML = pdfPane('Bedömningsunderlag', files[keys[0]], 'Dokument');
   } else {
     container.innerHTML = '<div style="padding:40px;color:var(--muted)">Inga filer.</div>';
+  }
+
+  // Apply pending search page jump to matching iframe
+  if (pendingPDFJump) {
+    const j = pendingPDFJump;
+    pendingPDFJump = null;
+    container.querySelectorAll('iframe').forEach(iframe => {
+      const src = iframe.getAttribute('data-src') || iframe.src;
+      if (src && j.file.endsWith(src.split('/').pop())) {
+        iframe.src = src + '#page=' + j.page;
+      }
+    });
   }
 }
 
@@ -1032,6 +1023,7 @@ function randomExam(levelFilter) {
 // ── SEARCH ────────────────────────────────────────────────
 let searchData   = null;
 let searchStatus = 'idle';
+let pendingPDFJump = null; // {file, page} — set by search, consumed by renderPDFPanes
 
 function openSearch() {
   document.getElementById('search-overlay').classList.add('open');
@@ -1050,7 +1042,7 @@ async function loadSearchIndex() {
     const res = await fetch('search-index.json');
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
-    searchData   = data.stations;
+    searchData   = data.pages;
     searchStatus = 'loaded';
     const q = document.getElementById('search-input').value;
     if (q.trim()) doSearch(q); else showSearchIdle();
@@ -1077,38 +1069,45 @@ function escapeRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 function doSearch(q) {
   const body = document.getElementById('search-body');
   if (!q.trim()) { showSearchIdle(); return; }
-  const terms   = q.toLowerCase().trim().split(/\s+/).filter(Boolean);
-  const results = (searchData || [])
-    .filter(s => terms.every(t => (s.searchableText || '').toLowerCase().includes(t)))
-    .slice(0, 30);
+  const terms = q.toLowerCase().trim().split(/\s+/).filter(Boolean);
+
+  // Find matching pages
+  const matches = (searchData || []).filter(p =>
+    terms.every(t => p.text.toLowerCase().includes(t))
+  );
+
+  // Group by examId — keep first (best) match per exam
+  const grouped = new Map();
+  for (const m of matches) {
+    if (!grouped.has(m.examId)) grouped.set(m.examId, m);
+  }
+
+  const results = [...grouped.values()].slice(0, 30);
   if (!results.length) {
-    body.innerHTML = '<div class="search-hint">Inga stationer matchar sökningen.</div>';
+    body.innerHTML = '<div class="search-hint">Inga examinationer matchar sökningen.</div>';
     return;
   }
-  body.innerHTML = results.map(s => {
-    const lvl       = ['I','II','III'][s.level - 1];
-    const typeLabel = s.type === 'ord' ? 'Ordinarie' : 'Omexamination';
-    const stLabel   = s.stationNumber > 0 ? `Station ${s.stationNumber}` : 'Dokument';
-    const excerpt   = highlight(getExcerpt(s.searchableText || '', q), q);
-    const cirkelStr = s.cirkel ? ` · ${s.cirkel}` : '';
-    const dBtn = s.dorrFile
-      ? `<button class="btn btn-ghost btn-sm" onclick="openPDFModal('${s.dorrFile}','Dörrinfo — ${stLabel}')">Visa dörrinfo</button>`
-      : '';
-    const bBtn = (!s.isKombi && s.bedFile)
-      ? `<button class="btn btn-ghost btn-sm" onclick="openPDFModal('${s.bedFile}','Bedömning — ${stLabel}')">Visa bedömning</button>`
-      : '';
-    return `<div class="result-card">
+
+  body.innerHTML = results.map(m => {
+    const lvl       = ['I','II','III'][m.level - 1];
+    const typeLabel = m.type === 'ord' ? 'Ordinarie' : 'Omexamination';
+    const fileLabel = m.fileType === 'dorr' ? 'dörrinfo' : m.fileType === 'bed' ? 'bedömning' : 'PDF';
+    const excerpt   = highlight(getExcerpt(m.text, q), q);
+    return `<div class="result-card" onclick="jumpToExam('${m.examId}','${m.file}',${m.page})">
       <div class="result-header">
-        <span class="result-station">${stLabel}</span>
-        <span class="type-badge ${s.type}">${typeLabel}</span>
-        <span class="result-exam">OSCE ${lvl} ${s.semester}${cirkelStr}</span>
+        <span class="result-exam-title">OSCE ${lvl} — ${m.semester}</span>
+        <span class="type-badge ${m.type}">${typeLabel}</span>
+        <span class="result-page">Sida ${m.page} i ${fileLabel}</span>
       </div>
       <div class="result-excerpt">${excerpt}</div>
-      <div class="result-actions">${dBtn}${bBtn}
-        <button class="btn btn-ghost btn-sm" onclick="closeSearch();navigate('/exam/${s.examId}')">Öppna examination</button>
-      </div>
     </div>`;
   }).join('');
+}
+
+function jumpToExam(examId, file, page) {
+  pendingPDFJump = { file, page };
+  closeSearch();
+  navigate('/exam/' + examId);
 }
 
 function getExcerpt(text, query, len = 180) {
@@ -1128,17 +1127,6 @@ function highlight(text, query) {
     text = text.replace(new RegExp(`(${escapeRe(term)})`, 'gi'), '<mark>$1</mark>');
   });
   return text;
-}
-
-function openPDFModal(src, title) {
-  document.getElementById('pdf-modal-title').textContent = title;
-  document.getElementById('pdf-modal-frame').src = src;
-  document.getElementById('pdf-modal').classList.add('open');
-}
-
-function closePDFModal() {
-  document.getElementById('pdf-modal').classList.remove('open');
-  document.getElementById('pdf-modal-frame').src = '';
 }
 
 // ── DARK MODE ─────────────────────────────────────────────

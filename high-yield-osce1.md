@@ -1,6 +1,8 @@
 # High-Yield Guide: OSCE I (T6)
 
-> **Dataunderlag:** 8 ordinarie + 7 omexaminationer (VT22–HT25). Frekvensdata baserad på nyckelordsklassificering av stationernas dörr-instruktioner. Varje station kan matcha flera nyckelord, vilket innebär att totalsummorna är något uppblåsta — kolumnen "Andel tentor" (unika tentaförekomster) är det mest tillförlitliga måttet.
+> Denna sammanfattning är framtagen med hjälp av AI (Anthropics Claude, modell Opus 4.6, mars 2026) baserat på automatisk textextraktion från examinationernas PDF-filer. Fel kan förekomma. Vid hittade fel, meddela wegeliusbruno@gmail.com.
+>
+> **Dataunderlag:** 8 ordinarie + 7 omexaminationer (VT22–HT25).
 
 ---
 

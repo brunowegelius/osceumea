@@ -1,8 +1,8 @@
 # High-Yield Guide: OSCE II (T8)
 
-> **Dataunderlag:** 8 ordinarie + 8 omexaminationer (VT22–HT25).
+> Denna sammanfattning är framtagen med hjälp av AI (Anthropics Claude, modell Opus 4.6, mars 2026) baserat på automatisk textextraktion från examinationernas PDF-filer. Fel kan förekomma. Vid hittade fel, meddela wegeliusbruno@gmail.com.
 >
-> *Denna sammanfattning är AI-genererad baserat på automatisk textextraktion från examinationernas dörr-instruktioner. Nyckelords-klassificeraren kan tilldela flera taggar per station, så "Totalt"-siffran kan vara högre än antal stationer. Använd "Andel tentor" (unika tentaförekomster) som primärt rankningsvärde.*
+> **Dataunderlag:** 8 ordinarie + 8 omexaminationer (VT22–HT25).
 
 ---
 

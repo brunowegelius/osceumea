@@ -1,8 +1,8 @@
 # High-Yield Guide: OSCE III (T11)
 
-> **Dataunderlag:** 8 ordinarie + 5 omexaminationer (VT22–HT25), totalt 13 tentor. Nyckelordsklassificeraren tilldelar flera taggar per station, varför summan av alla ämnen överstiger antalet stationer.
+> Denna sammanfattning är framtagen med hjälp av AI (Anthropics Claude, modell Opus 4.6, mars 2026) baserat på automatisk textextraktion från examinationernas PDF-filer. Fel kan förekomma. Vid hittade fel, meddela wegeliusbruno@gmail.com.
 >
-> *Denna sammanfattning är baserad på systematisk PDF-analys av examinationernas kombi-/dörr-instruktioner.*
+> **Dataunderlag:** 8 ordinarie + 5 omexaminationer (VT22–HT25), totalt 13 tentor.
 
 ---
 

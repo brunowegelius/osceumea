@@ -343,6 +343,45 @@
     .disclaimer-card a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
     .disclaimer-card a:hover { color: var(--text); }
 
+    /* ── HIGH YIELD ─────────────────────────────────────────── */
+    .hy-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .hy-card {
+      border-radius: var(--r); padding: 28px 24px; cursor: pointer;
+      transition: opacity .12s; text-decoration: none; display: block;
+    }
+    .hy-card:active { opacity: .8; }
+    .hy-card[data-level="1"] { background: var(--yellow); color: var(--yellow-text); }
+    .hy-card[data-level="2"] { background: var(--pink); color: var(--pink-text); }
+    .hy-card[data-level="3"] { background: var(--blue); color: var(--blue-text); }
+    .hy-card-title { font-family: 'Monigue', system-ui, sans-serif; font-size: 26px; font-weight: 800; margin-bottom: 4px; }
+    .hy-card-sub { font-size: 13px; opacity: .7; }
+
+    .hy-content { max-width: 800px; }
+    .hy-content h1 { font-family: 'Monigue', system-ui, sans-serif; font-size: 28px; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.02em; }
+    .hy-content h2 { font-size: 20px; font-weight: 800; margin: 36px 0 12px; letter-spacing: -0.01em; }
+    .hy-content h3 { font-size: 16px; font-weight: 700; margin: 24px 0 8px; }
+    .hy-content p { font-size: 14px; line-height: 1.7; color: var(--text); margin: 8px 0; }
+    .hy-content ul, .hy-content ol { font-size: 14px; line-height: 1.7; padding-left: 20px; margin: 8px 0; }
+    .hy-content li { margin: 4px 0; }
+    .hy-content strong { font-weight: 700; }
+    .hy-content blockquote {
+      border-left: 3px solid var(--muted); padding: 8px 16px; margin: 16px 0;
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+    }
+    .hy-content blockquote em { font-style: italic; }
+    .hy-content hr { border: none; border-top: 1px solid var(--surface-2); margin: 28px 0; }
+    .hy-content table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+    .hy-content th { text-align: left; font-weight: 700; padding: 8px 10px; background: var(--surface-2); }
+    .hy-content td { padding: 7px 10px; border-bottom: 1px solid var(--surface-2); }
+    .hy-content th:first-child, .hy-content td:first-child { border-radius: var(--r-sm) 0 0 var(--r-sm); }
+    .hy-content th:last-child, .hy-content td:last-child { border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+    .hy-content code { font-size: 12px; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; }
+    @media (max-width: 580px) {
+      .hy-content table { font-size: 11px; }
+      .hy-content th, .hy-content td { padding: 5px 6px; }
+      .hy-content h1 { font-size: 22px; }
+    }
+
     /* ── TAGS PAGE ───────────────────────────────────────────── */
     .tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 32px; }
     .tag-btn {
@@ -541,6 +580,7 @@
     <button class="nav-tab" onclick="navigate('/osce/2')">OSCE II</button>
     <button class="nav-tab" onclick="navigate('/osce/3')">OSCE III</button>
     <button class="nav-tab" onclick="navigate('/tags')">Ämnen</button>
+    <button class="nav-tab" onclick="navigate('/high-yield')">High Yield</button>
   </div>
   <div class="nav-spacer"></div>
   <div class="nav-actions">
@@ -655,6 +695,20 @@
     </div>
   </div>
 
+  <!-- HIGH YIELD -->
+  <div class="page" id="page-highyield">
+    <div class="container">
+      <div class="list-header">
+        <button class="back-btn hy-back-btn" id="hy-back-btn" onclick="navigate('/')" style="display:none">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          Tillbaka
+        </button>
+        <h2 id="hy-title">High Yield</h2>
+      </div>
+      <div id="hy-body"></div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ── TIMER ──────────────────────────────────────────────── -->
@@ -747,6 +801,13 @@ function route() {
       if (t.textContent === 'Ämnen') t.classList.add('active');
     });
     renderTagsPage();
+  } else if (hash === '/high-yield' || hash.startsWith('/high-yield/')) {
+    document.getElementById('page-highyield').classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(t => {
+      if (t.textContent === 'High Yield') t.classList.add('active');
+    });
+    const lvl = hash.startsWith('/high-yield/') ? parseInt(hash.split('/')[2]) : null;
+    renderHighYield(lvl);
   }
 }
 
@@ -1008,6 +1069,162 @@ function renderTagsExams() {
   }
   container.innerHTML = `<div class="pill-label">Examinationer — ${selectedTag}</div>` +
     exams.map(examCardHTML).join('');
+}
+
+// ── HIGH YIELD ────────────────────────────────────────────
+const hyCache = {};
+const HY_FILES = { 1: 'high-yield-osce1.md', 2: 'high-yield-osce2.md', 3: 'high-yield-osce3.md' };
+const HY_TITLES = { 1: 'OSCE I (T6)', 2: 'OSCE II (T8)', 3: 'OSCE III (T11)' };
+const HY_SUBS = { 1: 'Termin 6 — Internmedicin', 2: 'Termin 8 — Multispecialitet', 3: 'Termin 11 — Samtliga specialiteter' };
+
+const HY_DISCLAIMER = `<div class="disclaimer-card" style="margin-top:32px">
+  <p>Dessa high-yield-sammanfattningar är framtagna med hjälp av AI (Anthropics Claude, modell Opus 4.6, mars 2026) baserat på automatisk textextraktion från examinationernas PDF-filer. Fel kan förekomma. Vid hittade fel, meddela <a href="mailto:wegeliusbruno@gmail.com">wegeliusbruno@gmail.com</a>.</p>
+</div>`;
+
+function renderHighYield(level) {
+  const body = document.getElementById('hy-body');
+  const title = document.getElementById('hy-title');
+  const backBtn = document.getElementById('hy-back-btn');
+
+  if (!level) {
+    title.textContent = 'High Yield';
+    backBtn.style.display = 'none';
+    body.innerHTML = `
+      <p style="font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6">Frekvensanalyser och tier-listor baserade på alla tillgängliga OSCE-tentor.</p>
+      <div class="hy-cards">
+        ${[1,2,3].map(l => `<a class="hy-card" data-level="${l}" onclick="navigate('/high-yield/${l}')">
+          <div class="hy-card-title">${HY_TITLES[l]}</div>
+          <div class="hy-card-sub">${HY_SUBS[l]}</div>
+        </a>`).join('')}
+      </div>`;
+    return;
+  }
+
+  title.textContent = 'High Yield — ' + HY_TITLES[level];
+  backBtn.style.display = '';
+  backBtn.setAttribute('onclick', "navigate('/high-yield')");
+
+  if (hyCache[level]) {
+    body.innerHTML = '<div class="hy-content">' + renderMarkdown(hyCache[level]) + '</div>' + HY_DISCLAIMER;
+    return;
+  }
+
+  body.innerHTML = '<div class="search-hint">Laddar…</div>';
+  fetch(HY_FILES[level])
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(md => {
+      hyCache[level] = md;
+      body.innerHTML = '<div class="hy-content">' + renderMarkdown(md) + '</div>' + HY_DISCLAIMER;
+    })
+    .catch(() => {
+      body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';
+    });
+}
+
+function renderMarkdown(md) {
+  let html = '';
+  const lines = md.split('\n');
+  let inTable = false, inBlockquote = false, inList = false, listType = '';
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+
+    // Close blockquote if line doesn't start with >
+    if (inBlockquote && !line.startsWith('>')) {
+      html += '</blockquote>';
+      inBlockquote = false;
+    }
+
+    // Close list if line doesn't start with list marker
+    if (inList && !/^(\s*[-*]|\s*\d+\.) /.test(line) && line.trim() !== '') {
+      html += listType === 'ul' ? '</ul>' : '</ol>';
+      inList = false;
+    }
+
+    // Close table if line doesn't start with |
+    if (inTable && !line.startsWith('|')) {
+      html += '</tbody></table>';
+      inTable = false;
+    }
+
+    // Horizontal rule
+    if (/^---+$/.test(line.trim())) {
+      html += '<hr>';
+      continue;
+    }
+
+    // Headings
+    const hMatch = line.match(/^(#{1,6})\s+(.*)/);
+    if (hMatch) {
+      const level = hMatch[1].length;
+      html += `<h${level}>${inlineFormat(hMatch[2])}</h${level}>`;
+      continue;
+    }
+
+    // Blockquote
+    if (line.startsWith('>')) {
+      if (!inBlockquote) { html += '<blockquote>'; inBlockquote = true; }
+      const content = line.replace(/^>\s?/, '');
+      if (content.trim()) html += '<p>' + inlineFormat(content) + '</p>';
+      continue;
+    }
+
+    // Table
+    if (line.startsWith('|')) {
+      // Skip separator rows
+      if (/^\|[\s-:|]+\|$/.test(line.trim())) continue;
+      const cells = line.split('|').slice(1, -1).map(c => c.trim());
+      if (!inTable) {
+        html += '<table><thead><tr>' + cells.map(c => '<th>' + inlineFormat(c) + '</th>').join('') + '</tr></thead><tbody>';
+        inTable = true;
+      } else {
+        html += '<tr>' + cells.map(c => '<td>' + inlineFormat(c) + '</td>').join('') + '</tr>';
+      }
+      continue;
+    }
+
+    // Unordered list
+    if (/^\s*[-*]\s+/.test(line)) {
+      if (!inList || listType !== 'ul') {
+        if (inList) html += listType === 'ul' ? '</ul>' : '</ol>';
+        html += '<ul>';
+        inList = true; listType = 'ul';
+      }
+      html += '<li>' + inlineFormat(line.replace(/^\s*[-*]\s+/, '')) + '</li>';
+      continue;
+    }
+
+    // Ordered list
+    if (/^\s*\d+\.\s+/.test(line)) {
+      if (!inList || listType !== 'ol') {
+        if (inList) html += listType === 'ul' ? '</ul>' : '</ol>';
+        html += '<ol>';
+        inList = true; listType = 'ol';
+      }
+      html += '<li>' + inlineFormat(line.replace(/^\s*\d+\.\s+/, '')) + '</li>';
+      continue;
+    }
+
+    // Empty line
+    if (line.trim() === '') continue;
+
+    // Paragraph
+    html += '<p>' + inlineFormat(line) + '</p>';
+  }
+
+  if (inBlockquote) html += '</blockquote>';
+  if (inList) html += listType === 'ul' ? '</ul>' : '</ol>';
+  if (inTable) html += '</tbody></table>';
+
+  return html;
+}
+
+function inlineFormat(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`(.+?)`/g, '<code>$1</code>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
 }
 
 // ── RANDOM ────────────────────────────────────────────────

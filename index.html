@@ -252,12 +252,6 @@
     [data-theme="dark"] .type-badge.om  { background: #3a1800; color: #f0a060; }
 
     .file-count { font-size: 12px; color: var(--muted); }
-    .tags-row { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
-    .tag-pill {
-      font-size: 10px; padding: 2px 9px; background: var(--surface-2);
-      border-radius: var(--r-full); color: var(--muted); border: none;
-      font-weight: 700; letter-spacing: 0.04em;
-    }
     .done-toggle { flex-shrink: 0; display: flex; align-items: center; gap: 6px; }
     .check-input { width: 16px; height: 16px; accent-color: var(--text); cursor: pointer; }
     .check-label {
@@ -384,18 +378,6 @@
       .hy-content th, .hy-content td { padding: 5px 6px; }
       .hy-content h1 { font-size: 22px; }
     }
-
-    /* ── TAGS PAGE ───────────────────────────────────────────── */
-    .tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 32px; }
-    .tag-btn {
-      padding: 9px 20px; border-radius: var(--r-full);
-      background: var(--surface); font-size: 11px; font-weight: 800;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      cursor: pointer; color: var(--muted); border: none; transition: all .12s;
-    }
-    .tag-btn:hover { background: var(--surface-2); color: var(--text); }
-    .tag-btn.active { background: var(--text); color: var(--accent-fg); }
-    .divider { height: 1px; background: var(--surface-2); margin: 32px 0; }
 
     /* ── EMPTY STATE ─────────────────────────────────────────── */
     .empty-state { text-align: center; padding: 80px 20px; color: var(--muted); }
@@ -564,9 +546,6 @@
       /* Timer panel — full width at bottom */
       .timer-widget { bottom: 16px; right: 16px; }
       .timer-panel { width: min(280px, calc(100vw - 32px)); }
-
-      /* Tags */
-      .tags-cloud { gap: 6px; }
     }
   </style>
 </head>
@@ -582,7 +561,6 @@
     <button class="nav-tab" onclick="navigate('/osce/1')">OSCE I</button>
     <button class="nav-tab" onclick="navigate('/osce/2')">OSCE II</button>
     <button class="nav-tab" onclick="navigate('/osce/3')">OSCE III</button>
-    <button class="nav-tab" onclick="navigate('/tags')">Ämnen</button>
     <button class="nav-tab" onclick="navigate('/high-yield')">High Yield</button>
   </div>
   <div class="nav-spacer"></div>
@@ -625,9 +603,6 @@
         <div class="home-actions">
           <button class="btn btn-dark" onclick="randomExam(null)">
             • Slumpa station
-          </button>
-          <button class="btn btn-ghost" onclick="navigate('/tags')">
-            Filtrera på ämne
           </button>
         </div>
       </div>
@@ -682,21 +657,6 @@
     <div class="pdf-container" id="pdf-container"></div>
   </div>
 
-  <!-- TAGS -->
-  <div class="page" id="page-tags">
-    <div class="container">
-      <div class="list-header">
-        <button class="back-btn" onclick="navigate('/')">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-          Tillbaka
-        </button>
-        <h2>Filtrera på ämne</h2>
-      </div>
-      <div class="tags-cloud" id="tags-cloud"></div>
-      <div class="divider"></div>
-      <div class="exam-grid" id="tags-exam-list"></div>
-    </div>
-  </div>
 
   <!-- HIGH YIELD -->
   <div class="page" id="page-highyield">
@@ -752,7 +712,6 @@ let allExams = [];
 let currentFilter = 'all';
 let currentLevel = 1;
 let currentExam = null;
-let selectedTag = null;
 
 // ── INIT ──────────────────────────────────────────────────
 async function init() {
@@ -798,12 +757,6 @@ function route() {
     currentExam = allExams.find(e => e.id === id) || null;
     document.getElementById('page-exam').classList.add('active');
     renderExamView(currentExam);
-  } else if (hash === '/tags') {
-    document.getElementById('page-tags').classList.add('active');
-    document.querySelectorAll('.nav-tab').forEach(t => {
-      if (t.textContent === 'Ämnen') t.classList.add('active');
-    });
-    renderTagsPage();
   } else if (hash === '/high-yield' || hash.startsWith('/high-yield/')) {
     document.getElementById('page-highyield').classList.add('active');
     document.querySelectorAll('.nav-tab').forEach(t => {
@@ -870,16 +823,13 @@ function setFilter(filter) {
 function examCardHTML(e) {
   const done = isDone(e.id);
   const fc   = Object.keys(e.files).length;
-  const tags = e.tags && e.tags.length
-    ? `<div class="tags-row">${e.tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}</div>`
-    : '';
   return `<div class="exam-card${done ? ' done' : ''}" id="card-${e.id}">
     <div class="exam-card-body" onclick="navigate('/exam/${e.id}')">
       <div class="exam-semester">${e.semester}</div>
       <div class="exam-meta">
         <span class="type-badge ${e.type}">${e.typeLabel}</span>
         <span class="file-count">${fc} ${fc === 1 ? 'fil' : 'filer'}</span>
-      </div>${tags}
+      </div>
     </div>
     <div class="done-toggle">
       <input type="checkbox" class="check-input" id="chk-${e.id}" ${done ? 'checked' : ''}
@@ -1039,39 +989,6 @@ function toggleDone() {
   const v = !isDone(currentExam.id);
   setDone(currentExam.id, v);
   updateMarkDoneBtn(currentExam.id);
-}
-
-// ── TAGS ──────────────────────────────────────────────────
-function renderTagsPage() {
-  const allTags = [...new Set(allExams.flatMap(e => e.tags || []))].sort();
-  const cloud   = document.getElementById('tags-cloud');
-  if (!allTags.length) {
-    cloud.innerHTML = '<p style="color:var(--muted);font-size:14px;">Inga ämnestaggar har lagts till ännu.</p>';
-    document.getElementById('tags-exam-list').innerHTML = '';
-    return;
-  }
-  cloud.innerHTML = allTags.map(t =>
-    `<button class="tag-btn${selectedTag === t ? ' active' : ''}" onclick="selectTag('${t}')">${t}</button>`
-  ).join('');
-  renderTagsExams();
-}
-
-function selectTag(tag) {
-  selectedTag = selectedTag === tag ? null : tag;
-  renderTagsPage();
-}
-
-function renderTagsExams() {
-  const container = document.getElementById('tags-exam-list');
-  if (!selectedTag) { container.innerHTML = ''; return; }
-  const exams = allExams.filter(e => e.tags && e.tags.includes(selectedTag))
-    .sort((a, b) => b.semesterSort.localeCompare(a.semesterSort));
-  if (!exams.length) {
-    container.innerHTML = '<div class="empty-state"><b>Inga examinationer med detta ämne.</b></div>';
-    return;
-  }
-  container.innerHTML = `<div class="pill-label">Examinationer — ${selectedTag}</div>` +
-    exams.map(examCardHTML).join('');
 }
 
 // ── HIGH YIELD ────────────────────────────────────────────

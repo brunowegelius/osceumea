@@ -350,9 +350,12 @@
       transition: opacity .12s; text-decoration: none; display: block;
     }
     .hy-card:active { opacity: .8; }
-    .hy-card[data-level="1"] { background: var(--yellow); color: var(--yellow-text); }
-    .hy-card[data-level="2"] { background: var(--pink); color: var(--pink-text); }
-    .hy-card[data-level="3"] { background: var(--blue); color: var(--blue-text); }
+    .hy-card[data-level="1"] { background: var(--yellow); }
+    .hy-card[data-level="2"] { background: var(--purple); }
+    .hy-card[data-level="3"] { background: var(--mint); }
+    [data-theme="dark"] .hy-card[data-level="1"] { background: #383800; color: #e8e840; }
+    [data-theme="dark"] .hy-card[data-level="2"] { background: #28244a; color: #c0b8e8; }
+    [data-theme="dark"] .hy-card[data-level="3"] { background: #0c2808; color: #88e840; }
     .hy-card-title { font-family: 'Monigue', system-ui, sans-serif; font-size: 26px; font-weight: 800; margin-bottom: 4px; }
     .hy-card-sub { font-size: 13px; opacity: .7; }
 

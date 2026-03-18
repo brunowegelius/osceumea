@@ -42,11 +42,8 @@ OSCE II examinerar en betydligt bredare kunskapsbas än OSCE I. Utöver internme
 | 22 | **Lungstatus** | 4 | 3 | 1 | 4/16 (25%) |
 | 23 | **Anestesi** | 5 | 3 | 2 | 3/16 (19%) |
 | 24 | **Pediatrik** | 3 | 2 | 1 | 3/16 (19%) |
-| 25 | **Psykiatri** | 13 | 1 | 12 | 2/16 (12%) |
-| 26 | **PU (våld i nära relation)** | 2 | 2 | 0 | 2/16 (12%) |
-| 27 | **DVT** | 2 | 2 | 0 | 2/16 (12%) |
-
-> **OBS om Psykiatri:** 12 av 13 omnämnanden kommer från en enda omtenta (VT25) där ett psykiatritema genomsyrade många stationer. Ämnet är alltså inte återkommande utan speglar en engångsvariant.
+| 25 | **PU (våld i nära relation)** | 2 | 2 | 0 | 2/16 (12%) |
+| 26 | **DVT** | 2 | 2 | 0 | 2/16 (12%) |
 
 ---
 
@@ -91,7 +88,6 @@ Dessa ämnen förekommer på <20% av tentorna.
 
 - **Anestesi** — Postoperativ vätske- och smärtbehandling.
 - **Pediatrik** — Barnundersökning, barnsjukdomar.
-- **Psykiatri** — Psykiatrisk bedömning. (Se OBS ovan — enstaka omtenta.)
 - **PU (våld i nära relation)** — Screeningfrågor, handläggning vid misstanke.
 - **DVT** — Djup ventrombos, Wells-score, handläggning.
 - Synkope, Arytmi/FF, Spirometri, Stroke/TIA (enstaka förekomster).
@@ -133,7 +129,7 @@ Dessa ämnen förekommer på <20% av tentorna.
 
 **HT25:** Dermatologi ×2, Ortopedi ×2, Radiologi ×2, Kirurgi ×2, Allergi ×2, Urologi/KAD ×2, Bröstsmärta/EKG ×2, Infektion, Pediatrik, Reumatologi, Onkologi, Sårbehandling, Hypertoni, Andnöd/dyspné, Lungstatus, DVT, HLR
 
-**VT25:** Urologi/KAD ×2, Bröstsmärta/EKG ×2, Dermatologi ×2, Kirurgi ×2, Allergi, Hypertoni, Reumatologi, Lungstatus, Ortopedi, Psykiatri, Lungcancer, Handkirurgi, Sårbehandling, HLR
+**VT25:** Urologi/KAD ×2, Bröstsmärta/EKG ×2, Dermatologi ×2, Kirurgi ×2, Allergi, Hypertoni, Reumatologi, Lungstatus, Ortopedi, Lungcancer, Handkirurgi, Sårbehandling, HLR
 
 **HT24:** Kirurgi ×4, Handkirurgi ×2, Buksmärta ×2, PU, Ortopedi, Reumatologi, Leverprover, Spirometri, Dermatologi, Radiologi, Andnöd/dyspné, Lungcancer, Sårbehandling, HLR
 
@@ -151,7 +147,7 @@ Dessa ämnen förekommer på <20% av tentorna.
 
 **HT25:** Radiologi ×2, Kirurgi ×2, Dermatologi, Buksmärta, Primärjour, Infektion, Allergi, Pediatrik, Hypertoni, Diabetes, Urologi/KAD, Onkologi, Handkirurgi, HLR
 
-**VT25:** Psykiatri ×12, Urologi/KAD ×2, Infektion ×2, Onkologi ×2, Stroke/TIA, Diabetes, Kirurgi, Trauma/AnIVA, Handkirurgi, Ortopedi, Radiologi, Sårbehandling, Allergi, Gynekologi, Dermatologi, HLR
+**VT25:** Urologi/KAD ×2, Infektion ×2, Onkologi ×2, Stroke/TIA, Diabetes, Kirurgi, Trauma/AnIVA, Handkirurgi, Ortopedi, Radiologi, Sårbehandling, Allergi, Gynekologi, Dermatologi, HLR
 
 **HT24:** Kirurgi ×4, Radiologi ×2, Buksmärta ×2, Anestesi ×2, Andnöd/dyspné, Dermatologi, Hypertoni, Urologi/KAD, Infektion, Pneumoni, Allergi, Bröstsmärta/EKG, Handkirurgi, Primärjour, HLR
 

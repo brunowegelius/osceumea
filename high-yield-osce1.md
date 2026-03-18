@@ -29,9 +29,8 @@ Tabellen visar hur många gånger ett ämne förekommit totalt (Tot), uppdelat p
 | 7 | **Diabetes/prediabetes** | 17 | 9 | 8 | 10/15 (67%) |
 | 8 | **Leverprover** | 10 | 3 | 7 | 8/15 (53%) |
 | 9 | **Spirometri/PEF** | 10 | 6 | 4 | 8/15 (53%) |
-| 10 | **Urologi/KAD** | 10 | 5 | 5 | 8/15 (53%) |
-| 11 | **Infektion** | 8 | 4 | 4 | 8/15 (53%) |
-| 12 | **Stroke/TIA** | 7 | 4 | 3 | 7/15 (47%) |
+| 10 | **Infektion** | 8 | 4 | 4 | 8/15 (53%) |
+| 11 | **Stroke/TIA** | 7 | 4 | 3 | 7/15 (47%) |
 | 13 | **Hjärtstatus/auskultation** | 7 | 2 | 5 | 6/15 (40%) |
 | 14 | **Demensutredning** | 6 | 3 | 3 | 6/15 (40%) |
 | 15 | **DVT/trombos** | 6 | 3 | 3 | 5/15 (33%) |
@@ -68,7 +67,6 @@ Dessa ämnen förekommer på 40–65% av tentorna.
 
 - **Leverprover** — 53%. Utreda förhöjda leverenzymer. Differentialdiagnostik (alkohol, läkemedel, hepatit, gallvägssjukdom).
 - **Spirometri/PEF** — 53%. Tolka spirometrikurvor, instruera PEF-mätning. Ofta kopplat till astma- eller KOL-utredning.
-- **Urologi/KAD** — 53%. Kateterisering (KAD), urinretention, urinvägsbesvär. Praktisk station.
 - **Infektion** — 53%. Bred kategori: anmälningspliktig sjukdom, sepsis, infektionsutredning.
 - **Stroke/TIA** — 47%. Akut stroke, TIA-utredning, NIHSS, sekundärprevention. Vanligt men inte så dominant som tidigare trott.
 - **Hjärtstatus/auskultation** — 40%. Harvey-docka eller patient med blåsljud. Systematisk hjärtauskultation.
@@ -90,7 +88,7 @@ Dessa ämnen förekommer på 20–40% av tentorna.
 - **Anemi** — 20%. Mikrocytär anemi, MCV-baserad differentialdiagnostik. Enbart ordinarie tentor.
 
 ### Tier C – Kommer sällan
-Buksmärta, Tyreotoxikos, Pediatrik, ÖNH, Kirurgi, Reumatologi, Ortopedi, Psykiatri, Onkologi, Handkirurgi, Trauma/AnIVA.
+Buksmärta, Tyreotoxikos, ÖNH, Kirurgi, Reumatologi, Ortopedi, Psykiatri, Onkologi, Handkirurgi, Trauma/AnIVA.
 
 ---
 
@@ -114,13 +112,13 @@ Buksmärta, Tyreotoxikos, Pediatrik, ÖNH, Kirurgi, Reumatologi, Ortopedi, Psyki
 
 **VT25:** Hypertoni ×3, Bröstsmärta/EKG ×2, Allergi ×2, Primärjour ×2, Andnöd/dyspné ×2, Diabetes ×2, Stroke/TIA, Anemi, Pneumoni, Leverprover, Spirometri, Radiologi, Blodtrycksmätning, HLR
 
-**HT24:** Bröstsmärta/EKG ×3, Radiologi ×2, Lungstatus ×2, ÖNH, Buksmärta, Stroke/TIA, Andnöd/dyspné, Spirometri, Pneumoni, DVT, Primärjour, Hypertoni, Diabetes, Arytmi/FF, Urologi/KAD, Synkope, HLR
+**HT24:** Bröstsmärta/EKG ×3, Radiologi ×2, Lungstatus ×2, ÖNH, Buksmärta, Stroke/TIA, Andnöd/dyspné, Spirometri, Pneumoni, DVT, Primärjour, Hypertoni, Diabetes, Arytmi/FF, Synkope, HLR
 
-**VT24:** Diabetes ×2, Primärjour ×2, Urologi/KAD ×2, Andnöd/dyspné ×2, Radiologi ×2, Hypertoni ×2, Arytmi/FF, DVT, Pediatrik, ÖNH, Njursvikt, Allergi, Anemi, Bröstsmärta/EKG, Infektion, HLR
+**VT24:** Diabetes ×2, Primärjour ×2, Andnöd/dyspné ×2, Radiologi ×2, Hypertoni ×2, Arytmi/FF, DVT, ÖNH, Njursvikt, Allergi, Anemi, Bröstsmärta/EKG, Infektion, HLR
 
-**HT23:** Andnöd/dyspné ×4, Bröstsmärta/EKG ×3, Primärjour ×2, Hypertoni, Psykiatri, KOL, Spirometri, Kirurgi, Urologi/KAD, Radiologi, Infektion, Trauma/AnIVA, Demens, HLR
+**HT23:** Andnöd/dyspné ×4, Bröstsmärta/EKG ×3, Primärjour ×2, Hypertoni, Psykiatri, KOL, Spirometri, Kirurgi, Radiologi, Infektion, Trauma/AnIVA, Demens, HLR
 
-**VT23:** Bröstsmärta/EKG ×3, Diabetes ×3, Leverprover ×2, Andnöd/dyspné ×2, Hypertoni ×2, Urologi/KAD, KOL, Primärjour, DVT, Hjärtstatus, Infektion, Njursvikt, Demens, Kirurgi, Radiologi, Synkope, HLR
+**VT23:** Bröstsmärta/EKG ×3, Diabetes ×3, Leverprover ×2, Andnöd/dyspné ×2, Hypertoni ×2, KOL, Primärjour, DVT, Hjärtstatus, Infektion, Njursvikt, Demens, Kirurgi, Radiologi, Synkope, HLR
 
 **HT22:** Bröstsmärta/EKG ×2, Spirometri ×2, Njursvikt, Anemi, Demens, Andnöd/dyspné, Onkologi, HLR, Stroke/TIA
 
@@ -128,11 +126,11 @@ Buksmärta, Tyreotoxikos, Pediatrik, ÖNH, Kirurgi, Reumatologi, Ortopedi, Psyki
 
 ### Omexaminationer
 
-**VT25:** Hypertoni ×4, Bröstsmärta/EKG ×3, Hjärtstatus ×2, Lungstatus ×2, Urologi/KAD ×2, Leverprover ×2, Blodtrycksmätning, Stroke/TIA, Handkirurgi, Reumatologi, Radiologi, Infektion, Andnöd/dyspné, Diabetes, HLR
+**VT25:** Hypertoni ×4, Bröstsmärta/EKG ×3, Hjärtstatus ×2, Lungstatus ×2 ×2, Leverprover ×2, Blodtrycksmätning, Stroke/TIA, Handkirurgi, Reumatologi, Radiologi, Infektion, Andnöd/dyspné, Diabetes, HLR
 
-**HT24:** Diabetes ×3, Pneumoni ×2, Radiologi ×2, DVT ×2, Bröstsmärta/EKG ×2, Urologi/KAD, Infektion, Primärjour, Andnöd/dyspné, Tyreotoxikos, Hjärtstatus, Leverprover, Arytmi/FF, HLR
+**HT24:** Diabetes ×3, Pneumoni ×2, Radiologi ×2, DVT ×2, Bröstsmärta/EKG ×2, Infektion, Primärjour, Andnöd/dyspné, Tyreotoxikos, Hjärtstatus, Leverprover, Arytmi/FF, HLR
 
-**VT24:** Bröstsmärta/EKG ×6, Primärjour ×2, ÖNH ×2, Diabetes ×2, KOL, Leverprover, Hypertoni, Synkope, Blodtrycksmätning, Urologi/KAD, Andnöd/dyspné, Hjärtstatus, HLR
+**VT24:** Bröstsmärta/EKG ×6, Primärjour ×2, ÖNH ×2, Diabetes ×2, KOL, Leverprover, Hypertoni, Synkope, Blodtrycksmätning, Andnöd/dyspné, Hjärtstatus, HLR
 
 **HT23:** Primärjour ×2, Spirometri ×2, Stroke/TIA, Bröstsmärta/EKG, Leverprover, Lymfkörtlar, Andnöd/dyspné, Synkope, Demens, Infektion, Hjärtstatus, Hypertoni, HLR
 
@@ -140,4 +138,4 @@ Buksmärta, Tyreotoxikos, Pediatrik, ÖNH, Kirurgi, Reumatologi, Ortopedi, Psyki
 
 **HT22:** Hypertoni ×2, Bröstsmärta/EKG ×2, Diabetes, Reumatologi, Andnöd/dyspné, Radiologi, Infektion, Blodtrycksmätning, Lymfkörtlar, Demens, Ortopedi, Lungstatus, Stroke/TIA, Primärjour, Njursvikt, HLR
 
-**VT22:** HLR, Pediatrik, Kirurgi, Urologi/KAD, Hypertoni, Leverprover, Andnöd/dyspné, Bröstsmärta/EKG, Diabetes, Arytmi/FF, Demens, DVT, Njursvikt, Spirometri, Lymfkörtlar, Radiologi
+**VT22:** HLR, Kirurgi, Hypertoni, Leverprover, Andnöd/dyspné, Bröstsmärta/EKG, Diabetes, Arytmi/FF, Demens, DVT, Njursvikt, Spirometri, Lymfkörtlar, Radiologi

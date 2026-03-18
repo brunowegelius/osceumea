@@ -41,9 +41,8 @@ OSCE II examinerar en betydligt bredare kunskapsbas än OSCE I. Utöver internme
 | 21 | **Primärjour** | 4 | 1 | 3 | 4/16 (25%) |
 | 22 | **Lungstatus** | 4 | 3 | 1 | 4/16 (25%) |
 | 23 | **Anestesi** | 5 | 3 | 2 | 3/16 (19%) |
-| 24 | **Pediatrik** | 3 | 2 | 1 | 3/16 (19%) |
-| 25 | **PU (våld i nära relation)** | 2 | 2 | 0 | 2/16 (12%) |
-| 26 | **DVT** | 2 | 2 | 0 | 2/16 (12%) |
+| 24 | **PU (våld i nära relation)** | 2 | 2 | 0 | 2/16 (12%) |
+| 25 | **DVT** | 2 | 2 | 0 | 2/16 (12%) |
 
 ---
 
@@ -87,7 +86,6 @@ Dessa ämnen förekommer på 25–40% av tentorna.
 Dessa ämnen förekommer på <20% av tentorna.
 
 - **Anestesi** — Postoperativ vätske- och smärtbehandling.
-- **Pediatrik** — Barnundersökning, barnsjukdomar.
 - **PU (våld i nära relation)** — Screeningfrågor, handläggning vid misstanke.
 - **DVT** — Djup ventrombos, Wells-score, handläggning.
 - Synkope, Arytmi/FF, Spirometri, Stroke/TIA (enstaka förekomster).
@@ -127,7 +125,7 @@ Dessa ämnen förekommer på <20% av tentorna.
 
 ### Ordinarie tentor
 
-**HT25:** Dermatologi ×2, Ortopedi ×2, Radiologi ×2, Kirurgi ×2, Allergi ×2, Urologi/KAD ×2, Bröstsmärta/EKG ×2, Infektion, Pediatrik, Reumatologi, Onkologi, Sårbehandling, Hypertoni, Andnöd/dyspné, Lungstatus, DVT, HLR
+**HT25:** Dermatologi ×2, Ortopedi ×2, Radiologi ×2, Kirurgi ×2, Allergi ×2, Urologi/KAD ×2, Bröstsmärta/EKG ×2, Infektion, Reumatologi, Onkologi, Sårbehandling, Hypertoni, Andnöd/dyspné, Lungstatus, DVT, HLR
 
 **VT25:** Urologi/KAD ×2, Bröstsmärta/EKG ×2, Dermatologi ×2, Kirurgi ×2, Allergi, Hypertoni, Reumatologi, Lungstatus, Ortopedi, Lungcancer, Handkirurgi, Sårbehandling, HLR
 
@@ -139,13 +137,13 @@ Dessa ämnen förekommer på <20% av tentorna.
 
 **VT23:** Kirurgi ×2, Urologi/KAD ×2, Ortopedi, Trauma/AnIVA, Sårbehandling, Onkologi, Bröstsmärta/EKG, Hjärtstatus, Handkirurgi, HLR
 
-**VT22:** Hypertoni ×2, Radiologi ×2, Kirurgi ×2, Buksmärta, Reumatologi, Urologi/KAD, Trauma/AnIVA, Leverprover, Bröstsmärta/EKG, Arytmi/FF, Handkirurgi, Sårbehandling, Pediatrik, Diabetes, HLR, Ortopedi
+**VT22:** Hypertoni ×2, Radiologi ×2, Kirurgi ×2, Buksmärta, Reumatologi, Urologi/KAD, Trauma/AnIVA, Leverprover, Bröstsmärta/EKG, Arytmi/FF, Handkirurgi, Sårbehandling, Diabetes, HLR, Ortopedi
 
 **HT22:** Kirurgi ×3, Onkologi ×2, Leverprover ×2, Handkirurgi ×2, Radiologi, PU, Sårbehandling, Reumatologi, Urologi/KAD, Lungcancer, Trauma/AnIVA, Dermatologi, Diabetes, DVT, HLR
 
 ### Omexaminationer
 
-**HT25:** Radiologi ×2, Kirurgi ×2, Dermatologi, Buksmärta, Primärjour, Infektion, Allergi, Pediatrik, Hypertoni, Diabetes, Urologi/KAD, Onkologi, Handkirurgi, HLR
+**HT25:** Radiologi ×2, Kirurgi ×2, Dermatologi, Buksmärta, Primärjour, Infektion, Allergi, Hypertoni, Diabetes, Urologi/KAD, Onkologi, Handkirurgi, HLR
 
 **VT25:** Urologi/KAD ×2, Infektion ×2, Onkologi ×2, Stroke/TIA, Diabetes, Kirurgi, Trauma/AnIVA, Handkirurgi, Ortopedi, Radiologi, Sårbehandling, Allergi, Gynekologi, Dermatologi, HLR
 

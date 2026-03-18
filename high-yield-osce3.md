@@ -43,7 +43,7 @@ OSCE III är den bredaste och mest multispecialistpräglade examinationen. Den s
 | **Onkologi** | 6 | 3 | 3 | 5/13 (38%) |
 | **Diabetes** | 6 | 4 | 2 | 4/13 (31%) |
 | **Reumatologi** | 6 | 2 | 4 | 5/13 (38%) |
-| **HLR** | 6 | 5 | 1 | 6/13 (46%) |
+| **HLR** | 9 | 8 | 1 | 9/13 (69%) |
 | **Infektion** | 5 | 3 | 2 | 5/13 (38%) |
 | **Psykiatri** | 5 | 4 | 1 | 5/13 (38%) |
 | **Anestesi** | 3 | 2 | 1 | 3/13 (23%) |
@@ -85,6 +85,7 @@ Dessa ämnen förekommer på mer än hälften av tentorna.
 - **Dermatologi** — Hudlesioner, STD-relaterade hudförändringar, dermatologisk diagnostik (54%).
 - **Andnöd/dyspné** — Akut dyspné, differentialdiagnostik, lungauskultation (54%).
 - **Trauma/AnIVA** — Traumaomhändertagande enligt ABCDE, intensivvårdsbedömning (54%).
+- **HLR** — Vuxen-HLR, barn-HLR, drunkning (69%). Förekommer på 100% av ordinarie tentor. Drunkningsscenario med hypotermi är återkommande.
 
 ### Tier B – Kommer ibland (25–50%)
 Dessa ämnen förekommer på en tredjedel till hälften av tentorna.
@@ -93,7 +94,6 @@ Dessa ämnen förekommer på en tredjedel till hälften av tentorna.
 - **Hypertoni** — Blodtrycksbedömning, behandlingsstart, komplicerande faktorer (38%).
 - **Onkologi** — Bröstknöl, utredningsgång, cancerbesked (38%).
 - **Reumatologi** — Synovitstatus, metotrexatinformation, ankyloserande spondylit (38%).
-- **HLR** — Vuxen-HLR, barn-HLR, drunkning (46%). Inte lika dominant som i OSCE I.
 - **Infektion** — Sepsishandläggning, antibiotikaval, infektionsanamnes (38%).
 - **Psykiatri** — Beroendeproblematik, suicidriskbedömning, sömnstörning (38%).
 - **Diabetes** — Diabeteshandläggning, insulinjustering, fotstatus (31%).
@@ -130,7 +130,7 @@ Dessa ämnen förekommer på en tredjedel till hälften av tentorna.
 7. **ÖNH (69%)** — Öva otomikroskopi, audiogramtolkning, nystagmusundersökning. Kunna handlägga akut epiglottit (luftväg först!), trachealkanyl.
 8. **Pediatrik (62%)** — Skiljer sig från vuxen-HLR. Öva 15:2 kompression:ventilation, korrekt handplacering, inblåsningsteknik för barn. Kramphantering.
 9. **Handkirurgi (54%)** — Handstatus med motorik, sensibilitet och cirkulation. Kunna testa specifika nerver (medianus, ulnaris, radialis).
-10. **HLR (46%)** — Både vuxen-HLR och barn-HLR. Drunkningsscenario med hypotermi förekommer.
+10. **HLR (69%, 100% av ord)** — Förekommer på varje ordinarie tenta. Drunkningsscenario med hypotermi är vanligt. Öva både vuxen- och barn-HLR.
 
 ---
 
@@ -138,13 +138,13 @@ Dessa ämnen förekommer på en tredjedel till hälften av tentorna.
 
 ### Ordinarie tentor
 
-**VT25 (Ord):** Urologi/KAD ×5, Kirurgi ×5, Sårbehandling ×3, Ortopedi ×3, Bröstsmärta/EKG ×3, Ögon ×2, Handkirurgi ×2, Diabetes ×2, Gynekologi, Onkologi, Synkope, Reumatologi, Dermatologi, Radiologi, Hypertoni, Andnöd/dyspné, Hjärtstatus, Trauma/AnIVA
+**VT25 (Ord):** Urologi/KAD ×5, Kirurgi ×5, Sårbehandling ×3, Ortopedi ×3, Bröstsmärta/EKG ×3, Ögon ×2, Handkirurgi ×2, Diabetes ×2, Gynekologi, Onkologi, Synkope, Reumatologi, Dermatologi, Radiologi, Hypertoni, Andnöd/dyspné, Hjärtstatus, Trauma/AnIVA, HLR
 
 **HT25 (Ord):** Urologi/KAD ×3, Ögon ×2, Hypertoni ×2, Gynekologi, Kirurgi, Anestesi, Handkirurgi, Pediatrik, Sårbehandling, Bröstsmärta/EKG, ÖNH, Andnöd/dyspné, Hjärtstatus, HLR
 
 **VT24 (Ord):** Urologi/KAD ×3, Hypertoni ×3, Ögon ×3, Diabetes ×2, Gynekologi ×2, Pediatrik ×2, Ortopedi ×2, Andnöd/dyspné ×2, Radiologi ×2, Psykiatri, KOL, HLR, Onkologi, Dermatologi, Buksmärta, ÖNH, Reumatologi, Infektion, Kirurgi, Trauma/AnIVA, Stroke/TIA, Synkope, Anestesi, Geriatrik, Sårbehandling, Lungcancer, Demens
 
-**HT24 (Ord):** Ögon ×4, Urologi/KAD ×3, Sårbehandling ×3, ÖNH ×3, Bröstsmärta/EKG ×3, Radiologi ×2, Pediatrik ×2, Gynekologi ×2, Kirurgi ×2, Primärjour ×2, Hypertoni, Pneumoni, Synkope, Onkologi, Dermatologi, Handkirurgi, Trauma/AnIVA
+**HT24 (Ord):** Ögon ×4, Urologi/KAD ×3, Sårbehandling ×3, ÖNH ×3, Bröstsmärta/EKG ×3, Radiologi ×2, Pediatrik ×2, Gynekologi ×2, Kirurgi ×2, Primärjour ×2, Hypertoni, Pneumoni, Synkope, Onkologi, Dermatologi, Handkirurgi, Trauma/AnIVA, HLR
 
 **VT23 (Ord):** Pediatrik ×2, Kirurgi ×2, Synkope ×2, Ögon ×2, Urologi/KAD, Psykiatri, Trauma/AnIVA, HLR, Gynekologi, Primärjour, Ortopedi, Njursvikt
 
@@ -152,7 +152,7 @@ Dessa ämnen förekommer på en tredjedel till hälften av tentorna.
 
 **VT22 (Ord):** Gynekologi ×2, Synkope ×2, Kirurgi ×2, Primärjour, Infektion, Urologi/KAD, Pediatrik, Ögon, Psykiatri, HLR, Leverprover, Bröstsmärta/EKG, Arytmi/FF, Handkirurgi, ÖNH, Trauma/AnIVA
 
-**HT22 (Ord):** Urologi/KAD ×3, Pediatrik ×2, ÖNH ×2, Dermatologi ×2, Ögon ×2, Gynekologi, Primärjour, Arytmi/FF, Trauma/AnIVA, Allergi, Andnöd/dyspné, Bröstsmärta/EKG, Ortopedi
+**HT22 (Ord):** Urologi/KAD ×3, Pediatrik ×2, ÖNH ×2, Dermatologi ×2, Ögon ×2, Gynekologi, Primärjour, Arytmi/FF, Trauma/AnIVA, Allergi, Andnöd/dyspné, Bröstsmärta/EKG, Ortopedi, HLR
 
 ### Omexaminationer
 

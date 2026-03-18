@@ -562,6 +562,7 @@
     <button class="nav-tab" onclick="navigate('/osce/2')">OSCE II</button>
     <button class="nav-tab" onclick="navigate('/osce/3')">OSCE III</button>
     <button class="nav-tab" onclick="navigate('/high-yield')">High Yield</button>
+    <button class="nav-tab" onclick="navigate('/abcde')">ABCDE</button>
   </div>
   <div class="nav-spacer"></div>
   <div class="nav-actions">
@@ -672,6 +673,16 @@
     </div>
   </div>
 
+  <!-- ABCDE -->
+  <div class="page" id="page-abcde">
+    <div class="container">
+      <div class="list-header">
+        <h2>ABCDE</h2>
+      </div>
+      <div class="hy-content" id="abcde-body"></div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ── TIMER ──────────────────────────────────────────────── -->
@@ -764,6 +775,12 @@ function route() {
     });
     const lvl = hash.startsWith('/high-yield/') ? parseInt(hash.split('/')[2]) : null;
     renderHighYield(lvl);
+  } else if (hash === '/abcde') {
+    document.getElementById('page-abcde').classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(t => {
+      if (t.textContent === 'ABCDE') t.classList.add('active');
+    });
+    renderABCDE();
   }
 }
 
@@ -1025,7 +1042,7 @@ function renderHighYield(level) {
   backBtn.setAttribute('onclick', "navigate('/high-yield')");
 
   if (hyCache[level]) {
-    body.innerHTML = HY_DISCLAIMER + '<div class="hy-content">' + renderMarkdown(hyCache[level]) + '</div>' + HY_DISCLAIMER;
+    body.innerHTML = '<div class="hy-content">' + renderMarkdown(hyCache[level]) + '</div>' + HY_DISCLAIMER;
     return;
   }
 
@@ -1034,7 +1051,7 @@ function renderHighYield(level) {
     .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(md => {
       hyCache[level] = md;
-      body.innerHTML = HY_DISCLAIMER + '<div class="hy-content">' + renderMarkdown(md) + '</div>' + HY_DISCLAIMER;
+      body.innerHTML = '<div class="hy-content">' + renderMarkdown(md) + '</div>' + HY_DISCLAIMER;
     })
     .catch(() => {
       body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';
@@ -1145,6 +1162,27 @@ function inlineFormat(text) {
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/`(.+?)`/g, '<code>$1</code>')
     .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
+}
+
+// ── ABCDE ─────────────────────────────────────────────────
+let abcdeCache = null;
+
+function renderABCDE() {
+  const body = document.getElementById('abcde-body');
+  if (abcdeCache) {
+    body.innerHTML = renderMarkdown(abcdeCache);
+    return;
+  }
+  body.innerHTML = '<div class="search-hint">Laddar…</div>';
+  fetch('ABCDE-sammanstallning.md')
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(md => {
+      abcdeCache = md;
+      body.innerHTML = renderMarkdown(md);
+    })
+    .catch(() => {
+      body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';
+    });
 }
 
 // ── RANDOM ────────────────────────────────────────────────

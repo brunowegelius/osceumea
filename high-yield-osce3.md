@@ -1,142 +1,136 @@
 # High-Yield Guide: OSCE III (T11)
 
-> **Dataunderlag:** 8 ordinarie + 8 omexaminationer (VT22–HT25). Notera att 6-min-tentorna (VT24, HT24, VT25) räknas som omexaminationer.
+> **Dataunderlag:** 8 ordinarie + 5 omexaminationer (VT22–HT25), totalt 13 tentor. Nyckelordsklassificeraren tilldelar flera taggar per station, varför summan av alla ämnen överstiger antalet stationer.
 >
-> *Denna sammanfattning är AI-genererad baserat på automatisk textextraktion från examinationernas kombi-/dörr-instruktioner.*
+> *Denna sammanfattning är baserad på systematisk PDF-analys av examinationernas kombi-/dörr-instruktioner.*
 
 ---
 
 ## Översikt
 
-OSCE III är den bredaste och mest multispecialistpräglade examinationen. Den spänner över hela läkarutbildningen och inkluderar stationer från **gynekologi, pediatrik, psykiatri, ögon, ÖNH, neurologi, kirurgi, ortopedi, reumatologi, geriatrik, onkologi, dermatologi** och internmedicin. Många stationer testar praktiska färdigheter (ögonmikroskopi, otomikroskopi, synfältsundersökning, kateterisering, HLR, suturering).
+OSCE III är den bredaste och mest multispecialistpräglade examinationen. Den spänner över hela läkarutbildningen och inkluderar stationer från **ögon, urologi, gynekologi, kirurgi, pediatrik, radiologi, ÖNH, ortopedi, dermatologi, reumatologi, onkologi, psykiatri** och internmedicin. Många stationer testar praktiska färdigheter (spaltlampa, oftalmoskopi, KAD-insättning, GU på fantom, HLR, suturering).
 
-**Antal stationer per tenta:** Varierar kraftigt (6–20+ stationer). Omtentor har ofta färre stationer.
+**Antal stationer per tenta:** Varierar kraftigt (12–30+ stationer). Omtentor har ofta färre stationer.
 
 ---
 
-## Frekvensanalys – Vanligaste stationerna
+## Frekvensanalys – Vanligaste ämnena
 
 | # | Ämne | Totalt | Ord | Om | Andel tentor |
 |---|------|--------|-----|-----|--------------|
-| 1 | **Avvikande leverprover / labvärden** | 25 | 12 | 13 | 14/16 (88%) |
-| 2 | **Pediatrik** | 19 | 13 | 6 | 12/16 (75%) |
-| 3 | **Stroke/TIA** | 16 | 5 | 11 | 11/16 (69%) |
-| 4 | **Synkope/svimning** | 13 | 8 | 5 | 8/16 (50%) |
-| 5 | **Radiologi (bildtolkning)** | 13 | 3 | 10 | 11/16 (69%) |
-| 6 | **Dermatologi** | 12 | 4 | 8 | 9/16 (56%) |
-| 7 | **Gynekologi** | 11 | 6 | 5 | 10/16 (63%) |
-| 8 | **Hypertoni** | 10 | 7 | 3 | 8/16 (50%) |
-| 9 | **Allergi** | 9 | 3 | 6 | 6/16 (38%) |
-| 10 | **Urologi/KAD** | 9 | 8 | 1 | 8/16 (50%) |
-| 11 | **Infektion/sepsis** | 8 | 2 | 6 | 8/16 (50%) |
-| 12 | **Buksmärta/GI-anamnes** | 8 | 4 | 4 | 7/16 (44%) |
-| 13 | **HLR (hjärt-lungräddning)** | 8 | 7 | 1 | 8/16 (50%) |
-| 14 | **Handkirurgi** | 7 | 2 | 5 | 7/16 (44%) |
-| 15 | **Ortopedi** | 6 | 1 | 5 | 6/16 (38%) |
+| 1 | **Urologi/KAD** | 29 | 22 | 7 | 12/13 (92%) |
+| 2 | **Ögon** | 24 | 17 | 7 | 13/13 (100%) |
+| 3 | **Kirurgi** | 18 | 14 | 4 | 10/13 (77%) |
+| 4 | **Radiologi** | 16 | 6 | 10 | 9/13 (69%) |
+| 5 | **Gynekologi** | 15 | 11 | 4 | 12/13 (92%) |
+| 6 | **Bröstsmärta/EKG** | 14 | 9 | 5 | 9/13 (69%) |
+| 7 | **Pediatrik** | 14 | 13 | 1 | 8/13 (62%) |
+| 8 | **Primärjour** | 13 | 6 | 7 | 9/13 (69%) |
+| 9 | **ÖNH** | 12 | 9 | 3 | 9/13 (69%) |
+| 10 | **Ortopedi** | 11 | 7 | 4 | 8/13 (62%) |
+| 11 | **Synkope** | 10 | 8 | 2 | 7/13 (54%) |
+| 12 | **Handkirurgi** | 10 | 5 | 5 | 7/13 (54%) |
+| 13 | **Dermatologi** | 9 | 5 | 4 | 7/13 (54%) |
+| 14 | **Andnöd/dyspné** | 9 | 5 | 4 | 7/13 (54%) |
+| 15 | **Sårbehandling** | 9 | 8 | 1 | 5/13 (38%) |
 
-### Specialitetsstationer (typiska för OSCE III)
+### Övriga ämnen
 
 | Ämne | Totalt | Ord | Om | Andel tentor |
 |------|--------|-----|-----|--------------|
-| **Ögon (visusprovning)** | 6 | 5 | 1 | 5/16 (31%) |
-| **ÖNH (hörseldiagnostik)** | 6 | 4 | 2 | 5/16 (31%) |
-| **Ögon (synfältsundersökning)** | 5 | 3 | 2 | 5/16 (31%) |
-| **Drunkning/HLR** | 5 | 5 | 0 | 5/16 (31%) |
-| **Geriatrik** | 6 | 0 | 6 | 6/16 (38%) |
-| **Reumatologi** | 6 | 1 | 5 | 6/16 (38%) |
-| **Ögon (ögonmikroskopi)** | 4 | 1 | 3 | 4/16 (25%) |
-| **Ögon (oftalmoskopi)** | 4 | 2 | 2 | 3/16 (19%) |
-| **PU (våld i nära relation)** | 4 | 3 | 1 | 4/16 (25%) |
-| **Onkologi (bröstknöl)** | 4 | 1 | 3 | 4/16 (25%) |
-| **Anafylaxi** | 4 | 2 | 2 | 4/16 (25%) |
-| **Kirurgi** | 6 | 3 | 3 | 6/16 (38%) |
-| **Sårbehandling/suturering** | 5 | 3 | 2 | 5/16 (31%) |
-| **Psykiatri** | 3 | 3 | 0 | 3/16 (19%) |
-| **ÖNH (yrseldiagnostik)** | 3 | 1 | 2 | 3/16 (19%) |
-| **ÖNH (trachealkanyl)** | 3 | 2 | 1 | 3/16 (19%) |
-| **Neurologi (kranialnervsstatus)** | 2 | 0 | 2 | 2/16 (13%) |
-| **Neurologi (nervstatus vid koma)** | 2 | 1 | 1 | 2/16 (13%) |
-| **Suicidriskbedömning** | 2 | 2 | 0 | 2/16 (13%) |
+| **Hypertoni** | 8 | 7 | 1 | 5/13 (38%) |
+| **Trauma/AnIVA** | 7 | 6 | 1 | 7/13 (54%) |
+| **Onkologi** | 6 | 3 | 3 | 5/13 (38%) |
+| **Diabetes** | 6 | 4 | 2 | 4/13 (31%) |
+| **Reumatologi** | 6 | 2 | 4 | 5/13 (38%) |
+| **HLR** | 6 | 5 | 1 | 6/13 (46%) |
+| **Infektion** | 5 | 3 | 2 | 5/13 (38%) |
+| **Psykiatri** | 5 | 4 | 1 | 5/13 (38%) |
+| **Anestesi** | 3 | 2 | 1 | 3/13 (23%) |
+| **Arytmi/FF** | 3 | 2 | 1 | 3/13 (23%) |
+| **Demens** | 3 | 2 | 1 | 3/13 (23%) |
+| **Allergi** | 3 | 1 | 2 | 3/13 (23%) |
+| **Leverprover** | 3 | 1 | 2 | 2/13 (15%) |
+| **Hjärtstatus** | 3 | 2 | 1 | 3/13 (23%) |
+| **KOL** | 2 | 1 | 1 | 2/13 (15%) |
+| **Buksmärta** | 1 | 1 | 0 | 1/13 (8%) |
+| **Pneumoni** | 1 | 1 | 0 | 1/13 (8%) |
+| **Lungcancer** | 1 | 1 | 0 | 1/13 (8%) |
+| **Njursvikt** | 1 | 1 | 0 | 1/13 (8%) |
+| **Geriatrik** | 1 | 1 | 0 | 1/13 (8%) |
 
 ---
 
 ## Tier-lista
 
-### Tier S – Kommer (nästan) alltid
-Dessa ämnen förekommer på >60% av tentorna.
+### Tier S – Kommer (nästan) alltid (>80%)
+Dessa ämnen förekommer på minst 12 av 13 tentor.
 
-- **Labvärden / Avvikande leverprover** — Den absolut vanligaste stationstypen. Tolka labprover, utred avvikande värden, informera patienten. Kan gälla leverenzymer, blodstatus, elektrolyter, m.m.
-- **Pediatrik** — Barn-HLR, anafylaxi hos barn, kramphantering, barnundersökning. Finns på 75% av tentorna. Öva pediatrisk HLR-algoritm separat.
-- **Stroke/TIA** — Fortsatt extremt vanligt genom hela utbildningen.
-- **Gynekologi** — Gynekologisk undersökning på fantom, kateterisering (KAD) av kvinnlig patient. Mycket praktisk station.
-- **Radiologi (bildtolkning)** — Tolka röntgen, CT, eller andra bilder. Ofta 2 fall per station.
+- **Ögon** — Förekommer på varje enda tenta (100%). Inkluderar spaltlampa (ögonmikroskopi), visusprovning, synfältsundersökning, oftalmoskopi och pupillreflexer. Den absolut viktigaste stationsgruppen att behärska.
+- **Urologi/KAD** — KAD-insättning på fantom (92%). Steril teknik, kateterval, ballongfyllning. Ofta flera KAD-stationer per tenta (upp till 5 st på VT25).
+- **Gynekologi** — GU-undersökning på fantom (92%). Inspektion, spekulumundersökning, bimanuell palpation.
 
-### Tier A – Kommer ofta
-Dessa ämnen förekommer på 35–60% av tentorna.
+### Tier A – Kommer ofta (50–80%)
+Dessa ämnen förekommer på mer än hälften av tentorna.
 
-- **Synkope/svimning** — Akut handläggning, utredning av medvetandeförlust.
-- **Dermatologi** — Hudlesioner, STD-relaterade hudförändringar, dermatologisk diagnostik.
-- **Hypertoni** — Fortsatt vanligt, ibland med komplicerande faktorer.
-- **Urologi/KAD** — Kateterisering av kvinnlig patient med urinretention. Praktisk färdighetsstation. Kan även inkludera kateterlära (val av katetertyp).
-- **Infektion/sepsis** — Sepsishandläggning, antibiotikaval, infektionsanamnes.
-- **Buksmärta/GI-anamnes** — Akut buk, GI-blödning, magbesvär.
-- **HLR** — Både vuxen-HLR och barn-HLR. Drunkningsolycka är ett återkommande scenario.
-- **Handkirurgi** — Handstatus, nervstatus i hand, skadebedömning.
-- **Ögon (visusprovning)** — Testa synskärpa med Snellen-tavla, barnsyntest.
-- **ÖNH (hörsel)** — Audiogram-tolkning, hörselundersökning, presbyakusis.
-- **Allergi** — Anafylaxi, allergianamnes.
-- **Geriatrik** — Personcentrerad vård, geriatrisk bedömning. Vanligare på omtentor.
-- **Reumatologi** — Synovitstatus, metotrexatinformation, ankyloserande spondylit.
-- **Kirurgi** — Traumaomhändertagande, postoperativ observation.
+- **Kirurgi** — Kirurgisk bedömning, traumaomhändertagande, postoperativ observation (77%).
+- **Radiologi (bildtolkning)** — Tolka röntgen, CT eller andra bilder (69%). Vanligare på omtentor.
+- **Bröstsmärta/EKG** — EKG-tolkning, akut handläggning av bröstsmärta (69%).
+- **Primärjour** — Primärjoursbedömning med bred differentialdiagnostik (69%).
+- **ÖNH** — Otomikroskopi, audiogramtolkning, yrseldiagnostik, trachealkanyl, epiglottit (69%).
+- **Pediatrik** — Barn-HLR, anafylaxi hos barn, kramper, barnundersökning (62%). Övervägande på ordinarie tentor.
+- **Ortopedi** — Frakturhandläggning, ledundersökning, gipsbehandling (62%).
+- **Synkope** — Akut handläggning och utredning av medvetandeförlust (54%).
+- **Handkirurgi** — Handstatus, nervstatus i hand, sensibilitetsprövning (54%).
+- **Dermatologi** — Hudlesioner, STD-relaterade hudförändringar, dermatologisk diagnostik (54%).
+- **Andnöd/dyspné** — Akut dyspné, differentialdiagnostik, lungauskultation (54%).
+- **Trauma/AnIVA** — Traumaomhändertagande enligt ABCDE, intensivvårdsbedömning (54%).
 
-### Tier B – Kommer ibland
-Dessa ämnen förekommer på 15–35% av tentorna.
+### Tier B – Kommer ibland (25–50%)
+Dessa ämnen förekommer på en tredjedel till hälften av tentorna.
 
-- **Ögon (synfältsundersökning)** — Perimetri, konfrontationstest.
-- **Ögon (ögonmikroskopi)** — Spaltlampa, sjukdom i ögats främre del.
-- **Ögon (oftalmoskopi)** — Direkt oftalmoskopi, fundusundersökning.
-- **Drunkning/HLR** — Drunkningsolycka med HLR. Specifikt scenario på ordinarie tentor.
-- **Anafylaxi** — Akut anafylaxibehandling, adrenalin, uppföljning.
-- **PU (våld i nära relation)** — Screening, handläggning, anmälningsplikt.
-- **Onkologi (bröstknöl)** — Bröstundersökning, utredningsgång vid palpabel knöl.
-- **Sårbehandling/suturering** — Praktisk suturering, sårskadebedömning.
-- **Psykiatri** — Beroendeproblematik, psykiatrisk konsultation, sömnstörning.
-- **ÖNH (yrseldiagnostik)** — Nystagmusanalys, vestibulära tester, BPPV.
-- **ÖNH (trachealkanyl)** — Handhavande vid stopp i trachealkanyl.
-- **PU (professionell utveckling)** — Dödsbesked, patientkommunikation, ursäkt, intyg.
+- **Sårbehandling** — Suturering, sårskadebedömning (38%). Främst ordinarie tentor.
+- **Hypertoni** — Blodtrycksbedömning, behandlingsstart, komplicerande faktorer (38%).
+- **Onkologi** — Bröstknöl, utredningsgång, cancerbesked (38%).
+- **Reumatologi** — Synovitstatus, metotrexatinformation, ankyloserande spondylit (38%).
+- **HLR** — Vuxen-HLR, barn-HLR, drunkning (46%). Inte lika dominant som i OSCE I.
+- **Infektion** — Sepsishandläggning, antibiotikaval, infektionsanamnes (38%).
+- **Psykiatri** — Beroendeproblematik, suicidriskbedömning, sömnstörning (38%).
+- **Diabetes** — Diabeteshandläggning, insulinjustering, fotstatus (31%).
 
-### Tier C – Kommer sällan
-- Neurologi (kranialnervsstatus, nervstatus vid koma, tetrapares), Suicidriskbedömning, Primärjour, Lungcancer, Palliativ vård, ÖNH (akut epiglottit, näsblödning, främmande kropp), Diabetes, Pneumoni, KOL, Arytmi/FF, Sömnapné, Onkologi (strålbehandling), DVT, Hypotyreos.
+### Tier C – Kommer sällan (<25%)
+- Anestesi, Arytmi/FF, Demens, Allergi, Leverprover, Hjärtstatus, KOL, Buksmärta, Pneumoni, Lungcancer, Njursvikt, Geriatrik.
 
 ---
 
 ## Jämfört med OSCE I & II
 
-| Nytt i OSCE III | Mindre fokus |
-|-----------------|-------------|
-| Ögon (visus, synfält, spaltlampa, oftalmoskopi) | Blodtrycksmätning (praktisk) |
-| ÖNH (hörsel, yrsel, trachealkanyl, epiglottit) | Lymfkörtelundersökning |
-| Gynekologi (GU + KAD) | Spirometri/PEF |
-| Pediatrik (barn-HLR, anafylaxi, kramper) | Lungstatus/diktering |
-| Psykiatri (beroende, suicidrisk) | |
-| Neurologi (kranialnerver, koma) | |
-| Geriatrik | |
-| PU-stationer (dödsbesked, våld i nära relation) | |
-| Drunkning/HLR | |
-| Anafylaxi | |
+| Nytt / större i OSCE III | Mindre fokus jämfört med tidigare |
+|---------------------------|-----------------------------------|
+| Ögon (visus, synfält, spaltlampa, oftalmoskopi) — 100% | Blodtrycksmätning (praktisk) |
+| Urologi/KAD — 92% | Lymfkörtelundersökning |
+| Gynekologi (GU + KAD) — 92% | Spirometri/PEF |
+| Kirurgi (bred kirurgisk bedömning) — 77% | Lungstatus/diktering |
+| Radiologi (bildtolkning) — 69% | |
+| ÖNH (hörsel, yrsel, trachealkanyl) — 69% | |
+| Pediatrik (barn-HLR, anafylaxi, kramper) — 62% | |
+| Handkirurgi — 54% | |
+| Psykiatri (beroende, suicidrisk) — 38% | |
 
 ---
 
 ## Praktiska tips
 
-1. **Pediatrisk HLR** — Skiljer sig från vuxen-HLR. Öva 15:2 kompression:ventilation, korrekt handplacering, inblåsningsteknik för barn.
-2. **Gynekologisk undersökning** — Öva på GU-fantom. Kunna inspektion, bimanuell palpation. Oftast med spekulumundersökning.
-3. **KAD-insättning** — Steril teknik, korrekt kateterval, ballongfyllning. Extremt vanlig praktisk station.
-4. **Ögonundersökningar** — Öva spaltlampa (ögonmikroskopi), direkt oftalmoskopi, synfältstest (konfrontation och perimetri), visusprovning med Snellen-tavla. Varje ögonmoment har specifik teknik.
-5. **ÖNH** — Öva otomikroskopi, audiogramtolkning, nystagmusundersökning. Kunna handlägga akut epiglottit (luftväg först!).
-6. **Anafylaxi** — Kunna akut behandlingsalgoritm: adrenalin i.m. (dos och plats), syrgas, vätska, antihistamin, kortison.
-7. **Drunkningsolycka** — Specifikt scenario med hypotermi + HLR. Kunna modifierad HLR vid hypotermi.
-8. **PU-stationer** — Öva samtalsteknik: aktivt lyssnande, empati, tydlighet. Våld i nära relation: FREDA-screening.
+1. **Ögonundersökningar (100%)** — Den viktigaste stationsgruppen. Öva spaltlampa (ögonmikroskopi), direkt oftalmoskopi, synfältstest (konfrontation och perimetri), visusprovning med Snellen-tavla. Varje ögonmoment har specifik teknik. Räkna med minst 2 ögonstationer per tenta.
+2. **KAD-insättning (92%)** — Steril teknik, korrekt kateterval, ballongfyllning. Öva på fantom. Kan förekomma flera gånger per tenta (upp till 5 st). Kunna skillnaden mellan olika katetertyper.
+3. **Gynekologisk undersökning (92%)** — Öva på GU-fantom. Kunna inspektion, spekulumundersökning, bimanuell palpation. Ofta kombinerad med anamnes.
+4. **Kirurgisk bedömning (77%)** — Bred kirurgisk bedömning, traumaomhändertagande, postoperativ observation. ABCDE-principen.
+5. **Radiologi (69%)** — Systematisk bildtolkning. Ofta 2 fall per station. Vanligt med röntgen thorax, slätröntgen extremiteter, CT-huvud.
+6. **Bröstsmärta/EKG (69%)** — Systematisk EKG-tolkning. Kunna identifiera STEMI, NSTEMI, förmaksflimmer, AV-block.
+7. **ÖNH (69%)** — Öva otomikroskopi, audiogramtolkning, nystagmusundersökning. Kunna handlägga akut epiglottit (luftväg först!), trachealkanyl.
+8. **Pediatrik (62%)** — Skiljer sig från vuxen-HLR. Öva 15:2 kompression:ventilation, korrekt handplacering, inblåsningsteknik för barn. Kramphantering.
+9. **Handkirurgi (54%)** — Handstatus med motorik, sensibilitet och cirkulation. Kunna testa specifika nerver (medianus, ulnaris, radialis).
+10. **HLR (46%)** — Både vuxen-HLR och barn-HLR. Drunkningsscenario med hypotermi förekommer.
 
 ---
 
@@ -144,36 +138,30 @@ Dessa ämnen förekommer på 15–35% av tentorna.
 
 ### Ordinarie tentor
 
-**HT25:** Gynekologi (GU), Psykiatri (beroende), Anestesi (postop vätska), Handkirurgi, KAD, Gynekologi (GU), PU (våld i nära relation), Neurologi (huvudvärk/pupiller), Ögon (visus), ÖNH (otomikroskopi), Drunkning/HLR, Pediatrik
+**VT25 (Ord):** Urologi/KAD ×5, Kirurgi ×5, Sårbehandling ×3, Ortopedi ×3, Bröstsmärta/EKG ×3, Ögon ×2, Handkirurgi ×2, Diabetes ×2, Gynekologi, Onkologi, Synkope, Reumatologi, Dermatologi, Radiologi, Hypertoni, Andnöd/dyspné, Hjärtstatus, Trauma/AnIVA
 
-**VT25:** KAD, Psykiatri, Pediatrik (HLR barn) ×2, Gynekologi (GU), Ögon (visus), Ögon (oftalmoskopi), Reumatologi, ÖNH (epiglottit), Drunkning/HLR
+**HT25 (Ord):** Urologi/KAD ×3, Ögon ×2, Hypertoni ×2, Gynekologi, Kirurgi, Anestesi, Handkirurgi, Pediatrik, Sårbehandling, Bröstsmärta/EKG, ÖNH, Andnöd/dyspné, Hjärtstatus, HLR
 
-**HT24:** KAD, ÖNH (yrseldiagnostik), Neurologi (kranialnervsstatus), Onkologi (strålbehandling), Ögon (ögonmikroskopi), Primärjour, ÖNH (otomikroskopi), Pediatrik ×3, Radiologi, Gynekologi, Sårbehandling, Pneumoni, Anestesi, Drunkning/HLR, Synkope
+**VT24 (Ord):** Urologi/KAD ×3, Hypertoni ×3, Ögon ×3, Diabetes ×2, Gynekologi ×2, Pediatrik ×2, Ortopedi ×2, Andnöd/dyspné ×2, Radiologi ×2, Psykiatri, KOL, HLR, Onkologi, Dermatologi, Buksmärta, ÖNH, Reumatologi, Infektion, Kirurgi, Trauma/AnIVA, Stroke/TIA, Synkope, Anestesi, Geriatrik, Sårbehandling, Lungcancer, Demens
 
-**VT24:** KAD, Psykiatri (suicidrisk), Neurologi (stroke), Pediatrik (HLR barn), Gynekologi (GU), PU (intyg), Anafylaxi, Ögon (synfält), Ögon (oftalmoskopi), PU (våld), Kirurgi (skoter), AnIVA (trafikolycka), Suicidriskbedömning, Drunkning/HLR
+**HT24 (Ord):** Ögon ×4, Urologi/KAD ×3, Sårbehandling ×3, ÖNH ×3, Bröstsmärta/EKG ×3, Radiologi ×2, Pediatrik ×2, Gynekologi ×2, Kirurgi ×2, Primärjour ×2, Hypertoni, Pneumoni, Synkope, Onkologi, Dermatologi, Handkirurgi, Trauma/AnIVA
 
-**HT23:** KAD, Psykiatri (beroende), Neurologi (medvetslös), Klocktest (demens), Pediatrik (kramper), ÖNH (trachealkanyl), Ögon (pupillreflexer), Urologi (kateterlära), Ögon (visus), Pediatrik ×2, Synkope ×2, HLR, ÖNH (hörsel)
+**VT23 (Ord):** Pediatrik ×2, Kirurgi ×2, Synkope ×2, Ögon ×2, Urologi/KAD, Psykiatri, Trauma/AnIVA, HLR, Gynekologi, Primärjour, Ortopedi, Njursvikt
 
-**VT23:** Ögon (ögonmikroskopi), PU (sömnbesvär), ÖNH (trachealkanyl), Neurologi (tetrapares), ÖNH (främmande kropp i näsa), Ögon (glasögonrecept), Pediatrik ×3, Synkope ×2, Buksmärta, Kirurgi, Primärjour, Hypotyreos, Njursvikt, HLR
+**HT23 (Ord):** Pediatrik ×3, Urologi/KAD ×3, Demens, Synkope, Psykiatri, Kirurgi, ÖNH, Infektion, Radiologi, Gynekologi, Primärjour, Ögon, HLR
 
-**VT22:** Ögon (främmande kropp), PU (smärtsamtal), Anafylaxi, Viktnedgång, Onkologi (smärtlindring), Reumatologi, Arytmi/FF, Pediatrik, Kirurgi, Buksmärta, Synkope ×2, Gynekologi, HLR, ÖNH (hörsel)
+**VT22 (Ord):** Gynekologi ×2, Synkope ×2, Kirurgi ×2, Primärjour, Infektion, Urologi/KAD, Pediatrik, Ögon, Psykiatri, HLR, Leverprover, Bröstsmärta/EKG, Arytmi/FF, Handkirurgi, ÖNH, Trauma/AnIVA
 
-**HT22:** Synkope, Dermatologi, Ögon (ögonmikroskopi), Gynekologi ×2, ÖNH (yrseldiagnostik), ÖNH (hörsel), Pediatrik (anafylaxi), Ögon (synfält), Internmedicin (perifer cirkulation), Radiologi, Psykiatri, Arytmi/FF, Sömnapné, HLR
+**HT22 (Ord):** Urologi/KAD ×3, Pediatrik ×2, ÖNH ×2, Dermatologi ×2, Ögon ×2, Gynekologi, Primärjour, Arytmi/FF, Trauma/AnIVA, Allergi, Andnöd/dyspné, Bröstsmärta/EKG, Ortopedi
 
 ### Omexaminationer
 
-**HT25:** PU (konsultationsanalys), Onkologi (bröstknöl), Reumatologi, ÖNH (epiglottit), Neurologi (kranialnervsstatus), PU (ursäkt), Kirurgi (mjältruptur/pneumothorax), Ögon (visus), ÖNH (otomikroskopi), Drunkning/HLR ×2, Gynekologi, Anestesi, Handkirurgi, Stroke/TIA ×2, Andnöd, Dermatologi
+**HT25 (Om):** Andnöd/dyspné ×2, Radiologi ×2, Gynekologi, Hypertoni, Bröstsmärta/EKG, Lungstatus, Urologi/KAD, Reumatologi, Handkirurgi, Ögon, Kirurgi, Trauma/AnIVA
 
-**VT25 (6-min):** Radiologi, Hypertoni, Huvudvärk, Ögon (oftalmoskopi), Kardiologi (AV-block), PU (dödsbesked), AnIVA (fallolycka), Dermatologi, Allergi ×4, Diabetes ×2, Stroke/TIA, Andnöd, Bröstsmärta/EKG
+**VT23 (Om):** Dermatologi ×2, Radiologi ×2, Kirurgi ×2, Leverprover ×2, HLR, Ortopedi, Onkologi, Ögon, Urologi/KAD, Andnöd/dyspné, Bröstsmärta/EKG, KOL, Primärjour, Hjärtstatus, ÖNH, Infektion
 
-**HT24 (6-min):** Radiologi ×2, Onkologi (bröstknöl), Ögon (ögonmikroskopi), ÖNH (näsblödning), Dermatologi (genitala symptom), Geriatrik, Neurologi (koma), Stroke/TIA, Sårbehandling, Handkirurgi, Infektion, Synkope ×2, Bröstsmärta/EKG, Andnöd
+**HT23 (Om):** Radiologi ×2, Reumatologi ×2, Handkirurgi ×2, Gynekologi, Primärjour, Diabetes, DVT, Ögon, ÖNH, Andnöd/dyspné, Infektion, Ortopedi, Dermatologi, Pediatrik, Kirurgi, Allergi
 
-**VT24 (6-min):** Kirurgi (skoter), PU (våld), Ögon, AnIVA (trafikolycka), Dermatologi, ÖNH (hörsel), Orthopedi, Reumatologi, Allergi, Stroke/TIA ×2, Infektion ×2, Diabetes, Demens, Handkirurgi, Synkope, Bröstsmärta/EKG, Radiologi ×2
+**VT22 (Om):** Urologi/KAD ×3, Bröstsmärta/EKG ×2, Ögon ×2, Primärjour ×2, Radiologi ×2, Diabetes, Ortopedi, Allergi, Gynekologi, Pneumoni, Psykiatri, Reumatologi
 
-**HT23:** ÖNH (yrseldiagnostik), Neurologi (kranialnervsstatus), Ögon (synfält), Ögon (oftalmoskopi), Sårbehandling, Handkirurgi, Onkologi (bröstknöl), Reumatologi, Stroke/TIA ×2, Allergi, Infektion, Dermatologi, Radiologi, Bröstsmärta/EKG
-
-**VT23:** Geriatrik, Ögon (ögonmikroskopi), ÖNH (yrseldiagnostik), Reumatologi, Handkirurgi, Radiologi, Stroke/TIA, Hjärtstatus, KOL ×2, Ortopedi, Infektion ×2, Dermatologi ×3, Buksmärta ×2, Astma, Bröstsmärta/EKG, Andnöd, HLR
-
-**VT22:** Ögon, Dermatologi, Gynekologi, Stroke/TIA, Infektion, Ortopedi, Allergi, Astma, DVT, Läkemedelsbiverkan, Pneumoni, Diabetes, Radiologi, Bröstsmärta/EKG, Hjärtstatus, Anestesi
-
-**HT22:** Synkope ×2, Binjuresjukdom, Dermatologi, Ögon (ögonmikroskopi), Gynekologi, ÖNH (yrseldiagnostik), Infektion ×2, Handkirurgi, Ortopedi, PU (professionell utveckling), Neurologi (koma), ÖNH (hörsel), Pediatrik, Astma, Demens, Radiologi, Palliativ vård, Anafylaxi
+**HT22 (Om):** Primärjour ×3, Urologi/KAD ×2, Synkope ×2, Onkologi ×2, Ögon ×2, Radiologi ×2, Handkirurgi ×2, Anestesi, Dermatologi, Gynekologi, Sårbehandling, Ortopedi, ÖNH, Stroke/TIA, Bröstsmärta/EKG, Arytmi/FF, Demens

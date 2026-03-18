@@ -1108,7 +1108,7 @@ function renderHighYield(level) {
   backBtn.setAttribute('onclick', "navigate('/high-yield')");
 
   if (hyCache[level]) {
-    body.innerHTML = '<div class="hy-content">' + renderMarkdown(hyCache[level]) + '</div>' + HY_DISCLAIMER;
+    body.innerHTML = HY_DISCLAIMER + '<div class="hy-content">' + renderMarkdown(hyCache[level]) + '</div>' + HY_DISCLAIMER;
     return;
   }
 
@@ -1117,7 +1117,7 @@ function renderHighYield(level) {
     .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(md => {
       hyCache[level] = md;
-      body.innerHTML = '<div class="hy-content">' + renderMarkdown(md) + '</div>' + HY_DISCLAIMER;
+      body.innerHTML = HY_DISCLAIMER + '<div class="hy-content">' + renderMarkdown(md) + '</div>' + HY_DISCLAIMER;
     })
     .catch(() => {
       body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';

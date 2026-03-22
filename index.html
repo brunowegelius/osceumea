@@ -90,11 +90,8 @@
       color: var(--text); text-decoration: none;
       display: flex; align-items: center; gap: 10px; flex-shrink: 0;
     }
-    .nav-logo-mark {
-      width: 30px; height: 30px; border-radius: 7px;
-      background: var(--text); color: var(--accent-fg);
-      display: grid; place-items: center;
-      font-size: 13px; font-weight: 900; flex-shrink: 0;
+    .nav-logo-icon {
+      flex-shrink: 0;
     }
     .nav-spacer { flex: 1; }
     .nav-tabs { display: flex; gap: 2px; }
@@ -554,8 +551,8 @@
 <!-- ── NAV ──────────────────────────────────────────────── -->
 <nav>
   <a class="nav-logo" onclick="navigate('/')">
-    <div class="nav-logo-mark">O</div>
-    OSCE
+    <svg class="nav-logo-icon" width="22" height="22" viewBox="0 0 256 256" fill="currentColor"><path d="M 64 256 L 0 256 L 0 192 L 64 192 Z M 160 256 L 96 256 L 96 160 L 0 160 L 0 96 L 160 96 Z M 256 256 L 192 256 L 192 64 L 0 64 L 0 0 L 256 0 Z"/></svg>
+    OSCE UMU
   </a>
   <div class="nav-tabs">
     <button class="nav-tab" onclick="navigate('/osce/1')">OSCE I</button>

@@ -10,8 +10,6 @@
 
 OSCE II examinerar en betydligt bredare kunskapsbas än OSCE I. Utöver internmedicin tillkommer **kirurgi, ortopedi, dermatologi, handkirurgi, reumatologi, urologi, onkologi** och mer. Tentan speglar termin 8 och har tydlig kirurgisk/multispecialitetsprägel — kirurgi förekommer på samtliga 16 tentor.
 
-**Antal stationer per tenta:** ~12–18 kliniska + vilostationer. Omtentor med cirkelsystem kan ha färre stationer per cirkel.
-
 ---
 
 ## Frekvensanalys – Vanligaste stationerna

@@ -8,9 +8,7 @@
 
 ## Översikt
 
-OSCE III är den bredaste och mest multispecialistpräglade examinationen. Den spänner över hela läkarutbildningen och inkluderar stationer från **ögon, urologi, gynekologi, kirurgi, pediatrik, radiologi, ÖNH, ortopedi, dermatologi, reumatologi, onkologi, psykiatri** och internmedicin. Många stationer testar praktiska färdigheter (spaltlampa, oftalmoskopi, KAD-insättning, GU på fantom, HLR, suturering).
-
-**Antal stationer per tenta:** Varierar kraftigt (12–30+ stationer). Omtentor har ofta färre stationer.
+OSCE III är den bredaste och mest multispecialistpräglade examinationen. Den spänner över hela läkarutbildningen och inkluderar stationer från **ögon, urologi, gynekologi, kirurgi, pediatrik, radiologi, ÖNH, ortopedi, dermatologi, reumatologi, onkologi, psykiatri** och internmedicin. Många stationer testar praktiska färdigheter (spaltlampa, oftalmoskopi, KAD-insättning, GU på attrapp, HLR, suturering).
 
 ---
 
@@ -67,8 +65,8 @@ OSCE III är den bredaste och mest multispecialistpräglade examinationen. Den s
 Dessa ämnen förekommer på minst 12 av 13 tentor.
 
 - **Ögon** — Förekommer på varje enda tenta (100%). Inkluderar spaltlampa (ögonmikroskopi), visusprovning, synfältsundersökning, oftalmoskopi och pupillreflexer. Den absolut viktigaste stationsgruppen att behärska.
-- **Urologi/KAD** — KAD-insättning på fantom (92%). Steril teknik, kateterval, ballongfyllning. Ofta flera KAD-stationer per tenta (upp till 5 st på VT25).
-- **Gynekologi** — GU-undersökning på fantom (92%). Inspektion, spekulumundersökning, bimanuell palpation.
+- **Urologi/KAD** — KAD-insättning på attrapp (92%). Steril teknik, kateterval, ballongfyllning. Ofta flera KAD-stationer per tenta (upp till 5 st på VT25).
+- **Gynekologi** — GU-undersökning på attrapp (92%). Inspektion, spekulumundersökning, bimanuell palpation.
 
 ### Tier A – Kommer ofta (50–80%)
 Dessa ämnen förekommer på mer än hälften av tentorna.
@@ -122,8 +120,8 @@ Dessa ämnen förekommer på en tredjedel till hälften av tentorna.
 ## Praktiska tips
 
 1. **Ögonundersökningar (100%)** — Den viktigaste stationsgruppen. Öva spaltlampa (ögonmikroskopi), direkt oftalmoskopi, synfältstest (konfrontation och perimetri), visusprovning med Snellen-tavla. Varje ögonmoment har specifik teknik. Räkna med minst 2 ögonstationer per tenta.
-2. **KAD-insättning (92%)** — Steril teknik, korrekt kateterval, ballongfyllning. Öva på fantom. Kan förekomma flera gånger per tenta (upp till 5 st). Kunna skillnaden mellan olika katetertyper.
-3. **Gynekologisk undersökning (92%)** — Öva på GU-fantom. Kunna inspektion, spekulumundersökning, bimanuell palpation. Ofta kombinerad med anamnes.
+2. **KAD-insättning (92%)** — Steril teknik, korrekt kateterval, ballongfyllning. Öva på attrapp. Kan förekomma flera gånger per tenta (upp till 5 st). Kunna skillnaden mellan olika katetertyper.
+3. **Gynekologisk undersökning (92%)** — Öva på GU-attrapp. Kunna inspektion, spekulumundersökning, bimanuell palpation. Ofta kombinerad med anamnes.
 4. **Kirurgisk bedömning (77%)** — Bred kirurgisk bedömning, traumaomhändertagande, postoperativ observation. ABCDE-principen.
 5. **Radiologi (69%)** — Systematisk bildtolkning. Ofta 2 fall per station. Vanligt med röntgen thorax, slätröntgen extremiteter, CT-huvud.
 6. **Bröstsmärta/EKG (69%)** — Systematisk EKG-tolkning. Kunna identifiera STEMI, NSTEMI, förmaksflimmer, AV-block.

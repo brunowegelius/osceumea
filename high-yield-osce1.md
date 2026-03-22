@@ -10,8 +10,6 @@
 
 OSCE I examinerar kunskaper inom **internmedicin** med fokus på primärvård och akutmedicin. Varje tenta innehåller ca 10–14 kliniska stationer plus vilostationer. En station med **HLR** (hjärt-lungräddning) förekommer på varje tenta i datasetet.
 
-**Antal stationer per tenta:** ~10–14 kliniska + 2–4 vilostationer
-
 ---
 
 ## Frekvensanalys – Vanligaste stationerna

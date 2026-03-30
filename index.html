@@ -566,6 +566,7 @@
     <button class="nav-tab" onclick="navigate('/osce/3')">OSCE III</button>
     <button class="nav-tab" onclick="navigate('/high-yield')">High Yield</button>
     <button class="nav-tab" onclick="navigate('/abcde')">ABCDE</button>
+    <button class="nav-tab" onclick="navigate('/hlr')">HLR</button>
   </div>
   <div class="nav-spacer"></div>
   <div class="nav-actions">
@@ -694,6 +695,16 @@
     </div>
   </div>
 
+  <!-- HLR -->
+  <div class="page" id="page-hlr">
+    <div class="container">
+      <div class="list-header">
+        <h2>HLR</h2>
+      </div>
+      <div class="hy-content" id="hlr-body"></div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ── TIMER ──────────────────────────────────────────────── -->
@@ -792,6 +803,12 @@ function route() {
       if (t.textContent === 'ABCDE') t.classList.add('active');
     });
     renderABCDE();
+  } else if (hash === '/hlr') {
+    document.getElementById('page-hlr').classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(t => {
+      if (t.textContent === 'HLR') t.classList.add('active');
+    });
+    renderHLR();
   }
 }
 
@@ -1194,6 +1211,27 @@ function renderABCDE() {
     .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(md => {
       abcdeCache = md;
+      body.innerHTML = renderMarkdown(md);
+    })
+    .catch(() => {
+      body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';
+    });
+}
+
+// ── HLR ───────────────────────────────────────────────────
+let hlrCache = null;
+
+function renderHLR() {
+  const body = document.getElementById('hlr-body');
+  if (hlrCache) {
+    body.innerHTML = renderMarkdown(hlrCache);
+    return;
+  }
+  body.innerHTML = '<div class="search-hint">Laddar…</div>';
+  fetch('HLR.md')
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(md => {
+      hlrCache = md;
       body.innerHTML = renderMarkdown(md);
     })
     .catch(() => {

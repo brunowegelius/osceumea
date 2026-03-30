@@ -340,6 +340,20 @@
     }
     .disclaimer-card .disclaimer-links a:hover { opacity: .7; }
 
+    .disclaimer-card--warning {
+      background: #fff3cd; border: 2px solid #e6a817;
+    }
+    .disclaimer-card--warning p { color: #664d03; }
+    .disclaimer-card--warning a { color: #664d03; font-weight: 600; }
+    .disclaimer-card--warning a:hover { color: #332700; }
+    .disclaimer-card--warning strong { color: #4a3800; }
+    [data-theme="dark"] .disclaimer-card--warning {
+      background: #332700; border-color: #e6a817;
+    }
+    [data-theme="dark"] .disclaimer-card--warning p,
+    [data-theme="dark"] .disclaimer-card--warning a,
+    [data-theme="dark"] .disclaimer-card--warning strong { color: #ffd95c; }
+
     /* ── HIGH YIELD ─────────────────────────────────────────── */
     .hy-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
     .hy-card {
@@ -1221,10 +1235,16 @@ function renderABCDE() {
 // ── HLR ───────────────────────────────────────────────────
 let hlrCache = null;
 
+const HLR_WARNING = `<div class="disclaimer-card disclaimer-card--warning">
+  <p><strong>⚠ VIKTIGT:</strong> Instruktionerna på denna sida är anpassade för HLR på examinationsmomentet OSCE (Objective Structured Clinical Examination) och ska <strong>INTE</strong> tas som instruktioner för verklig HLR.</p>
+  <p>För instruktioner på hur man utför HLR, se HLR-rådets riktlinjer:</p>
+  <p><a href="https://www.hlr.nu/sa-har-gor-du-vuxen-hlr/" target="_blank" rel="noopener">Vuxen-HLR</a> · <a href="https://www.hlr.nu/sa-har-gor-du-barn-hlr/" target="_blank" rel="noopener">Barn-HLR</a> · <a href="https://www.hlr.nu/sa-har-gor-du-vid-luftvagsstopp/" target="_blank" rel="noopener">Luftvägsstopp</a></p>
+</div>`;
+
 function renderHLR() {
   const body = document.getElementById('hlr-body');
   if (hlrCache) {
-    body.innerHTML = renderMarkdown(hlrCache);
+    body.innerHTML = HLR_WARNING + renderMarkdown(hlrCache) + HLR_WARNING;
     return;
   }
   body.innerHTML = '<div class="search-hint">Laddar…</div>';
@@ -1232,7 +1252,7 @@ function renderHLR() {
     .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(md => {
       hlrCache = md;
-      body.innerHTML = renderMarkdown(md);
+      body.innerHTML = HLR_WARNING + renderMarkdown(md) + HLR_WARNING;
     })
     .catch(() => {
       body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';

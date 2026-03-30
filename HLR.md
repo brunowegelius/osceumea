@@ -4,7 +4,23 @@
 
 ## T6 & T8 — Vuxen-HLR
 
-På **T6 och T8** examineras vuxen-HLR. Nedan beskrivs steg-för-steg hur stationen genomförs.
+På **T6 och T8** examineras vuxen-HLR. Alla vuxen-HLR-stationer har samma format.
+
+### Dörrinformation
+
+*"Du kommer in på en vårdsal och hittar en till synes livlös person på golvet. Vad gör du? (Patienten är bekräftat COVID-negativ). Du har 6 minuter för att genomföra uppgiften."*
+
+### Bedömningsmall
+
+| Moment | Tillfredsställande | Ej |
+|---|---|---|
+| Kontroll av medvetande (ruska om, ropa till patient, ev. smärtstimuli) | 1 | 0 |
+| Kontroll av andning. Öppnar luftvägen och håller den öppen genom hela kontrollen | 1.5 | 0 |
+| Kontroll av andning: Titta bröstkorgsrörelse, lyssna andningsljud, känn efter luftflöde i totalt ca 10 sek | 1 | 0 |
+| Larmar (på larmknapp i rummet, alt ropar på hjälp) | 0.5 | 0 |
+| Utfört kompressioner med minst 80% godkända | 2.5 | 0 |
+| Utfört kompressioner med total medelhastighet 100–120/min | 1.5 | 0 |
+| Utfört inblåsningar med minst 80% godkända | 2 | 0 |
 
 ### Steg-för-steg
 

@@ -340,6 +340,16 @@
     }
     .disclaimer-card .disclaimer-links a:hover { opacity: .7; }
 
+    .info-card-blue {
+      background: #e8f0fe; border-radius: var(--r); padding: 24px; margin: 16px 0;
+    }
+    .info-card-blue h3 { margin-top: 0; }
+    .info-card-blue table { background: rgba(255,255,255,.5); }
+    [data-theme="dark"] .info-card-blue {
+      background: #1a2333;
+    }
+    [data-theme="dark"] .info-card-blue table { background: rgba(255,255,255,.05); }
+
     .disclaimer-card--warning {
       background: #fff3cd;
     }
@@ -1244,10 +1254,16 @@ const HLR_WARNING = `<div class="disclaimer-card disclaimer-card--warning" style
   </div>
 </div>`;
 
+function hlrPostProcess(html) {
+  return html
+    .replace(/<p>\{card-blue-start\}<\/p>/g, '<div class="info-card-blue">')
+    .replace(/<p>\{card-blue-end\}<\/p>/g, '</div>');
+}
+
 function renderHLR() {
   const body = document.getElementById('hlr-body');
   if (hlrCache) {
-    body.innerHTML = HLR_WARNING + renderMarkdown(hlrCache) + HLR_WARNING;
+    body.innerHTML = HLR_WARNING + hlrPostProcess(renderMarkdown(hlrCache)) + HLR_WARNING;
     return;
   }
   body.innerHTML = '<div class="search-hint">Laddar…</div>';
@@ -1255,7 +1271,7 @@ function renderHLR() {
     .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(md => {
       hlrCache = md;
-      body.innerHTML = HLR_WARNING + renderMarkdown(md) + HLR_WARNING;
+      body.innerHTML = HLR_WARNING + hlrPostProcess(renderMarkdown(md)) + HLR_WARNING;
     })
     .catch(() => {
       body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';

@@ -6,6 +6,8 @@
 
 På **T6 och T8** examineras vuxen-HLR. Alla vuxen-HLR-stationer har samma format.
 
+{card-blue-start}
+
 ### Dörrinformation
 
 *"Du kommer in på en vårdsal och hittar en till synes livlös person på golvet. Vad gör du? (Patienten är bekräftat COVID-negativ). Du har 6 minuter för att genomföra uppgiften."*
@@ -21,6 +23,8 @@ På **T6 och T8** examineras vuxen-HLR. Alla vuxen-HLR-stationer har samma forma
 | Utfört kompressioner med minst 80% godkända | 2.5 | 0 |
 | Utfört kompressioner med total medelhastighet 100–120/min | 1.5 | 0 |
 | Utfört inblåsningar med minst 80% godkända | 2 | 0 |
+
+{card-blue-end}
 
 ### Steg-för-steg
 
@@ -82,6 +86,8 @@ På **T11** kommer i princip alltid **barn-HLR**. Enstaka gånger har vuxen-HLR 
 
 > **OBS:** Det är mycket som händer på denna station. Tänk klart och bli inte stressad — det finns hög risk att man missar moment.
 
+{card-blue-start}
+
 ### Typiskt scenario (dörrinformation)
 
 *"Du kommer att möta ett fall. Detta fall är en drunkningsolycka hos en 10-månaders gammal pojke.*
@@ -102,6 +108,8 @@ På **T11** kommer i princip alltid **barn-HLR**. Enstaka gånger har vuxen-HLR 
 | **8. Rätt ordning.** (ok även om man efter punkt 3, eller tidigare, kontrollerar att personen har larmat 112 eller om någon inblåsning inte har varit effektiv, om studenten har försökt justera) | 0.5 | - | 0 |
 | **9. Framstupa sidoläge.** *Instruera nu att barnet kräks och studenten ska då* lägga barnet i framstupa sidoläge och därefter kontrollera andningen, lyssna känna och titta. | 1 | - | 0 |
 | **10. Rapport.** *Instruera studenten att ambulansen kommer, och studenten ska* ge korrekt rapport. (Detta barn hittades i vattnet, andades och var vid medvetande men misstanke om främmande kropp. Barnet blev sedan livlöst och slutade andas. HLR påbörjades och efter 3 omgångar, kräktes barnet och har nu tillfredsställande andning) | 1 | - | 0 |
+
+{card-blue-end}
 
 ### Spädbarn (0–1 år)
 

@@ -331,8 +331,14 @@
       padding: 18px 24px;
     }
     .disclaimer-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-    .disclaimer-card a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
-    .disclaimer-card a:hover { color: var(--text); }
+    .disclaimer-card .disclaimer-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .disclaimer-card .disclaimer-links a {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 12px; font-weight: 500; color: var(--text);
+      background: var(--surface-2); border-radius: var(--r-full);
+      padding: 6px 14px; text-decoration: none; transition: opacity var(--t);
+    }
+    .disclaimer-card .disclaimer-links a:hover { opacity: .7; }
 
     /* ── HIGH YIELD ─────────────────────────────────────────── */
     .hy-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
@@ -610,7 +616,12 @@
       <div class="pill-label">Examinationsnivåer</div>
       <div class="osce-grid" id="osce-cards"></div>
       <div class="disclaimer-card">
-        <p>Denna sida är inte officiellt affilierad med Umeå Universitet. Administratören ansvarar inte för eventuellt inaktuella rekommendationer i OSCE-materialet. Hittar du fel? <a href="https://docs.google.com/forms/d/e/1FAIpQLScYm4bixL2TUSD__XNeNf2FpTPMLZpPivuZIZ4yclCK-AuyLw/viewform?usp=publish-editor" target="_blank" rel="noopener">Rapportera via formuläret</a>. Önska funktioner? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdj2mClhQvN-3LUaYkDoYWut2YvMUEiEsU-aL1xCxiiApolRA/viewform?usp=publish-editor" target="_blank" rel="noopener">Skicka förslag</a>. Frågor? <a href="mailto:wegeliusbruno@gmail.com">Kontakta administratören</a>.</p>
+        <p>Denna sida är inte officiellt affilierad med Umeå Universitet. Administratören ansvarar inte för eventuellt inaktuella rekommendationer i OSCE-materialet.</p>
+        <div class="disclaimer-links">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScYm4bixL2TUSD__XNeNf2FpTPMLZpPivuZIZ4yclCK-AuyLw/viewform?usp=publish-editor" target="_blank" rel="noopener">Rapportera fel</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdj2mClhQvN-3LUaYkDoYWut2YvMUEiEsU-aL1xCxiiApolRA/viewform?usp=publish-editor" target="_blank" rel="noopener">Önska funktion</a>
+          <a href="mailto:wegeliusbruno@gmail.com">Kontakta admin</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1015,7 +1026,12 @@ const HY_TITLES = { 1: 'OSCE I (T6)', 2: 'OSCE II (T8)', 3: 'OSCE III (T11)' };
 const HY_SUBS = { 1: 'Termin 6 — Internmedicin', 2: 'Termin 8 — Multispecialitet', 3: 'Termin 11 — Samtliga specialiteter' };
 
 const HY_DISCLAIMER = `<div class="disclaimer-card" style="margin-top:32px">
-  <p>Dessa high-yield-sammanfattningar är framtagna med hjälp av AI (Anthropics Claude, modell Opus 4.6, mars 2026) baserat på automatisk textextraktion från examinationernas PDF-filer. Fel kan förekomma. Hittar du fel? <a href="https://docs.google.com/forms/d/e/1FAIpQLScYm4bixL2TUSD__XNeNf2FpTPMLZpPivuZIZ4yclCK-AuyLw/viewform?usp=publish-editor" target="_blank" rel="noopener">Rapportera via formuläret</a>. Önska funktioner? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdj2mClhQvN-3LUaYkDoYWut2YvMUEiEsU-aL1xCxiiApolRA/viewform?usp=publish-editor" target="_blank" rel="noopener">Skicka förslag</a>. Frågor? <a href="mailto:wegeliusbruno@gmail.com">Kontakta administratören</a>.</p>
+  <p>Dessa high-yield-sammanfattningar är framtagna med hjälp av AI (Anthropics Claude, modell Opus 4.6, mars 2026) baserat på automatisk textextraktion från examinationernas PDF-filer. Fel kan förekomma.</p>
+  <div class="disclaimer-links">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScYm4bixL2TUSD__XNeNf2FpTPMLZpPivuZIZ4yclCK-AuyLw/viewform?usp=publish-editor" target="_blank" rel="noopener">Rapportera fel</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdj2mClhQvN-3LUaYkDoYWut2YvMUEiEsU-aL1xCxiiApolRA/viewform?usp=publish-editor" target="_blank" rel="noopener">Önska funktion</a>
+    <a href="mailto:wegeliusbruno@gmail.com">Kontakta admin</a>
+  </div>
 </div>`;
 
 function renderHighYield(level) {

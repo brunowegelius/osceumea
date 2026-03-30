@@ -1,6 +1,6 @@
 # High-Yield Guide: OSCE II (T8)
 
-> Denna sammanfattning är framtagen med hjälp av AI (Anthropics Claude, modell Opus 4.6, mars 2026) baserat på automatisk textextraktion från examinationernas PDF-filer. Fel kan förekomma. Vid hittade fel, meddela wegeliusbruno@gmail.com.
+> Denna sammanfattning är framtagen med hjälp av AI (Anthropics Claude, modell Opus 4.6, mars 2026) baserat på automatisk textextraktion från examinationernas PDF-filer. Fel kan förekomma. Hittar du fel? [Rapportera via formuläret](https://docs.google.com/forms/d/e/1FAIpQLScYm4bixL2TUSD__XNeNf2FpTPMLZpPivuZIZ4yclCK-AuyLw/viewform?usp=publish-editor). Frågor? [Kontakta administratören](mailto:wegeliusbruno@gmail.com).
 >
 > **Dataunderlag:** 8 ordinarie + 8 omexaminationer (VT22–HT25).
 

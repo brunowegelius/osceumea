@@ -2,7 +2,7 @@
 
 ---
 
-## T6 & T8 — Vuxen-HLR
+## VUXEN-HLR — T6 och T8
 
 På **T6 och T8** examineras vuxen-HLR. Alla vuxen-HLR-stationer har samma format.
 
@@ -76,7 +76,7 @@ Om bedömaren anser att hjärt-lungräddningen varit **överlag för bristfälli
 
 ---
 
-## T11 — Barn-HLR
+## BARN-HLR — T11
 
 På **T11** kommer i princip alltid **barn-HLR**. Enstaka gånger har vuxen-HLR förekommit vid om-OSCE, men man bör utgå från att det är barn-HLR.
 

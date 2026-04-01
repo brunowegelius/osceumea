@@ -12,6 +12,14 @@
   <meta property="og:type" content="website">
   <title>OSCE Studieportal — Umeå Universitet</title>
   <style>
+    @font-face {
+      font-family: 'Monigue';
+      src: url('assets/Monigue.woff2') format('woff2');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
     /* ── RESET ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -51,7 +59,7 @@
       --surface:   #141414;
       --surface-2: #202020;
       --text:      #ffffff;
-      --muted:     #666666;
+      --muted:     #8a8a8a;
       --accent:    #ffffff;
       --accent-fg: #0a0a0a;
       --done-bg:   #0f2800;
@@ -410,7 +418,8 @@
     }
     .hy-content blockquote em { font-style: italic; }
     .hy-content hr { border: none; border-top: 1px solid var(--surface-2); margin: 28px 0; }
-    .hy-content table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+    .hy-content table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 0; }
     .hy-content th { text-align: left; font-weight: 700; padding: 8px 10px; background: var(--surface-2); }
     .hy-content td { padding: 7px 10px; border-bottom: 1px solid var(--surface-2); }
     .hy-content th:first-child, .hy-content td:first-child { border-radius: var(--r-sm) 0 0 var(--r-sm); }
@@ -609,10 +618,10 @@
   </div>
   <div class="nav-spacer"></div>
   <div class="nav-actions">
-    <button class="nav-icon-btn" onclick="openSearch()" title="Sök">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <button class="nav-icon-btn" onclick="openSearch()" title="Sök" aria-label="Öppna sökfunktion">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     </button>
-    <button class="nav-icon-btn" id="darkmode-btn" onclick="toggleDarkMode()" title="Växla tema">
+    <button class="nav-icon-btn" id="darkmode-btn" onclick="toggleDarkMode()" title="Växla tema" aria-label="Växla mörkt/ljust tema">
       <svg id="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
       <svg id="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
     </button>
@@ -637,7 +646,7 @@
 
 
 <!-- ── APP ───────────────────────────────────────────────── -->
-<div id="app">
+<main id="app">
 
   <!-- HOME -->
   <div class="page" id="page-home">
@@ -744,7 +753,9 @@
     </div>
   </div>
 
-</div>
+</main>
+
+<noscript><p style="text-align:center;padding:40px;color:#888">JavaScript krävs för att använda OSCE Studieportal.</p></noscript>
 
 <!-- ── TIMER ──────────────────────────────────────────────── -->
 <div class="timer-widget" id="timer-widget">
@@ -795,6 +806,8 @@ async function init() {
   } catch (e) {
     console.error('Failed to load exams.json', e);
     allExams = [];
+    document.getElementById('osce-cards').innerHTML =
+      '<div class="search-hint" style="grid-column:1/-1">Kunde inte ladda examinationer. Försök ladda om sidan.</div>';
   }
   route();
   window.addEventListener('hashchange', route);
@@ -1126,13 +1139,16 @@ function renderHighYield(level) {
   }
 
   body.innerHTML = '<div class="search-hint">Laddar…</div>';
+  const expectedHash = window.location.hash;
   fetch(HY_FILES[level])
     .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(md => {
+      if (window.location.hash !== expectedHash) return;
       hyCache[level] = md;
       body.innerHTML = '<div class="hy-content">' + renderMarkdown(md) + '</div>' + HY_DISCLAIMER;
     })
     .catch(() => {
+      if (window.location.hash !== expectedHash) return;
       body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';
     });
 }
@@ -1159,7 +1175,7 @@ function renderMarkdown(md) {
 
     // Close table if line doesn't start with |
     if (inTable && !line.startsWith('|')) {
-      html += '</tbody></table>';
+      html += '</tbody></table></div>';
       inTable = false;
     }
 
@@ -1191,7 +1207,7 @@ function renderMarkdown(md) {
       if (/^\|[\s-:|]+\|$/.test(line.trim())) continue;
       const cells = line.split('|').slice(1, -1).map(c => c.trim());
       if (!inTable) {
-        html += '<table><thead><tr>' + cells.map(c => '<th>' + inlineFormat(c) + '</th>').join('') + '</tr></thead><tbody>';
+        html += '<div class="table-scroll"><table><thead><tr>' + cells.map(c => '<th>' + inlineFormat(c) + '</th>').join('') + '</tr></thead><tbody>';
         inTable = true;
       } else {
         html += '<tr>' + cells.map(c => '<td>' + inlineFormat(c) + '</td>').join('') + '</tr>';
@@ -1230,7 +1246,7 @@ function renderMarkdown(md) {
 
   if (inBlockquote) html += '</blockquote>';
   if (inList) html += listType === 'ul' ? '</ul>' : '</ol>';
-  if (inTable) html += '</tbody></table>';
+  if (inTable) html += '</tbody></table></div>';
 
   return html;
 }
@@ -1266,13 +1282,16 @@ function renderABCDE() {
     return;
   }
   body.innerHTML = '<div class="search-hint">Laddar…</div>';
+  const expectedHash = window.location.hash;
   fetch('ABCDE-sammanstallning.md')
     .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(md => {
+      if (window.location.hash !== expectedHash) return;
       abcdeCache = md;
       body.innerHTML = renderMarkdown(md);
     })
     .catch(() => {
+      if (window.location.hash !== expectedHash) return;
       body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';
     });
 }
@@ -1302,13 +1321,16 @@ function renderHLR() {
     return;
   }
   body.innerHTML = '<div class="search-hint">Laddar…</div>';
+  const expectedHash = window.location.hash;
   fetch('HLR.md')
     .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(md => {
+      if (window.location.hash !== expectedHash) return;
       hlrCache = md;
       body.innerHTML = HLR_WARNING + hlrPostProcess(renderMarkdown(md)) + HLR_WARNING;
     })
     .catch(() => {
+      if (window.location.hash !== expectedHash) return;
       body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';
     });
 }
@@ -1440,6 +1462,7 @@ function getExcerpt(text, query, len = 180) {
 }
 
 function highlight(text, query) {
+  text = escapeHtml(text);
   query.trim().split(/\s+/).filter(Boolean).forEach(term => {
     text = text.replace(new RegExp(`(${escapeRe(term)})`, 'gi'), '<mark>$1</mark>');
   });

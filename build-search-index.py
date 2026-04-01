@@ -44,11 +44,13 @@ def parse_filename(name: str) -> dict | None:
     doctype = parts[3]
 
     cirkel = ''
+    is_6min = False
     for p in parts[4:]:
         if p.startswith('cirkel'):
             cirkel = p
         elif p == '6min':
             doctype = 'kombi'
+            is_6min = True
 
     return {
         'level': level,
@@ -56,6 +58,7 @@ def parse_filename(name: str) -> dict | None:
         'semester': semester,
         'doctype': doctype,
         'cirkel': cirkel,
+        '_6min': is_6min,
     }
 
 

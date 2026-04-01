@@ -483,6 +483,13 @@
     }
     .timer-fab:hover { transform: scale(1.06); }
     .timer-fab.running { background: var(--timer-color, #2454e8); }
+    .timer-fab-icon { display: block; }
+    .timer-fab-time {
+      display: none; font-size: 13px; font-weight: 800;
+      font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+    }
+    .timer-fab.has-time .timer-fab-icon { display: none; }
+    .timer-fab.has-time .timer-fab-time { display: block; }
     .timer-panel {
       display: none; background: var(--surface); border-radius: var(--r);
       width: 280px; overflow: hidden; margin-bottom: 12px;
@@ -802,7 +809,8 @@
     </div>
   </div>
   <button class="timer-fab" id="timer-fab" onclick="toggleTimerPanel()" title="Timer">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <svg class="timer-fab-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span class="timer-fab-time" id="timer-fab-time"></span>
   </button>
 </div>
 
@@ -1592,7 +1600,15 @@ function updateTimerUI() {
   if (phaseName) phaseName.textContent = cfg.label;
 
   const fab = document.getElementById('timer-fab');
-  if (fab) { fab.classList.toggle('running', running); fab.style.setProperty('--timer-color', color); }
+  const fabTime = document.getElementById('timer-fab-time');
+  const showTime = running && !timerOpen;
+  if (fab) {
+    fab.classList.toggle('running', running);
+    fab.classList.toggle('has-time', showTime);
+    const fabColor = (phase === 'station' && remaining <= 120) ? '#dc2626' : color;
+    fab.style.setProperty('--timer-color', running ? fabColor : color);
+  }
+  if (fabTime) fabTime.textContent = timeStr;
 
   const sBtn = document.getElementById('tbtn-start');
   const pBtn = document.getElementById('tbtn-pause');
@@ -1610,7 +1626,7 @@ function updateTimerUI() {
 function toggleTimerPanel() {
   timerOpen = !timerOpen;
   document.getElementById('timer-panel').classList.toggle('open', timerOpen);
-  if (timerOpen) updateTimerUI();
+  updateTimerUI();
 }
 
 // ── START ─────────────────────────────────────────────────

@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Studieportal för OSCE-examinationer på Läkarprogrammet, Umeå Universitet. Stationer, bedömningsmallar och high-yield-sammanfattningar.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="OSCE Studieportal — Umeå Universitet">
+  <meta property="og:description" content="Stationer, bedömningsmallar och high-yield-sammanfattningar för OSCE på Läkarprogrammet.">
+  <meta property="og:type" content="website">
   <title>OSCE Studieportal — Umeå Universitet</title>
   <style>
     /* ── RESET ─────────────────────────────────────────────── */
@@ -973,14 +980,20 @@ const EYE_OFF = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" str
 const EYE_ON  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
 let bedBlurred = false;
 
+function safePdfSrc(src) {
+  if (/^exams\/[a-zA-Z0-9_\-\/]+\.pdf$/.test(src)) return src;
+  return '';
+}
+
 function pdfPane(label, src, title, blurId) {
-  const openBtn = `<a class="pane-icon-btn" href="${src}" target="_blank" title="Öppna i nytt fönster">↗</a>`;
+  const safeSrc = safePdfSrc(src);
+  const openBtn = `<a class="pane-icon-btn" href="${escapeHtml(safeSrc)}" target="_blank" rel="noopener" title="Öppna i nytt fönster">↗</a>`;
   const blurBtn = blurId
     ? `<button class="pane-blur-btn" id="blur-btn-${blurId}" onclick="toggleBedBlur('${blurId}')" title="Dölj/visa">${EYE_OFF}</button>`
     : '';
   return `<div class="pdf-pane">
     <div class="pdf-pane-label"><span class="pane-label-text">${label}</span>${openBtn}${blurBtn}</div>
-    <div class="pdf-scroll-wrap" id="wrap-${blurId || 'single'}"><iframe src="${src}" data-src="${src}" title="${title}"></iframe></div>
+    <div class="pdf-scroll-wrap" id="wrap-${blurId || 'single'}"><iframe src="${escapeHtml(safeSrc)}" data-src="${escapeHtml(safeSrc)}" title="${escapeHtml(title)}"></iframe></div>
   </div>`;
 }
 
@@ -1014,7 +1027,8 @@ function renderPDFPanes(files, keys, container) {
     if (pendingPDFJump) {
       const j = pendingPDFJump;
       pendingPDFJump = null;
-      window.open(j.file + '#page=' + j.page, '_blank');
+      const safeFile = safePdfSrc(j.file);
+      if (safeFile) window.open(safeFile + '#page=' + (Number(j.page) || 1), '_blank', 'noopener');
     }
     container.innerHTML = `<div class="mobile-pdf-open">${btns}</div>`;
     return;
@@ -1223,12 +1237,25 @@ function renderMarkdown(md) {
   return html;
 }
 
+function sanitizeHref(url) {
+  const u = url.trim().toLowerCase();
+  if (u.startsWith('javascript:') || u.startsWith('data:') || u.startsWith('vbscript:')) return '';
+  return url;
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 function inlineFormat(text) {
   return text
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/`(.+?)`/g, '<code>$1</code>')
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
+    .replace(/\[(.+?)\]\((.+?)\)/g, (_, label, href) => {
+      const safe = sanitizeHref(href);
+      return safe ? '<a href="' + escapeHtml(safe) + '">' + label + '</a>' : label;
+    });
 }
 
 // ── ABCDE ─────────────────────────────────────────────────
@@ -1313,6 +1340,12 @@ function closeSearch() {
   document.getElementById('search-overlay').classList.remove('open');
 }
 
+document.getElementById('search-body').addEventListener('click', function(e) {
+  const card = e.target.closest('.result-card');
+  if (!card) return;
+  jumpToExam(card.dataset.exam, card.dataset.file, Number(card.dataset.page));
+});
+
 async function loadSearchIndex() {
   searchStatus = 'loading';
   document.getElementById('search-body').innerHTML = '<div class="search-hint">Laddar sökindex…</div>';
@@ -1371,7 +1404,7 @@ function doSearch(q) {
     const typeLabel = m.type === 'ord' ? 'Ordinarie' : 'Omexamination';
     const fileLabel = m.fileType === 'dorr' ? 'dörrinfo' : m.fileType === 'bed' ? 'bedömning' : 'PDF';
     const excerpt   = highlight(getExcerpt(m.text, q), q);
-    return `<div class="result-card" onclick="jumpToExam('${m.examId}','${m.file}',${m.page})">
+    return `<div class="result-card" data-exam="${escapeHtml(m.examId)}" data-file="${escapeHtml(m.file)}" data-page="${Number(m.page) || 1}">
       <div class="result-header">
         <span class="result-exam-title">OSCE ${lvl} — ${m.semester}</span>
         <span class="type-badge ${m.type}">${typeLabel}</span>

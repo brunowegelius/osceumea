@@ -606,9 +606,10 @@
       .exam-bar-title { font-size: 13px; }
       .circle-bar { padding: 8px 16px; }
 
-      /* PDF — correct height for 56px nav */
-      .pdf-container { height: calc(100vh - 56px - 46px); }
+      /* PDF — correct height for mobile nav, stack panes vertically */
+      .pdf-container { height: calc(100vh - 56px - 46px); flex-direction: column; }
       .pdf-container.has-circles { height: calc(100vh - 56px - 46px - 38px); }
+      .pdf-pane + .pdf-pane { border-left: none; border-top: 1px solid var(--surface-2); }
 
       /* Search */
       .search-header { padding: 12px 16px; }
@@ -1086,22 +1087,42 @@ function renderPDFPanes(files, keys, container) {
   const bk = keys.find(k => k === 'bed'  || k.startsWith('bed'));
 
   if (mobile) {
-    let btns = '';
-    if (keys.includes('kombi')) {
-      btns = mobilePDFBtn('Öppna PDF', files.kombi);
-    } else {
-      if (dk) btns += mobilePDFBtn('Dörrinformation', files[dk]);
-      if (bk) btns += mobilePDFBtn('Bedömningsunderlag', files[bk]);
-      if (!dk && !bk && keys.length === 1) btns = mobilePDFBtn('Öppna PDF', files[keys[0]]);
+    // Use Google Docs Viewer to render PDFs inline on iOS/mobile
+    const BASE_URL = 'https://osceumu.se/';
+    function mobilePane(label, src, title, blurId) {
+      const safeSrc = safePdfSrc(src);
+      const fullUrl = BASE_URL + safeSrc;
+      const viewerUrl = 'https://docs.google.com/gview?embedded=true&url=' + encodeURIComponent(fullUrl);
+      const openBtn = `<a class="pane-icon-btn" href="${escapeHtml(safeSrc)}" target="_blank" rel="noopener" title="Öppna i nytt fönster">↗</a>`;
+      const blurBtn = blurId
+        ? `<button class="pane-blur-btn" id="blur-btn-${blurId}" onclick="toggleBedBlur('${blurId}')" title="Dölj/visa">${EYE_OFF}</button>`
+        : '';
+      return `<div class="pdf-pane">
+        <div class="pdf-pane-label"><span class="pane-label-text">${label}</span>${openBtn}${blurBtn}</div>
+        <div class="pdf-scroll-wrap" id="wrap-${blurId || 'single'}"><iframe src="${escapeHtml(viewerUrl)}" data-src="${escapeHtml(safeSrc)}" title="${escapeHtml(title)}" style="width:100%;height:100%;border:none"></iframe></div>
+      </div>`;
     }
-    // If search jump pending on mobile, open the target PDF directly in new tab at the right page
+
+    if (keys.includes('kombi')) {
+      container.innerHTML = mobilePane('Dörrinstruktioner &amp; Bedömningsunderlag', files.kombi, 'Kombinerat dokument');
+    } else if (dk || bk) {
+      let html = '';
+      if (dk) html += mobilePane('Dörrinformation', files[dk], 'Dörrinformation');
+      if (bk) html += mobilePane('Bedömningsunderlag', files[bk], 'Bedömningsunderlag', 'bed');
+      container.innerHTML = html;
+    } else if (keys.length) {
+      container.innerHTML = mobilePane('PDF', files[keys[0]], 'PDF');
+    } else {
+      container.innerHTML = '<div style="padding:40px;color:var(--muted)">Inga filer.</div>';
+    }
+
+    // Handle pending search jump on mobile
     if (pendingPDFJump) {
       const j = pendingPDFJump;
       pendingPDFJump = null;
       const safeFile = safePdfSrc(j.file);
       if (safeFile) window.open(safeFile + '#page=' + (Number(j.page) || 1), '_blank', 'noopener');
     }
-    container.innerHTML = `<div class="mobile-pdf-open">${btns}</div>`;
     return;
   }
 

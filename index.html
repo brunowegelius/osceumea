@@ -644,6 +644,9 @@
       <svg id="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
       <svg id="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
     </button>
+    <button class="nav-icon-btn" onclick="navigate('/om')" title="Om sidan" aria-label="Om sidan">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </button>
   </div>
 </nav>
 
@@ -782,6 +785,16 @@
     </div>
   </div>
 
+  <!-- OM -->
+  <div class="page" id="page-om">
+    <div class="container">
+      <div class="list-header">
+        <h2>Om OSCE Studieportal</h2>
+      </div>
+      <div class="hy-content" id="om-body"></div>
+    </div>
+  </div>
+
 </main>
 
 <noscript><p style="text-align:center;padding:40px;color:#888">JavaScript krävs för att använda OSCE Studieportal.</p></noscript>
@@ -903,6 +916,9 @@ function route() {
       if (t.textContent === 'Anamnes') t.classList.add('active');
     });
     renderAnamnes();
+  } else if (hash === '/om') {
+    document.getElementById('page-om').classList.add('active');
+    renderOm();
   }
 }
 
@@ -1403,6 +1419,103 @@ function renderAnamnes() {
       if (window.location.hash !== expectedHash) return;
       body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';
     });
+}
+
+// ── OM ────────────────────────────────────────────────────
+function renderOm() {
+  const body = document.getElementById('om-body');
+  body.innerHTML = `
+<pre style="font-size:4px;line-height:1.1;letter-spacing:0;color:var(--muted);text-align:center;overflow:hidden;margin:0 auto 24px;max-width:360px;user-select:none">
+                                         @@
+                                        @%@@@@)
+                                        @@@@@@@ @
+                                                 @@)
+                                                    @@
+                                                       #    .. @@@{@
+                                                      @ @@     @@# @@
+                                                 @%[@            @@@
+                                               [.      @{
+                                            @[@         @
+                                          [@           =
+                                       *}@            @@
+                                     (@[              >
+                                  [%@                *@
+                                }]@                  @
+                               {@                  {@
+                           @@@=                   -@
+                         @#{@@                   .@
+                        @[%@@                   =@
+                      @%%@@                    :@
+                     @{>@>                  @@@@
+                     @<>@                 @@#@@
+                     @<({@               @#@@@
+                      @% %%@@         @@@#<@
+                        #]>>#@@%%%%@@{#~@@@
+                       @[)])}#@@@@@@@@@@
+                      @}>][@@>
+                     @]<]@@
+                    @[#@@
+                   @%@@
+                 #%@@@
+               @@@@@                            @@@@@@%@.
+              @}#@                         @@@@@@@@@@@@@@@%%@
+            @{@@@                        @%@[@@@]       @@@@@}@@
+           %}#@                        @%@@@                @@{)@
+         @{%@@                        @#@@                    @@<@
+        %}%@                         @{@@                      @%(@
+       @{@@                         @}@@                        @.@
+      @{@@                         @}@@                         #*@
+     @]@@                         @}}@                         @[@@
+    @{*@                          #<@                         @{%@
+    @^]@                         @{@@                        @}@@.
+    @^(@                        %{@@                        @{@@
+    @-(@                       %{@@                       @%@@@
+     @ #@                    @%#%@                      @%%#@
+      @ +@                 @#{~@@                     @%%%@@
+       @@{-%@@          @@#@}@@                     @%%%@@
+         @@@@#%@@@@@@@@@@@@@                      @#%%@@
+             @@@@@@@@@@@                         @{%@@
+                                               @%%@@
+                                             @#%%@#
+                                            @{[#@
+                                   @@@@@@@@@}]#@
+                                *@@     ^}  @*(
+                                @ }-. # @    >@
+                               @@#  )@= *@#~ {@
+                              ^ @)@@      *}@@@@
+                             @^   [@@@@@@@@@    @
+                             @{=@@@         @@#*@
+                              @    %@@@ ~@  --+ @
+                               @@@ @  % .<   @@.
+                                  @@@@((>@@@@
+</pre>
+<p>Hej!</p>
+<p>Denna hemsida skapades och administreras av mig, <strong>Bruno Wegelius</strong>. I skrivande stund (april 2026) går jag termin 11 på Läkarprogrammet vid Umeå Universitet, placerad i Sundsvall. Jag har arbetat som underläkare på kirurgkliniken i Sundsvall samt som amanuens på Kliniskt Träningscentrum vid Sundsvalls Sjukhus.</p>
+
+<h2>Tanken bakom sidan</h2>
+<p>OSCE Studieportal är tänkt att vara ett tillförlitligt och smidigt stöd i OSCE-plugget. Här har jag samlat samtliga tidigare OSCE-examinationer som tillhandahålls av Umeå Universitet i PDF-format och strukturerat dem på ett sätt som gör det enkelt att navigera de olika examinationerna.</p>
+<p>För att underlätta under stressiga OSCE-tider finns även en integrerad OSCE-timer för självstudier (nere i högra hörnet), samt en hel del matnyttig information om sådant som kan vara relevant inför OSCE — HLR, ABCDE, anamnestagning och rapportering.</p>
+
+<h2>High Yield</h2>
+<p>High-yield-sektionen innehåller AI-genererade analyser av samtliga tidigare OSCE-examinationer, med sammanfattningar kring exempelvis frekvens av olika typer av stationer. Notera att dessa analyser enbart ska användas som ett löst studiestöd — AI kan vara ett trubbigt verktyg i denna kontext och fel kan förekomma. All information som sammanfattats med hjälp av AI har en tydlig disclaimer om detta. Eventuella fel som uppmärksammas bör rapporteras snarast.</p>
+
+<h2>Tech stack</h2>
+<p>Sidan är byggd som en statisk single-page application utan ramverk — all HTML, CSS och JavaScript ligger i en enda <code>index.html</code>-fil. Innehållssidor (HLR, ABCDE, Anamnes) laddas som markdown-filer via <code>fetch</code> och renderas med en minimal inbyggd markdown-parser. PDF-examinationer bäddas in via iframes på desktop och öppnas i nytt fönster på iOS.</p>
+<p>Data om examinationer lagras i <code>exams.json</code> och fulltextsök drivs av ett förbyggt sökindex (<code>search-index.json</code>) genererat med PyMuPDF. Progressmarkering sparas lokalt i webbläsarens <code>localStorage</code>.</p>
+<p>Sidan hostas via <strong>GitHub Pages</strong> på domänen <strong>osceumu.se</strong> och har skapats med hjälp av <strong>Claude Code</strong> i VS Code på macOS, i huvudsak med Anthropics modell <strong>Opus 4.6</strong>.</p>
+
+<h2>Rapportera fel eller önska funktioner</h2>
+<p>Om du hittar fel på sidan eller vill önska funktioner gör du det smidigast via knapparna nedan.</p>
+<p style="font-size:18px;font-weight:700;margin-top:24px">Lycka till!</p>
+
+<div class="disclaimer-card" style="margin-top:32px">
+  <p>Denna sida är inte officiellt affilierad med Umeå Universitet. Administratören ansvarar inte för eventuellt inaktuella rekommendationer i OSCE-materialet.</p>
+  <div class="disclaimer-links">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScYm4bixL2TUSD__XNeNf2FpTPMLZpPivuZIZ4yclCK-AuyLw/viewform?usp=publish-editor" target="_blank" rel="noopener">Rapportera fel</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdj2mClhQvN-3LUaYkDoYWut2YvMUEiEsU-aL1xCxiiApolRA/viewform?usp=publish-editor" target="_blank" rel="noopener">Önska funktion</a>
+    <a href="mailto:wegeliusbruno@gmail.com">Kontakta admin</a>
+  </div>
+</div>`;
 }
 
 // ── RANDOM ────────────────────────────────────────────────

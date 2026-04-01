@@ -27,7 +27,7 @@ Vid anamnesfokuserade stationer förväntas ofta att man använder en **patientc
 - **Oro** (farhågor) — *"Finns det något du oroar dig för?"*
 - **Önskan** (förväntningar) — *"Vad hoppas du att vi kan hjälpa dig med idag?"*
 
-Dessa tre kallas ibland **de 3 F:n** — förväntningar, föreställningar och farhågor. Att aktivt fråga efter dessa är ofta en explicit bedömningspunkt, och man bör få med minst 2 av 3 för full poäng. Läs mer om patientcentrerad konsultation på [Internetmedicin](https://www.internetmedicin.se/allmanmedicin/patientcentrerad-konsultation).
+Dessa tre kallas ibland **de 3 F:n** — förväntningar, föreställningar och farhågor. Att aktivt fråga efter dessa är ofta en explicit bedömningspunkt. Läs mer om patientcentrerad konsultation på [Internetmedicin](https://www.internetmedicin.se/allmanmedicin/patientcentrerad-konsultation).
 
 ---
 
@@ -37,7 +37,7 @@ Den generella anamnesen ställs på liknande sätt oavsett patient, med anpassni
 
 | Bokstav | Område | Vad man frågar om |
 |---|---|---|
-| **S** | Sjukdomar | Tidigare och pågående sjukdomar. *"Har du några kända sjukdomar?"* Fråga om hjärt-kärlsjukdom, diabetes, lungsjukdom, psykisk ohälsa etc. beroende på kontext. |
+| **S** | Sjukdomar | Tidigare och pågående sjukdomar. En öppen fråga räcker — *"Har du några kända sjukdomar?"* |
 | **O** | Operationer | Tidigare operationer och ingrepp. Anpassa efter sökorsak — vid bukbesvär är tidigare bukkirurgi relevant, vid halsbesvär frågar man om ingrepp i huvud/hals-regionen. |
 | **M** | Mediciner | Aktuella läkemedel inklusive receptfria preparat och naturläkemedel. *"Tar du några mediciner regelbundet?"* Fråga även om nyligen ändrad medicinering. |
 | **A** | Allergier | Läkemedelsallergier och andra allergier. *"Är du allergisk mot något, exempelvis penicillin eller andra läkemedel?"* |
@@ -71,7 +71,7 @@ SOCRATES och SOMA ÄTAS går ofta mycket fort — samtliga frågor kan ofta avve
 
 ## Riktad anamnes
 
-Utöver SOCRATES (som är smärtspecifik) behöver man ställa frågor som är specifikt relaterade till det aktuella besväret. Exempelvis: om patienten söker för dyspné bör man fråga om bröstsmärta, hosta, bensvullnad, ortopné och paroxysmal nattlig dyspné. Om patienten söker för huvudvärk bör man fråga om synpåverkan, ljus-/ljudkänslighet, trauma, nackstelhet och feber.
+Utöver SOCRATES (som är smärtspecifik) behöver man ställa frågor som är specifikt relaterade till det aktuella besväret. Exempelvis: om patienten söker för dyspné bör man fråga om bröstsmärta, hosta, bensvullnad, ortopné och paroxysmal nattlig dyspné, etc. Om patienten söker för huvudvärk bör man fråga om synpåverkan, ljus-/ljudkänslighet, trauma, nackstelhet och feber, etc.
 
 Med tiden lär man sig vilka frågor som är relevanta beroende på sökorsak — detta kommer naturligt med klinisk erfarenhet och tentamensträning.
 

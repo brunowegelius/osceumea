@@ -474,7 +474,7 @@
     .result-excerpt mark { background: var(--yellow); color: var(--yellow-t); border-radius: 3px; padding: 0 2px; }
 
     /* ── TIMER ───────────────────────────────────────────────── */
-    .timer-widget { position: fixed; bottom: 28px; right: 28px; z-index: 150; }
+    .timer-widget { position: fixed; bottom: 28px; right: 28px; z-index: 150; display: flex; flex-direction: column; align-items: flex-end; }
     .timer-fab {
       width: 52px; height: 52px; border-radius: 50%;
       background: var(--text); color: var(--accent-fg);
@@ -526,6 +526,25 @@
     .tbtn-start { background: var(--text); color: var(--accent-fg); grid-column: 1 / -1; }
     .tbtn-start:hover { opacity: .82; background: var(--text); }
     .tbtn-start:disabled { opacity: .3; }
+    .timer-toggle-wrap { padding: 0 14px 14px; }
+    .timer-toggle {
+      display: flex; background: var(--surface-2); border-radius: var(--r-full);
+      padding: 3px; position: relative;
+    }
+    .timer-toggle-opt {
+      flex: 1; padding: 7px 0; border: none; background: none;
+      font-size: 10px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--muted); cursor: pointer; text-align: center;
+      position: relative; z-index: 1; transition: color .2s;
+    }
+    .timer-toggle-opt.active { color: var(--text); }
+    .timer-toggle-slider {
+      position: absolute; top: 3px; bottom: 3px; width: calc(50% - 3px);
+      background: var(--bg); border-radius: var(--r-full);
+      transition: left .25s ease; box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    }
+    .timer-toggle-slider[data-pos="0"] { left: 3px; }
+    .timer-toggle-slider[data-pos="1"] { left: calc(50%); }
 
     /* ── MOBILE ──────────────────────────────────────────────── */
     @media (max-width: 720px) {
@@ -769,11 +788,17 @@
         <div class="timer-phase-sub" id="timer-phase-sub">Läsfas</div>
       </div>
     </div>
+    <div class="timer-toggle-wrap">
+      <div class="timer-toggle">
+        <div class="timer-toggle-slider" id="timer-toggle-slider" data-pos="0"></div>
+        <button class="timer-toggle-opt active" id="timer-tog-read" onclick="timerSetPhase('read')">Dörr (2 min)</button>
+        <button class="timer-toggle-opt" id="timer-tog-station" onclick="timerSetPhase('station')">Station (6 min)</button>
+      </div>
+    </div>
     <div class="timer-controls">
       <button class="tbtn tbtn-start" id="tbtn-start" onclick="timerStart()">• Start</button>
       <button class="tbtn" id="tbtn-pause" onclick="timerPause()" disabled>Pausa</button>
       <button class="tbtn" onclick="timerReset()">Återställ</button>
-      <button class="tbtn" onclick="timerJumpStation()">→ Station</button>
     </div>
   </div>
   <button class="timer-fab" id="timer-fab" onclick="toggleTimerPanel()" title="Timer">
@@ -1541,8 +1566,8 @@ function timerTick() {
 
 function timerStart()       { if (timer.running || timer.remaining <= 0) return; timer.running = true; timer.interval = setInterval(timerTick, 1000); updateTimerUI(); }
 function timerPause()       { timer.running = false; clearInterval(timer.interval); updateTimerUI(); }
-function timerReset()       { clearInterval(timer.interval); timer = { phase: 'read', remaining: PHASES.read.secs, total: PHASES.read.secs, running: false, interval: null }; updateTimerUI(); }
-function timerJumpStation() { clearInterval(timer.interval); timer = { phase: 'station', remaining: PHASES.station.secs, total: PHASES.station.secs, running: false, interval: null }; updateTimerUI(); }
+function timerReset()       { clearInterval(timer.interval); const p = timer.phase; timer = { phase: p, remaining: PHASES[p].secs, total: PHASES[p].secs, running: false, interval: null }; updateTimerUI(); }
+function timerSetPhase(p) { clearInterval(timer.interval); timer = { phase: p, remaining: PHASES[p].secs, total: PHASES[p].secs, running: false, interval: null }; updateTimerUI(); }
 
 function updateTimerUI() {
   const { phase, remaining, total, running } = timer;
@@ -1573,6 +1598,13 @@ function updateTimerUI() {
   const pBtn = document.getElementById('tbtn-pause');
   if (sBtn) sBtn.disabled = running || remaining <= 0;
   if (pBtn) pBtn.disabled = !running;
+
+  const slider  = document.getElementById('timer-toggle-slider');
+  const togRead = document.getElementById('timer-tog-read');
+  const togStn  = document.getElementById('timer-tog-station');
+  if (slider)  slider.setAttribute('data-pos', phase === 'read' ? '0' : '1');
+  if (togRead) togRead.classList.toggle('active', phase === 'read');
+  if (togStn)  togStn.classList.toggle('active', phase === 'station');
 }
 
 function toggleTimerPanel() {

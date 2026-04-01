@@ -638,6 +638,7 @@
     <button class="nav-tab" onclick="navigate('/abcde')">ABCDE</button>
     <button class="nav-tab" onclick="navigate('/hlr')">HLR</button>
     <button class="nav-tab" onclick="navigate('/anamnes')">Anamnes</button>
+    <button class="nav-tab" onclick="navigate('/status')">Status</button>
   </div>
   <div class="nav-spacer"></div>
   <div class="nav-actions">
@@ -789,6 +790,16 @@
     </div>
   </div>
 
+  <!-- STATUS -->
+  <div class="page" id="page-status">
+    <div class="container">
+      <div class="list-header">
+        <h2>Status</h2>
+      </div>
+      <div class="hy-content" id="status-body"></div>
+    </div>
+  </div>
+
   <!-- OM -->
   <div class="page" id="page-om">
     <div class="container">
@@ -920,6 +931,12 @@ function route() {
       if (t.textContent === 'Anamnes') t.classList.add('active');
     });
     renderAnamnes();
+  } else if (hash === '/status') {
+    document.getElementById('page-status').classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(t => {
+      if (t.textContent === 'Status') t.classList.add('active');
+    });
+    renderStatus();
   } else if (hash === '/om') {
     document.getElementById('page-om').classList.add('active');
     renderOm();
@@ -1350,7 +1367,9 @@ function inlineFormat(text) {
     .replace(/`(.+?)`/g, '<code>$1</code>')
     .replace(/\[(.+?)\]\((.+?)\)/g, (_, label, href) => {
       const safe = sanitizeHref(href);
-      return safe ? '<a href="' + escapeHtml(safe) + '">' + label + '</a>' : label;
+      if (!safe) return label;
+      const ext = /^https?:\/\//.test(safe) ? ' target="_blank" rel="noopener"' : '';
+      return '<a href="' + escapeHtml(safe) + '"' + ext + '>' + label + '</a>';
     });
 }
 
@@ -1438,6 +1457,30 @@ function renderAnamnes() {
       if (window.location.hash !== expectedHash) return;
       anamnesCache = md;
       body.innerHTML = ANAMNES_DISCLAIMER + renderMarkdown(md);
+    })
+    .catch(() => {
+      if (window.location.hash !== expectedHash) return;
+      body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';
+    });
+}
+
+// ── STATUS ────────────────────────────────────────────────
+let statusCache = null;
+
+function renderStatus() {
+  const body = document.getElementById('status-body');
+  if (statusCache) {
+    body.innerHTML = renderMarkdown(statusCache);
+    return;
+  }
+  body.innerHTML = '<div class="search-hint">Laddar…</div>';
+  const expectedHash = window.location.hash;
+  fetch('status-videos.md')
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(md => {
+      if (window.location.hash !== expectedHash) return;
+      statusCache = md;
+      body.innerHTML = renderMarkdown(md);
     })
     .catch(() => {
       if (window.location.hash !== expectedHash) return;

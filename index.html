@@ -1320,7 +1320,15 @@ function randomExam(levelFilter) {
   const notDone = pool.filter(e => !isDone(e.id));
   const src = notDone.length > 0 ? notDone : pool;
   if (!src.length) return;
-  navigate('/exam/' + src[Math.floor(Math.random() * src.length)].id);
+  const exam = src[Math.floor(Math.random() * src.length)];
+  const stations = exam.stations || 0;
+  if (stations > 0) {
+    const page = Math.floor(Math.random() * stations) + 1;
+    const files = exam.files || {};
+    const dorrFile = files.dorr || files.kombi || Object.values(files)[0] || '';
+    pendingPDFJump = { file: dorrFile, page };
+  }
+  navigate('/exam/' + exam.id);
 }
 
 // ── SEARCH ────────────────────────────────────────────────

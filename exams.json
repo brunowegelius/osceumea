@@ -12,7 +12,8 @@
         "dorr": "exams/osce1/osce1_ord_ht25_dorr.pdf",
         "bed": "exams/osce1/osce1_ord_ht25_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 16
     },
     {
       "id": "osce1_ord_vt25",
@@ -26,7 +27,8 @@
         "dorr": "exams/osce1/osce1_ord_vt25_dorr.pdf",
         "bed": "exams/osce1/osce1_ord_vt25_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 19
     },
     {
       "id": "osce1_ord_ht24",
@@ -40,7 +42,8 @@
         "dorr": "exams/osce1/osce1_ord_ht24_dorr.pdf",
         "bed": "exams/osce1/osce1_ord_ht24_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 15
     },
     {
       "id": "osce1_ord_vt24",
@@ -54,7 +57,8 @@
         "dorr": "exams/osce1/osce1_ord_vt24_dorr.pdf",
         "bed": "exams/osce1/osce1_ord_vt24_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 17
     },
     {
       "id": "osce1_ord_ht23",
@@ -68,7 +72,8 @@
         "dorr": "exams/osce1/osce1_ord_ht23_dorr.pdf",
         "bed": "exams/osce1/osce1_ord_ht23_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 15
     },
     {
       "id": "osce1_ord_vt23",
@@ -82,7 +87,8 @@
         "dorr": "exams/osce1/osce1_ord_vt23_dorr.pdf",
         "bed": "exams/osce1/osce1_ord_vt23_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 14
     },
     {
       "id": "osce1_ord_ht22",
@@ -96,7 +102,8 @@
         "dorr": "exams/osce1/osce1_ord_ht22_dorr.pdf",
         "bed": "exams/osce1/osce1_ord_ht22_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 15
     },
     {
       "id": "osce1_ord_vt22",
@@ -110,7 +117,8 @@
         "dorr": "exams/osce1/osce1_ord_vt22_dorr.pdf",
         "bed": "exams/osce1/osce1_ord_vt22_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 12
     },
     {
       "id": "osce1_om_vt25",
@@ -124,7 +132,8 @@
         "dorr": "exams/osce1/osce1_om_vt25_dorr.pdf",
         "bed": "exams/osce1/osce1_om_vt25_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 18
     },
     {
       "id": "osce1_om_ht24",
@@ -138,7 +147,8 @@
         "dorr": "exams/osce1/osce1_om_ht24_dorr.pdf",
         "bed": "exams/osce1/osce1_om_ht24_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 15
     },
     {
       "id": "osce1_om_vt24",
@@ -153,7 +163,8 @@
         "bed_cirkel-1": "exams/osce1/osce1_om_vt24_bed_cirkel-1.pdf",
         "bed_cirkel-2": "exams/osce1/osce1_om_vt24_bed_cirkel-2.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 16
     },
     {
       "id": "osce1_om_ht23",
@@ -167,7 +178,8 @@
         "dorr": "exams/osce1/osce1_om_ht23_dorr.pdf",
         "bed": "exams/osce1/osce1_om_ht23_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 15
     },
     {
       "id": "osce1_om_vt23",
@@ -182,7 +194,8 @@
         "bed_cirkel-1": "exams/osce1/osce1_om_vt23_bed_cirkel-1.pdf",
         "bed_cirkel-2": "exams/osce1/osce1_om_vt23_bed_cirkel-2.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 16
     },
     {
       "id": "osce1_om_ht22",
@@ -196,7 +209,8 @@
         "dorr": "exams/osce1/osce1_om_ht22_dorr.pdf",
         "bed": "exams/osce1/osce1_om_ht22_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 12
     },
     {
       "id": "osce1_om_vt22",
@@ -210,7 +224,8 @@
         "dorr": "exams/osce1/osce1_om_vt22_dorr.pdf",
         "bed": "exams/osce1/osce1_om_vt22_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 12
     },
     {
       "id": "osce2_ord_ht25",
@@ -224,7 +239,8 @@
         "dorr": "exams/osce2/osce2_ord_ht25_dorr.pdf",
         "bed": "exams/osce2/osce2_ord_ht25_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 18
     },
     {
       "id": "osce2_ord_vt25",
@@ -238,7 +254,8 @@
         "dorr": "exams/osce2/osce2_ord_vt25_dorr.pdf",
         "bed": "exams/osce2/osce2_ord_vt25_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 15
     },
     {
       "id": "osce2_ord_ht24",
@@ -252,7 +269,8 @@
         "dorr": "exams/osce2/osce2_ord_ht24_dorr.pdf",
         "bed": "exams/osce2/osce2_ord_ht24_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 16
     },
     {
       "id": "osce2_ord_vt24",
@@ -266,7 +284,8 @@
         "dorr": "exams/osce2/osce2_ord_vt24_dorr.pdf",
         "bed": "exams/osce2/osce2_ord_vt24_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 19
     },
     {
       "id": "osce2_ord_ht23",
@@ -280,7 +299,8 @@
         "dorr": "exams/osce2/osce2_ord_ht23_dorr.pdf",
         "bed": "exams/osce2/osce2_ord_ht23_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 18
     },
     {
       "id": "osce2_ord_vt23",
@@ -294,7 +314,8 @@
         "dorr": "exams/osce2/osce2_ord_vt23_dorr.pdf",
         "bed": "exams/osce2/osce2_ord_vt23_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 18
     },
     {
       "id": "osce2_ord_ht22",
@@ -308,7 +329,8 @@
         "dorr": "exams/osce2/osce2_ord_ht22_dorr.pdf",
         "bed": "exams/osce2/osce2_ord_ht22_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 17
     },
     {
       "id": "osce2_ord_vt22",
@@ -322,7 +344,8 @@
         "dorr": "exams/osce2/osce2_ord_vt22_dorr.pdf",
         "bed": "exams/osce2/osce2_ord_vt22_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 18
     },
     {
       "id": "osce2_om_ht25",
@@ -336,7 +359,8 @@
         "dorr": "exams/osce2/osce2_om_ht25_dorr.pdf",
         "bed": "exams/osce2/osce2_om_ht25_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 17
     },
     {
       "id": "osce2_om_vt25",
@@ -349,7 +373,8 @@
       "files": {
         "bed": "exams/osce2/osce2_om_vt25_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 12
     },
     {
       "id": "osce2_om_ht24",
@@ -365,7 +390,8 @@
         "bed_cirkel-a": "exams/osce2/osce2_om_ht24_bed_cirkel-a.pdf",
         "bed_cirkel-b": "exams/osce2/osce2_om_ht24_bed_cirkel-b.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 8
     },
     {
       "id": "osce2_om_vt24",
@@ -381,7 +407,8 @@
         "bed_cirkel-b": "exams/osce2/osce2_om_vt24_bed_cirkel-b.pdf",
         "bed_cirkel-c": "exams/osce2/osce2_om_vt24_bed_cirkel-c.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 13
     },
     {
       "id": "osce2_om_ht23",
@@ -395,7 +422,8 @@
         "dorr": "exams/osce2/osce2_om_ht23_dorr.pdf",
         "bed": "exams/osce2/osce2_om_ht23_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 19
     },
     {
       "id": "osce2_om_vt23",
@@ -409,7 +437,8 @@
         "dorr": "exams/osce2/osce2_om_vt23_dorr.pdf",
         "bed": "exams/osce2/osce2_om_vt23_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 16
     },
     {
       "id": "osce2_om_ht22",
@@ -424,7 +453,8 @@
         "bed_cirkel-a": "exams/osce2/osce2_om_ht22_bed_cirkel-a.pdf",
         "bed_cirkel-b": "exams/osce2/osce2_om_ht22_bed_cirkel-b.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 14
     },
     {
       "id": "osce2_om_vt22",
@@ -439,7 +469,8 @@
         "bed_cirkel-a": "exams/osce2/osce2_om_vt22_bed_cirkel-a.pdf",
         "bed_cirkel-b": "exams/osce2/osce2_om_vt22_bed_cirkel-b.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 15
     },
     {
       "id": "osce3_ord_ht25",
@@ -452,7 +483,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_ord_ht25_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 25
     },
     {
       "id": "osce3_ord_vt25",
@@ -465,7 +497,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_ord_vt25_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 28
     },
     {
       "id": "osce3_ord_ht24",
@@ -478,7 +511,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_ord_ht24_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 28
     },
     {
       "id": "osce3_ord_vt24",
@@ -491,7 +525,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_ord_vt24_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 29
     },
     {
       "id": "osce3_ord_ht23",
@@ -504,7 +539,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_ord_ht23_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 28
     },
     {
       "id": "osce3_ord_vt23",
@@ -517,7 +553,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_ord_vt23_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 27
     },
     {
       "id": "osce3_ord_ht22",
@@ -530,7 +567,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_ord_ht22_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 26
     },
     {
       "id": "osce3_ord_vt22",
@@ -544,7 +582,8 @@
         "dorr": "exams/osce3/osce3_ord_vt22_dorr.pdf",
         "bed": "exams/osce3/osce3_ord_vt22_bed.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 17
     },
     {
       "id": "osce3_om_ht25",
@@ -557,7 +596,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_om_ht25_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 29
     },
     {
       "id": "osce3_om_ht23",
@@ -570,7 +610,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_om_ht23_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 28
     },
     {
       "id": "osce3_om_vt23",
@@ -583,7 +624,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_om_vt23_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 28
     },
     {
       "id": "osce3_om_ht22",
@@ -596,7 +638,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_om_ht22_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 28
     },
     {
       "id": "osce3_om_vt22",
@@ -609,7 +652,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_om_vt22_kombi.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 27
     },
     {
       "id": "osce3_om_vt25",
@@ -622,7 +666,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_ord_vt25_kombi_6min.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 28
     },
     {
       "id": "osce3_om_ht24",
@@ -635,7 +680,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_ord_ht24_kombi_6min.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 28
     },
     {
       "id": "osce3_om_vt24",
@@ -648,7 +694,8 @@
       "files": {
         "kombi": "exams/osce3/osce3_ord_vt24_kombi_6min.pdf"
       },
-      "tags": []
+      "tags": [],
+      "stations": 29
     }
   ]
 }

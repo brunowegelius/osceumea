@@ -473,6 +473,20 @@
       "stations": 15
     },
     {
+      "id": "osce3_ord_vt26",
+      "level": 3,
+      "levelLabel": "OSCE III (T11)",
+      "type": "ord",
+      "typeLabel": "Ordinarie",
+      "semester": "VT26",
+      "semesterSort": "2026-1",
+      "files": {
+        "kombi": "exams/osce3/osce3_ord_vt26_kombi.pdf"
+      },
+      "tags": [],
+      "stations": 27
+    },
+    {
       "id": "osce3_ord_ht25",
       "level": 3,
       "levelLabel": "OSCE III (T11)",

@@ -7,7 +7,7 @@ Nedan finner du bra videos för några av de statusmoment som kan komma på OSCE
 ## Kardiovaskulärt
 
 ### Hjärtauskultation / hjärtstatus
-- [Hjärtauskultation (Lunds Universitet)](https://www.youtube.com/watch?v=v61r6LHrmL8)
+- [Hjärtauskultation](https://www.youtube.com/watch?v=v61r6LHrmL8)
 - [Heart Sounds & Murmurs](https://www.youtube.com/watch?v=Q5-0mSydRR4)
 
 ### Blodtrycksmätning (inkl. ortostatiskt)

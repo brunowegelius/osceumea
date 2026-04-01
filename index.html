@@ -633,6 +633,7 @@
     <button class="nav-tab" onclick="navigate('/high-yield')">High Yield</button>
     <button class="nav-tab" onclick="navigate('/abcde')">ABCDE</button>
     <button class="nav-tab" onclick="navigate('/hlr')">HLR</button>
+    <button class="nav-tab" onclick="navigate('/anamnes')">Anamnes</button>
   </div>
   <div class="nav-spacer"></div>
   <div class="nav-actions">
@@ -771,6 +772,16 @@
     </div>
   </div>
 
+  <!-- ANAMNES -->
+  <div class="page" id="page-anamnes">
+    <div class="container">
+      <div class="list-header">
+        <h2>Anamnes &amp; rapport</h2>
+      </div>
+      <div class="hy-content" id="anamnes-body"></div>
+    </div>
+  </div>
+
 </main>
 
 <noscript><p style="text-align:center;padding:40px;color:#888">JavaScript krävs för att använda OSCE Studieportal.</p></noscript>
@@ -886,6 +897,12 @@ function route() {
       if (t.textContent === 'HLR') t.classList.add('active');
     });
     renderHLR();
+  } else if (hash === '/anamnes') {
+    document.getElementById('page-anamnes').classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(t => {
+      if (t.textContent === 'Anamnes') t.classList.add('active');
+    });
+    renderAnamnes();
   }
 }
 
@@ -1353,6 +1370,34 @@ function renderHLR() {
       if (window.location.hash !== expectedHash) return;
       hlrCache = md;
       body.innerHTML = HLR_WARNING + hlrPostProcess(renderMarkdown(md)) + HLR_WARNING;
+    })
+    .catch(() => {
+      if (window.location.hash !== expectedHash) return;
+      body.innerHTML = '<div class="search-hint">Kunde inte ladda filen.</div>';
+    });
+}
+
+// ── ANAMNES ───────────────────────────────────────────────
+let anamnesCache = null;
+
+const ANAMNES_DISCLAIMER = `<div class="disclaimer-card" style="margin-bottom:24px">
+  <p>Denna guide till anamnes och rapportering är fokuserad på OSCE-examinationen och är därmed kraftigt komprimerad för att få plats i ett kort tidsspann. Vid OSCE är det viktigt att vara snabb och strukturerad i sin konsultation, men i verkligheten ska man självklart ta sig god tid.</p>
+</div>`;
+
+function renderAnamnes() {
+  const body = document.getElementById('anamnes-body');
+  if (anamnesCache) {
+    body.innerHTML = ANAMNES_DISCLAIMER + renderMarkdown(anamnesCache);
+    return;
+  }
+  body.innerHTML = '<div class="search-hint">Laddar…</div>';
+  const expectedHash = window.location.hash;
+  fetch('anamnes-rapport.md')
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(md => {
+      if (window.location.hash !== expectedHash) return;
+      anamnesCache = md;
+      body.innerHTML = ANAMNES_DISCLAIMER + renderMarkdown(md);
     })
     .catch(() => {
       if (window.location.hash !== expectedHash) return;

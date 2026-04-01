@@ -420,6 +420,11 @@
     .hy-content th:first-child, .hy-content td:first-child { border-radius: var(--r-sm) 0 0 var(--r-sm); }
     .hy-content th:last-child, .hy-content td:last-child { border-radius: 0 var(--r-sm) var(--r-sm) 0; }
     .hy-content code { font-size: 12px; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; }
+    .hy-content a { color: #2454e8; text-decoration: none; font-weight: 500; }
+    .hy-content a:hover { text-decoration: underline; }
+    .hy-content a:visited { color: #2454e8; }
+    [data-theme="dark"] .hy-content a,
+    [data-theme="dark"] .hy-content a:visited { color: #6b9aff; }
     @media (max-width: 580px) {
       .hy-content table { font-size: 11px; }
       .hy-content th, .hy-content td { padding: 5px 6px; }
